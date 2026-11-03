@@ -92,29 +92,61 @@ export const content = {
       statusPrivate: 'Privado — Solicitar Demo',
       statusPrivateCase: 'Proyecto Corporativo / Privado',
       statusPublic: 'Código Disponible',
+      flagshipBadge: 'Proyecto Destacado · Flagship',
+      flagshipMetricsTitle: 'Métricas de Arquitectura & Negocio',
+      flagshipPipelineTitle: 'Pipeline Operativo Automatizado',
       items: [
         {
           id: 'agente-cobranzas-ia',
           title: 'Agente de IA de Cobranzas & Scoring de Riesgo',
           category: 'Python · Streamlit · IA Aplicada',
+          isFlagship: true,
           repoUrl: 'https://github.com/varelajm10/agente-cobranzas-ia',
           githubUrl: 'https://github.com/varelajm10/agente-cobranzas-ia',
           problem:
-            'Cada mañana el equipo de cobranzas enfrenta cientos de clientes vencidos sin saber a quién priorizar ni qué tono emplear, recurriendo a mensajes genéricos o descuidando cuentas clave.',
+            'Cada mañana el equipo de cuentas por cobrar enfrenta cientos de clientes vencidos sin una priorización cuantitativa. Se recurre a mensajes genéricos idénticos o se descuidan cuentas clave, deteriorando la relación comercial o incrementando innecesariamente el DSO.',
           solution:
-            'Motor en Python con scoring de riesgo transparente (40% atraso, 25% saldo, 20% historial, 15% promesas), segmentación en 4 estrategias y agente redactor validado con guardrails de negocio (Claude API o plantillas locales).',
+            'Motor algorítmico en Python con scoring de riesgo ponderado (0–100) que segmenta a los deudores en 4 estrategias operativas. Un redactor con Claude API genera avisos contextualizados para WhatsApp y email, auditados por guardrails determinísticos que impiden alucinaciones en importes o fechas, con fallback offline sin costo de tokens.',
           role: 'Diseño de reglas de riesgo crediticio, arquitectura de validación de prompts, desarrollo de app en Streamlit y suite de 16 tests automatizados.',
           impact:
             'Scoring de riesgo 0–100 en tiempo real, 16 tests automatizados con pytest y 100% operable offline sin costo de API mediante plantillas.',
           impactMetric:
             'Scoring de riesgo 0–100 en tiempo real, 16 tests automatizados con pytest y 100% operable offline sin costo de API mediante plantillas.',
-          tags: ['Python', 'Streamlit', 'Claude API', 'Pytest', 'Credit Risk'],
+          flagshipMetrics: [
+            {
+              value: '4 Variables',
+              label: 'Matriz de Scoring Ponderado',
+              detail: '40% atraso, 25% saldo, 20% historial, 15% promesas',
+            },
+            {
+              value: '4 Estrategias',
+              label: 'Segmentación Operativa',
+              detail: 'Preventivo, Amigable, Firme y Pre-judicial',
+            },
+            {
+              value: '16 Tests',
+              label: 'Cobertura Pytest en CI',
+              detail: 'Validación de scoring, guardrails y sanitización',
+            },
+            {
+              value: '100% Offline',
+              label: 'Modo Local sin Costo API',
+              detail: 'Motor con plantillas determinísticas de fallback',
+            },
+          ],
+          pipeline: [
+            { step: '01', name: 'Cartera Vencida', desc: 'Ingesta y normalización' },
+            { step: '02', name: 'Scoring 0–100', desc: 'Ponderación de riesgo' },
+            { step: '03', name: 'Guardrails', desc: 'Validación anti-alucinación' },
+            { step: '04', name: 'WhatsApp/Email', desc: 'Mensaje listo para envío' },
+          ],
+          tags: ['Python', 'Streamlit', 'Claude API', 'Pytest', 'Scoring de Riesgo', 'Offline Fallback'],
           isPublic: true,
           isPrivate: false,
           state: siteConfig.projectStates.CODE,
           demoUrl: null,
           summaryCase:
-            'Priorización de cartera y redacción validada con guardrails para contactar clientes por WhatsApp o correo según su nivel de criticidad.',
+            'Priorización cuantitativa de cartera y redacción asistida con guardrails para contactar clientes por WhatsApp o correo según su nivel de criticidad.',
         },
         {
           id: 'conciliacion-bancaria',
@@ -454,29 +486,61 @@ export const content = {
       statusPrivate: 'Private — Request Demo',
       statusPrivateCase: 'Corporate / Private System',
       statusPublic: 'Code Available',
+      flagshipBadge: 'Featured Project · Flagship',
+      flagshipMetricsTitle: 'Architecture & Business Metrics',
+      flagshipPipelineTitle: 'Automated Operations Pipeline',
       items: [
         {
           id: 'agente-cobranzas-ia',
           title: 'AI Collections Agent & Risk Scoring Engine',
           category: 'Python · Streamlit · Applied AI',
+          isFlagship: true,
           repoUrl: 'https://github.com/varelajm10/agente-cobranzas-ia',
           githubUrl: 'https://github.com/varelajm10/agente-cobranzas-ia',
           problem:
-            'Every morning the collections team faces hundreds of overdue debtors without knowing whom to prioritize or which tone to use, falling back on generic templates or neglecting critical accounts.',
+            'Every morning accounts receivable teams face hundreds of overdue debtors without quantitative prioritization. Operators resort to identical generic notices or neglect key accounts, increasing Days Sales Outstanding (DSO) or harming commercial relationships.',
           solution:
-            'Python engine with transparent risk scoring (40% overdue days, 25% balance, 20% history, 15% broken promises), segmentation into 4 strategies, and AI copywriter validated with business guardrails (Claude API or local offline templates).',
+            'Algorithmic Python engine calculating a transparent risk score (0–100) and segmenting accounts into 4 operational strategies. An AI assistant with Claude API drafts contextual, professional WhatsApp/email notices, strictly governed by business guardrails against hallucinated balances, featuring a 100% offline fallback without API token cost.',
           role: 'Credit risk rules design, prompt validation architecture, Streamlit UI development, and 16 automated tests.',
           impact:
             'Real-time 0–100 risk scoring, 16 automated tests with pytest, and 100% offline operable with zero API cost via fallback templates.',
           impactMetric:
             'Real-time 0–100 risk scoring, 16 automated tests with pytest, and 100% offline operable with zero API cost via fallback templates.',
-          tags: ['Python', 'Streamlit', 'Claude API', 'Pytest', 'Credit Risk'],
+          flagshipMetrics: [
+            {
+              value: '4 Variables',
+              label: 'Weighted Scoring Matrix',
+              detail: '40% aging, 25% balance, 20% history, 15% broken promises',
+            },
+            {
+              value: '4 Strategies',
+              label: 'Operational Segmentation',
+              detail: 'Preventive, Friendly, Firm, and Pre-legal',
+            },
+            {
+              value: '16 Tests',
+              label: 'Pytest Suite in CI',
+              detail: 'Scoring validation, prompt guardrails, and sanitization',
+            },
+            {
+              value: '100% Offline',
+              label: 'Zero-Cost Local Mode',
+              detail: 'Deterministic templating engine without API dependencies',
+            },
+          ],
+          pipeline: [
+            { step: '01', name: 'Aging Portfolio', desc: 'Ingestion & normalization' },
+            { step: '02', name: '0–100 Scoring', desc: 'Risk-weighted grading' },
+            { step: '03', name: 'Guardrails', desc: 'Anti-hallucination check' },
+            { step: '04', name: 'WhatsApp/Email', desc: 'Production-ready dispatch' },
+          ],
+          tags: ['Python', 'Streamlit', 'Claude API', 'Pytest', 'Credit Risk', 'Offline Fallback'],
           isPublic: true,
           isPrivate: false,
           state: siteConfig.projectStates.CODE,
           demoUrl: null,
           summaryCase:
-            'Portfolio prioritization and guardrail-validated drafting to contact customers via WhatsApp or email based on account criticality.',
+            'Quantitative portfolio prioritization and guardrail-validated drafting to contact customers via WhatsApp or email based on account criticality.',
         },
         {
           id: 'conciliacion-bancaria',
