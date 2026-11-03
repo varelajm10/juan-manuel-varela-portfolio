@@ -20,11 +20,11 @@ export const personalInfo = {
 // Historia real en primera persona (3 párrafos)
 export const aboutStory = {
   paragraph1:
-    'Llevo más de diez años trabajando en la trinchera de la administración y las finanzas corporativas. Pasé por empresas de consumo masivo, maquinaria y distribución de tecnología (como Saputo Inc., DACAS LATAM y CNH Capital), administrando carteras masivas de clientes, aprobando límites de crédito, conciliando bancos y peleando día a día contra la morosidad para cuidar el flujo de fondos.',
+    'Llevo más de diez años en la trinchera de la administración y las finanzas corporativas. Pasé por empresas de consumo masivo, maquinaria y distribución tecnológica (Saputo Inc., DACAS LATAM, CNH Capital), administrando carteras masivas de clientes, aprobando límites de crédito, conciliando bancos y peleando día a día contra la morosidad para cuidar el flujo de fondos.',
   paragraph2:
-    'El punto de quiebre fue el hartazgo de ver cómo los equipos queman entre 15 y 20 horas por semana cruzando planillas a mano, copiando datos de un sistema a otro y corriendo atrás de cierres interminables. Ahí decidí aprender a programar en serio: empecé a escribir scripts en Python, consultas avanzadas en SQL y modelos en Power BI para resolver mis propios cuellos de botella operativos.',
+    'El punto de quiebre fue el hartazgo de ver cómo los equipos queman 15 a 20 horas por semana cruzando planillas a mano, copiando datos entre sistemas y corriendo atrás de cierres interminables. Ahí decidí aprender a programar en serio: scripts en Python, consultas avanzadas en SQL y modelos en Power BI para resolver mis propios cuellos de botella operativos.',
   paragraph3:
-    'Hoy me dedico a unir esos dos mundos. No soy un desarrollador teórico ni un analista que solo arma presentaciones en PowerPoint: construyo herramientas, pipelines y tableros que funcionan en producción, le quitan el trabajo repetitivo a la gente y le devuelven tiempo al negocio para tomar decisiones estratégicas.',
+    'Hoy uno esos dos mundos. No soy un desarrollador teórico ni un analista que solo hace presentaciones en PowerPoint: construyo herramientas, pipelines y tableros que funcionan en producción, le quitan el trabajo repetitivo a la gente y le devuelven tiempo al negocio para tomar decisiones estratégicas.',
 };
 
 export const impactMetrics = [
