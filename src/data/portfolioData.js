@@ -101,6 +101,7 @@ export const content = {
       items: [
         {
           id: 'agente-cobranzas-ia',
+          image: '/projects/agente-cobranzas.jpg',
           title: 'Agente de IA de Cobranzas & Scoring de Riesgo',
           category: 'Python · Streamlit · IA Aplicada',
           isFlagship: true,
@@ -158,6 +159,7 @@ export const content = {
         },
         {
           id: 'conciliacion-bancaria',
+          image: '/projects/conciliacion.jpg',
           title: 'Motor de Conciliación Bancaria Automática',
           category: 'Python · Algoritmos de Negocio · Pandas',
           repoUrl: 'https://github.com/varelajm10/conciliacion-bancaria',
@@ -185,7 +187,32 @@ export const content = {
             'Motor determinístico de imputación en 5 reglas que genera reportes de conciliación listos para el cierre contable sin depender de criterio subjetivo.',
         },
         {
+          id: 'metanoia',
+          image: '/projects/metanoia.jpg',
+          title: 'Metanoia — Prototipos públicos de panel y ERP',
+          category: 'Next.js · TypeScript',
+          repoUrl: 'https://github.com/varelajm10/Metanoia.v1.0.1',
+          githubUrl: 'https://github.com/varelajm10/Metanoia.v1.0.1',
+          extraRepoUrl: 'https://github.com/varelajm10/metanoia-app',
+          extraRepoLabel: 'Ver panel con IA',
+          problem:
+            'El seguimiento de saldos y cobranzas queda repartido en planillas que no conversan con el resto de la operación.',
+          solution:
+            'Dos prototipos públicos de la misma línea. Metanoia.v1.0.1 es un ERP modular multi-tenant con Next.js, TypeScript y Prisma sobre PostgreSQL, con módulos en distinto grado de avance. metanoia-app es un panel con asistentes de IA (Next.js, Firebase, Genkit/Gemini).',
+          role: 'Diseño y construcción de los módulos que están en esos dos repositorios públicos.',
+          impactMetric:
+            'Prototipos abiertos para revisar la estructura. La herramienta usada con datos de la operación sigue en un repositorio privado.',
+          tags: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Firebase'],
+          isPublic: true,
+          isPrivate: false,
+          state: siteConfig.projectStates.CODE,
+          demoUrl: null,
+          summaryCase:
+            'La versión interna no se publica. Estos dos repos muestran el prototipo de ERP y el panel con asistentes, sin datos de clientes.',
+        },
+        {
           id: 'cubo',
+          image: '/projects/cubo.jpg',
           title: 'CUBO — Cobranzas y Aging (antigüedad de deuda)',
           category: 'Web App & API',
           state: siteConfig.projectStates.PRIVATE_CASE,
@@ -206,6 +233,7 @@ export const content = {
         },
         {
           id: 'gladys',
+          image: '/projects/gladys.jpg',
           title: 'G.L.A.D.Y.S. — Monitor de Riesgo Crediticio & Deudores',
           category: 'Pipeline & Scraping',
           state: siteConfig.projectStates.PRIVATE_CASE,
@@ -226,6 +254,7 @@ export const content = {
         },
         {
           id: 'ascensort',
+          image: '/projects/ascensort.jpg',
           title: 'AscenSort — Análisis Operativo & Control Estadístico',
           category: 'Desktop App',
           state: siteConfig.projectStates.PRIVATE_CASE,
@@ -508,6 +537,7 @@ export const content = {
       items: [
         {
           id: 'agente-cobranzas-ia',
+          image: '/projects/agente-cobranzas.jpg',
           title: 'AI Collections Agent & Risk Scoring Engine',
           category: 'Python · Streamlit · Applied AI',
           isFlagship: true,
@@ -565,6 +595,7 @@ export const content = {
         },
         {
           id: 'conciliacion-bancaria',
+          image: '/projects/conciliacion.jpg',
           title: 'Automated Bank Reconciliation Engine',
           category: 'Python · Business Algorithms · Pandas',
           repoUrl: 'https://github.com/varelajm10/conciliacion-bancaria',
@@ -592,7 +623,32 @@ export const content = {
             'Deterministic 5-rule matching engine that outputs month-end reconciliation Excel workbooks ready for sign-off without subjective guesswork.',
         },
         {
+          id: 'metanoia',
+          image: '/projects/metanoia.jpg',
+          title: 'Metanoia — Public panel and ERP prototypes',
+          category: 'Next.js · TypeScript',
+          repoUrl: 'https://github.com/varelajm10/Metanoia.v1.0.1',
+          githubUrl: 'https://github.com/varelajm10/Metanoia.v1.0.1',
+          extraRepoUrl: 'https://github.com/varelajm10/metanoia-app',
+          extraRepoLabel: 'View AI panel',
+          problem:
+            'Balance and collections follow-up sits in spreadsheets that do not connect to the rest of the operation.',
+          solution:
+            'Two public prototypes of the same line. Metanoia.v1.0.1 is a modular multi-tenant ERP in Next.js, TypeScript, and Prisma on PostgreSQL, with modules at different stages. metanoia-app is a management panel with AI assistants (Next.js, Firebase, Genkit/Gemini).',
+          role: 'Design and build of the modules that are in those two public repositories.',
+          impactMetric:
+            'Open prototypes for reviewing the structure. The tool that runs on live operational data stays in a private repository.',
+          tags: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Firebase'],
+          isPublic: true,
+          isPrivate: false,
+          state: siteConfig.projectStates.CODE,
+          demoUrl: null,
+          summaryCase:
+            'The internal version is not published. These two repos show the ERP prototype and the assistant panel, without client data.',
+        },
+        {
           id: 'cubo',
+          image: '/projects/cubo.jpg',
           title: 'CUBO — Collections and Aging (age of unpaid invoices)',
           category: 'Web App & API',
           state: siteConfig.projectStates.PRIVATE_CASE,
@@ -613,6 +669,7 @@ export const content = {
         },
         {
           id: 'gladys',
+          image: '/projects/gladys.jpg',
           title: 'G.L.A.D.Y.S. — Credit Risk & Debtor Monitor',
           category: 'Pipeline & Scraping',
           state: siteConfig.projectStates.PRIVATE_CASE,
@@ -633,6 +690,7 @@ export const content = {
         },
         {
           id: 'ascensort',
+          image: '/projects/ascensort.jpg',
           title: 'AscenSort — Operational Analysis & Statistical Control',
           category: 'Desktop App',
           state: siteConfig.projectStates.PRIVATE_CASE,

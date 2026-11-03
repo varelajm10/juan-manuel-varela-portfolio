@@ -94,6 +94,16 @@ export default function Projects({ lang, onSelectDemo }) {
                 </span>
               </div>
 
+              {flagshipProject.image && (
+                <img
+                  src={flagshipProject.image}
+                  alt=""
+                  width="1200"
+                  height="675"
+                  className="mt-6 w-full aspect-video object-cover rounded-2xl border border-zinc-200 dark:border-zinc-800"
+                />
+              )}
+
               {/* Contenido Principal en 2 Columnas Desktop */}
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-6">
                 {/* Columna Izquierda: Problema, Solución y Stack */}
@@ -280,6 +290,15 @@ export default function Projects({ lang, onSelectDemo }) {
                 className="flex flex-col justify-between rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 p-6 sm:p-7 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors shadow-xs"
               >
                 <div>
+                  {project.image && (
+                    <img
+                      src={project.image}
+                      alt=""
+                      width="1200"
+                      height="675"
+                      className="mb-4 w-full aspect-video object-cover rounded-xl border border-zinc-200 dark:border-zinc-800"
+                    />
+                  )}
                   {/* Categoría */}
                   <div className="flex items-center justify-between gap-2 mb-4">
                     <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-mono bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700">
@@ -404,15 +423,28 @@ export default function Projects({ lang, onSelectDemo }) {
                         <span>{t.btnCaseDetails}</span>
                       </button>
                     ) : repoUrl ? (
-                      <a
-                        href={repoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl font-semibold bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950 hover:bg-zinc-800 dark:hover:bg-white transition-colors focus-visible:outline-2 focus-visible:outline-sky-500"
-                      >
-                        <Github className="w-3.5 h-3.5" />
-                        <span>{t.btnViewRepo}</span>
-                      </a>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <a
+                          href={repoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl font-semibold bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950 hover:bg-zinc-800 dark:hover:bg-white transition-colors focus-visible:outline-2 focus-visible:outline-sky-500"
+                        >
+                          <Github className="w-3.5 h-3.5" />
+                          <span>{t.btnViewRepo}</span>
+                        </a>
+                        {project.extraRepoUrl && (
+                          <a
+                            href={project.extraRepoUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl font-semibold border border-zinc-300 dark:border-zinc-700 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors focus-visible:outline-2 focus-visible:outline-sky-500"
+                          >
+                            <Github className="w-3.5 h-3.5" />
+                            <span>{project.extraRepoLabel}</span>
+                          </a>
+                        )}
+                      </div>
                     ) : (
                       <button
                         ref={(el) => (triggerRefs.current[project.id] = el)}
