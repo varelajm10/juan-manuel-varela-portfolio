@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   Github,
   Lock,
@@ -6,11 +6,17 @@ import {
   ChevronDown,
   ChevronUp,
   FolderGit2,
+  FileText,
+  Mail,
 } from 'lucide-react';
 import { content } from '../data/portfolioData';
+import ProjectDetailModal from './ProjectDetailModal';
 
 export default function Projects({ lang }) {
   const [expandedCase, setExpandedCase] = useState({});
+  const [activeModalProject, setActiveModalProject] = useState(null);
+  const triggerRefs = useRef({});
+
   const t = content[lang].projects;
 
   const toggleCase = (id) => {
@@ -18,6 +24,21 @@ export default function Projects({ lang }) {
       ...prev,
       [id]: !prev[id],
     }));
+  };
+
+  const openModal = (project, id) => {
+    setActiveModalProject(project);
+  };
+
+  const closeModal = () => {
+    const closedId = activeModalProject?.id;
+    setActiveModalProject(null);
+    // Retorno accesible de foco al botón que abrió el modal
+    if (closedId && triggerRefs.current[closedId]) {
+      setTimeout(() => {
+        triggerRefs.current[closedId]?.focus();
+      }, 50);
+    }
   };
 
   return (
@@ -54,11 +75,11 @@ export default function Projects({ lang }) {
 
                   {project.isPrivate ? (
                     <span className="text-[11px] font-mono text-zinc-500 flex items-center gap-1">
-                      <Lock className="w-3 h-3" /> {t.privateBadge}
+                      <Lock className="w-3 h-3" /> {t.statusPrivate}
                     </span>
                   ) : (
                     <span className="text-[11px] font-mono text-emerald-600 dark:text-emerald-400">
-                      {t.publicBadge}
+                      {t.statusPublic}
                     </span>
                   )}
                 </div>
@@ -68,7 +89,7 @@ export default function Projects({ lang }) {
                   {project.title}
                 </h3>
 
-                {/* Estructura Rígida de 3 Puntos */}
+                {/* Estructura Rígida de 3 Puntos: Problema -> Solución -> Impacto */}
                 <div className="space-y-3.5 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
                   <div>
                     <span className="font-semibold text-zinc-900 dark:text-zinc-200 block text-xs uppercase font-mono tracking-wider mb-1">
@@ -100,7 +121,7 @@ export default function Projects({ lang }) {
                     <button
                       type="button"
                       onClick={() => toggleCase(project.id)}
-                      className="inline-flex items-center gap-1 text-xs font-mono text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200"
+                      className="inline-flex items-center gap-1 text-xs font-mono text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 focus-visible:outline-2 focus-visible:outline-sky-500 rounded"
                     >
                       <span>
                         {expandedCase[project.id] ? t.hideCase : t.viewCase}
@@ -120,7 +141,7 @@ export default function Projects({ lang }) {
                 )}
               </div>
 
-              {/* Tags & Acciones */}
+              {/* Tags & Botonera Jerárquica Limpia (1 Primario + 1 Secundario Opcional) */}
               <div className="mt-6 pt-5 border-t border-zinc-200 dark:border-zinc-800">
                 <div className="flex flex-wrap gap-1.5 mb-4">
                   {project.tags.map((tag) => (
@@ -133,29 +154,63 @@ export default function Projects({ lang }) {
                   ))}
                 </div>
 
-                <div className="flex items-center justify-between text-xs">
+                {/* Botonera: Cero enlaces '#' y Cero botones muertos */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pt-1 text-xs">
+                  {/* Acción Primaria */}
                   {project.isPrivate ? (
-                    <span className="inline-flex items-center gap-1.5 text-zinc-500 font-mono text-[11px]">
-                      <Lock className="w-3.5 h-3.5" />
-                      <span>{t.privateCaseLabel}</span>
-                    </span>
-                  ) : (
+                    <button
+                      ref={(el) => (triggerRefs.current[project.id] = el)}
+                      type="button"
+                      onClick={() => openModal(project, project.id)}
+                      className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl font-semibold bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950 hover:bg-zinc-800 dark:hover:bg-white transition-colors focus-visible:outline-2 focus-visible:outline-sky-500"
+                    >
+                      <FileText className="w-3.5 h-3.5" />
+                      <span>{t.btnCaseDetails}</span>
+                    </button>
+                  ) : project.githubUrl ? (
                     <a
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 font-semibold text-zinc-900 dark:text-zinc-200 hover:text-sky-600 dark:hover:text-white"
+                      className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl font-semibold bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950 hover:bg-zinc-800 dark:hover:bg-white transition-colors focus-visible:outline-2 focus-visible:outline-sky-500"
                     >
                       <Github className="w-3.5 h-3.5" />
-                      <span>{t.viewRepo}</span>
+                      <span>{t.btnViewRepo}</span>
                     </a>
+                  ) : (
+                    <button
+                      ref={(el) => (triggerRefs.current[project.id] = el)}
+                      type="button"
+                      onClick={() => openModal(project, project.id)}
+                      className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl font-semibold bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950 hover:bg-zinc-800 dark:hover:bg-white transition-colors"
+                    >
+                      <FileText className="w-3.5 h-3.5" />
+                      <span>{t.btnCaseDetails}</span>
+                    </button>
                   )}
+
+                  {/* Acción Secundaria (Solicitar Demo) */}
+                  <a
+                    href="#contacto"
+                    className="inline-flex items-center justify-center sm:justify-start gap-1 font-semibold text-zinc-600 dark:text-zinc-400 hover:text-sky-600 dark:hover:text-sky-400 transition-colors py-1 focus-visible:outline-2 focus-visible:outline-sky-500 rounded"
+                  >
+                    <Mail className="w-3 h-3" />
+                    <span>{t.btnRequestDemo}</span>
+                  </a>
                 </div>
               </div>
             </article>
           ))}
         </div>
       </div>
+
+      {/* Modal Accesible de Detalles Técnicos */}
+      <ProjectDetailModal
+        isOpen={Boolean(activeModalProject)}
+        onClose={closeModal}
+        project={activeModalProject}
+        lang={lang}
+      />
     </section>
   );
 }
