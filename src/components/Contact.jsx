@@ -8,11 +8,12 @@ import {
   Copy,
   Check,
   MessageSquare,
-  Sparkles,
+  MessageCircle,
 } from 'lucide-react';
-import { personalInfo } from '../data/portfolioData';
+import { personalInfo, content } from '../data/portfolioData';
 
-export default function Contact() {
+export default function Contact({ lang }) {
+  const t = content[lang].contact;
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -22,6 +23,12 @@ export default function Contact() {
 
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [status, setStatus] = useState({ submitted: false, message: '' });
+
+  const whatsappUrl = `https://wa.me/${personalInfo.whatsappNumber}?text=${encodeURIComponent(
+    lang === 'es'
+      ? 'Hola Juan Manuel, vi tu portfolio online y me gustaría conversar sobre una oportunidad.'
+      : 'Hi Juan Manuel, I viewed your portfolio and would like to connect regarding an opportunity.'
+  )}`;
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(personalInfo.email);
@@ -59,16 +66,41 @@ export default function Contact() {
           <div className="lg:col-span-5">
             <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-sky-700 font-bold mb-2 bg-sky-50 px-2.5 py-1 rounded-md border border-sky-200/70">
               <MessageSquare className="w-3.5 h-3.5" />
-              <span>Hablemos</span>
+              <span>{t.tag}</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-950">
-              ¿Tenés un desafío operativo o una vacante estratégica?
+              {t.title}
             </h2>
             <p className="mt-3 text-sm sm:text-base text-zinc-600 leading-relaxed">
-              Respondo con prontitud a consultas sobre optimización de flujos de caja, desarrollo de soluciones de backend/automatización y posiciones de liderazgo funcional.
+              {t.subtitle}
             </p>
 
             <div className="mt-8 space-y-3">
+              {/* MEJORA 1: Tarjeta Destacada de WhatsApp */}
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between p-4 rounded-2xl bg-emerald-50 border border-emerald-300 hover:border-emerald-400 hover:shadow-md transition-all group"
+              >
+                <div className="flex items-center gap-3.5">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shadow-xs">
+                    <MessageCircle className="w-5 h-5 fill-white" />
+                  </div>
+                  <div>
+                    <div className="text-[11px] font-mono text-emerald-800 font-bold uppercase tracking-wider">
+                      {t.whatsappCardTitle}
+                    </div>
+                    <div className="text-sm font-bold text-zinc-950 group-hover:text-emerald-700">
+                      {personalInfo.phone}
+                    </div>
+                  </div>
+                </div>
+                <span className="text-xs font-bold text-emerald-700 group-hover:underline">
+                  {t.whatsappAction} →
+                </span>
+              </a>
+
               <a
                 href={`mailto:${personalInfo.email}`}
                 className="flex items-center justify-between p-4 rounded-2xl bg-white border border-zinc-200 hover:border-sky-300 hover:shadow-sm transition-all group"
@@ -78,7 +110,7 @@ export default function Contact() {
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-[11px] font-mono text-zinc-400">Correo Electrónico</div>
+                    <div className="text-[11px] font-mono text-zinc-400">{t.directEmail}</div>
                     <div className="text-sm font-bold text-zinc-900 group-hover:text-sky-700">
                       {personalInfo.email}
                     </div>
@@ -111,7 +143,7 @@ export default function Contact() {
                   <Linkedin className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-[11px] font-mono text-zinc-400">Perfil Profesional</div>
+                  <div className="text-[11px] font-mono text-zinc-400">{t.directLinkedin}</div>
                   <div className="text-sm font-bold text-zinc-900 group-hover:text-sky-700">
                     LinkedIn / Juan Manuel Varela
                   </div>
@@ -128,9 +160,9 @@ export default function Contact() {
                   <Github className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-[11px] font-mono text-zinc-400">Repositorios de Código</div>
+                  <div className="text-[11px] font-mono text-zinc-400">{t.directGithub}</div>
                   <div className="text-sm font-bold text-zinc-900 group-hover:text-zinc-600">
-                    GitHub / juanmanuelvarela
+                    GitHub / varelajm10
                   </div>
                 </div>
               </a>
@@ -141,38 +173,38 @@ export default function Contact() {
           <div className="lg:col-span-7">
             <div className="rounded-3xl border border-zinc-200 bg-white p-7 sm:p-9 shadow-sm">
               <h3 className="text-xl font-bold text-zinc-950 mb-1">
-                Enviar mensaje rápido
+                {t.formTitle}
               </h3>
               <p className="text-xs sm:text-sm text-zinc-500 mb-6">
-                Ingresá los datos a continuación para ponernos en contacto directo.
+                {t.formSubtitle}
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-semibold text-zinc-700 mb-1.5">
-                      Nombre completo
+                      {t.nameLabel}
                     </label>
                     <input
                       type="text"
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      placeholder="Ej. Carolina Ramos"
+                      placeholder={t.namePlaceholder}
                       className="w-full px-4 py-2.5 rounded-xl border border-zinc-200 bg-zinc-50/50 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all"
                     />
                   </div>
 
                   <div>
                     <label className="block text-xs font-semibold text-zinc-700 mb-1.5">
-                      Email corporativo o personal
+                      {t.emailLabel}
                     </label>
                     <input
                       type="email"
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="tu@empresa.com"
+                      placeholder={t.emailPlaceholder}
                       className="w-full px-4 py-2.5 rounded-xl border border-zinc-200 bg-zinc-50/50 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all"
                     />
                   </div>
@@ -180,27 +212,27 @@ export default function Contact() {
 
                 <div>
                   <label className="block text-xs font-semibold text-zinc-700 mb-1.5">
-                    Asunto
+                    {t.subjectLabel}
                   </label>
                   <input
                     type="text"
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    placeholder="Ej. Oportunidad laboral / Automatización de procesos"
+                    placeholder={t.subjectPlaceholder}
                     className="w-full px-4 py-2.5 rounded-xl border border-zinc-200 bg-zinc-50/50 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all"
                   />
                 </div>
 
                 <div>
                   <label className="block text-xs font-semibold text-zinc-700 mb-1.5">
-                    Mensaje o descripción de la propuesta
+                    {t.messageLabel}
                   </label>
                   <textarea
                     rows={4}
                     required
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="Contame brevemente el objetivo, área a mejorar o rol..."
+                    placeholder={t.messagePlaceholder}
                     className="w-full px-4 py-2.5 rounded-xl border border-zinc-200 bg-zinc-50/50 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all resize-none"
                   />
                 </div>
@@ -217,7 +249,7 @@ export default function Contact() {
                   className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-bold bg-zinc-950 hover:bg-zinc-800 text-white shadow-sm transition-all"
                 >
                   <Send className="w-4 h-4" />
-                  <span>Enviar Mensaje</span>
+                  <span>{t.sendBtn}</span>
                 </button>
               </form>
             </div>

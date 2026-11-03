@@ -10,21 +10,32 @@ import Footer from './components/Footer';
 import CvModal from './components/CvModal';
 
 export default function App() {
+  const [lang, setLang] = useState('es');
   const [cvModalOpen, setCvModalOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-[#fafafa] text-zinc-900 flex flex-col font-sans antialiased">
-      {/* Barra de navegación superior fija */}
-      <Navbar onOpenCvModal={() => setCvModalOpen(true)} />
+      {/* Header con switch de idioma y botón de compartir */}
+      <Navbar
+        lang={lang}
+        setLang={setLang}
+        onOpenCvModal={() => setCvModalOpen(true)}
+      />
 
-      {/* Contenido principal */}
+      {/* Contenido principal bilingüe */}
       <main className="flex-grow">
-        <Hero onOpenCvModal={() => setCvModalOpen(true)} />
-        <Projects />
+        <Hero
+          lang={lang}
+          onOpenCvModal={() => setCvModalOpen(true)}
+        />
+        <Projects lang={lang} />
         <Skills />
         <Experience />
-        <CvSection onOpenCvModal={() => setCvModalOpen(true)} />
-        <Contact />
+        <CvSection
+          lang={lang}
+          onOpenCvModal={() => setCvModalOpen(true)}
+        />
+        <Contact lang={lang} />
       </main>
 
       {/* Pie de página */}
