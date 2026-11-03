@@ -374,9 +374,23 @@ export const content = {
         'Más de una década de gestión en consumo masivo, maquinaria y distribución de tecnología.',
       items: [
         {
+          role: 'Desarrollador de soluciones de automatización e IA',
+          company: 'Independiente',
+          period: 'Mayo 2024 — Actualidad',
+          location: 'Remoto',
+          summary:
+            'Integración de modelos de lenguaje en flujos de crédito, cobranzas y cuentas corrientes que ya están en uso.',
+          achievements: [
+            'CoopMora: pipeline diario que releva cambios de situación crediticia en el BCRA y alertas de concursos, los procesa con un LLM y envía el informe al equipo de créditos.',
+            'CUBO: sistema de créditos y cobranzas multiempresa, con un agente de consultas por Telegram y recordatorios de facturas. En producción, en 10 empresas.',
+            'SECSA: cuentas corrientes sobre Odoo, con un LLM que asiste el análisis de saldos y vencimientos junto a un tablero de cobro.',
+          ],
+          tags: ['Python', 'LLM', 'SQL', 'Odoo'],
+        },
+        {
           role: 'Analista Senior de Créditos, Cobranzas y Operaciones',
           company: 'DACAS (Operación Regional LATAM)',
-          period: '2025 — 2026',
+          period: 'Mar 2025 — Feb 2026',
           location: 'Buenos Aires · Híbrido',
           summary:
             'Control operativo y crediticio sobre cartera regional de más de 100 cuentas en América Latina.',
@@ -390,7 +404,7 @@ export const content = {
         {
           role: 'Analista Senior de Gestión de Cartera y Datos',
           company: 'Saputo Inc. (Consumo Masivo / Retail)',
-          period: '2018 — 2024',
+          period: 'Jul 2018 — May 2024',
           location: 'Buenos Aires',
           summary:
             'Administración de cuentas corrientes comerciales, riesgo crediticio y proyecciones de recaudación.',
@@ -404,7 +418,7 @@ export const content = {
         {
           role: 'Analista de Procesos y Cuentas',
           company: 'XCMG - CNH Capital (Maquinaria & Créditos)',
-          period: '2016 — 2018',
+          period: 'Sep 2016 — Jun 2018',
           location: 'Buenos Aires',
           summary:
             'Conciliaciones bancarias complejas, seguimiento de financiamiento y recupero de créditos.',
@@ -417,7 +431,7 @@ export const content = {
         {
           role: 'Analista de Reportes y Gestión Operativa',
           company: 'CCU Argentina (Consumo Masivo)',
-          period: '2014 — 2016',
+          period: 'Oct 2014 — Oct 2016',
           location: 'Buenos Aires',
           summary:
             'Confección de informes operativos de cuentas corrientes y seguimiento de desvíos con macros de Excel.',
@@ -427,6 +441,29 @@ export const content = {
           tags: ['Excel VBA', 'Reportería', 'ERPs'],
         },
       ],
+      education: {
+        title: 'Formación',
+        items: [
+          {
+            name: 'Licenciatura en Administración de Empresas',
+            place: 'UAI',
+            detail: 'Cursada completa. Tesis en elaboración.',
+          },
+          { name: 'Python', place: 'UTN', detail: '' },
+          { name: 'Power BI: DAX y modelado de datos', place: '', detail: '' },
+          {
+            name: 'Claude API, Claude Code, MCP y AI Fluency',
+            place: 'Anthropic Academy',
+            detail: '',
+          },
+          { name: 'Gemini e IA generativa', place: 'Google', detail: '' },
+          {
+            name: 'Inglés B2',
+            place: '',
+            detail: 'Intermedio avanzado, competencia profesional. Español nativo.',
+          },
+        ],
+      },
     },
     contact: {
       tag: 'Contacto Directo',
@@ -810,9 +847,23 @@ export const content = {
         'Over a decade of leadership in FMCG, heavy equipment, and technology distribution.',
       items: [
         {
+          role: 'Developer of automation and applied-AI solutions',
+          company: 'Independent',
+          period: 'May 2024 — Present',
+          location: 'Remote',
+          summary:
+            'Language models wired into credit, collections, and receivables workflows that are already in use.',
+          achievements: [
+            'CoopMora: a daily pipeline that checks BCRA credit-status changes and insolvency filings, processes them with an LLM, and sends the report to the credit team.',
+            'CUBO: a multi-company credit and collections system, with a Telegram assistant and invoice reminders. In production, across 10 companies.',
+            'SECSA: receivables on Odoo, with an LLM assisting balance and due-date analysis next to a collections board.',
+          ],
+          tags: ['Python', 'LLM', 'SQL', 'Odoo'],
+        },
+        {
           role: 'Senior Credit, Collections & Operations Analyst',
           company: 'DACAS (LATAM Regional Operation)',
-          period: '2025 — 2026',
+          period: 'Mar 2025 — Feb 2026',
           location: 'Buenos Aires · Hybrid',
           summary:
             'Operational and credit control across 100+ strategic corporate accounts in Latin America.',
@@ -826,7 +877,7 @@ export const content = {
         {
           role: 'Senior Portfolio & Data Analyst',
           company: 'Saputo Inc. (FMCG / Retail Leader)',
-          period: '2018 — 2024',
+          period: 'Jul 2018 — May 2024',
           location: 'Buenos Aires',
           summary:
             'Management of commercial receivables, credit exposure, and rolling cash flow projections.',
@@ -840,7 +891,7 @@ export const content = {
         {
           role: 'Process & Receivables Analyst',
           company: 'XCMG - CNH Capital (Machinery & Financing)',
-          period: '2016 — 2018',
+          period: 'Sep 2016 — Jun 2018',
           location: 'Buenos Aires',
           summary:
             'Complex bank reconciliations, corporate financing audits, and debt recovery.',
@@ -853,7 +904,7 @@ export const content = {
         {
           role: 'Operations & Reporting Analyst',
           company: 'CCU Argentina (Beverages & FMCG)',
-          period: '2014 — 2016',
+          period: 'Oct 2014 — Oct 2016',
           location: 'Buenos Aires',
           summary:
             'Compilation of daily/monthly receivable status reports and deviation audits with Excel macros.',
@@ -863,6 +914,29 @@ export const content = {
           tags: ['Excel VBA', 'Reporting', 'ERPs'],
         },
       ],
+      education: {
+        title: 'Education',
+        items: [
+          {
+            name: 'Bachelor’s degree in Business Administration',
+            place: 'UAI',
+            detail: 'Coursework completed. Thesis in progress.',
+          },
+          { name: 'Python', place: 'UTN', detail: '' },
+          { name: 'Power BI: DAX and data modeling', place: '', detail: '' },
+          {
+            name: 'Claude API, Claude Code, MCP, and AI Fluency',
+            place: 'Anthropic Academy',
+            detail: '',
+          },
+          { name: 'Gemini and generative AI', place: 'Google', detail: '' },
+          {
+            name: 'English B2',
+            place: '',
+            detail: 'Upper intermediate, professional working proficiency. Spanish native.',
+          },
+        ],
+      },
     },
     contact: {
       tag: 'Direct Contact',

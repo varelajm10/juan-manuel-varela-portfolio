@@ -81,6 +81,36 @@ export default function Experience({ lang }) {
             </div>
           ))}
         </div>
+
+        {t.education && (
+          <div className="mt-16">
+            <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+              {t.education.title}
+            </h3>
+            <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {t.education.items.map((item) => (
+                <li
+                  key={item.name}
+                  className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40 px-5 py-4"
+                >
+                  <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+                    {item.name}
+                  </p>
+                  {item.place && (
+                    <p className="mt-1 text-xs font-mono text-sky-800 dark:text-sky-300">
+                      {item.place}
+                    </p>
+                  )}
+                  {item.detail && (
+                    <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                      {item.detail}
+                    </p>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </section>
   );
