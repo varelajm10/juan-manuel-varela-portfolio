@@ -53,6 +53,11 @@ export default function Hero({ lang }) {
 
         {/* Encabezado Principal Directo */}
         <div className="max-w-4xl">
+          {/* CTA Principal de Conversión - Opción A aprobada */}
+          <div className="mb-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold bg-sky-500/10 text-sky-700 dark:text-sky-300 border border-sky-500/20">
+            <span>{t.heroCtaBanner}</span>
+          </div>
+
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 leading-[1.15]">
             {t.headline}
             <span className="text-zinc-500 dark:text-zinc-400">{t.headlineSub}</span>
