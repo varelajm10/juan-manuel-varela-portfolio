@@ -55,11 +55,6 @@ export default function Hero({ lang }) {
 
         {/* Encabezado Principal Directo */}
         <div>
-          {/* CTA Principal de Conversión - Opción A aprobada */}
-          <div className="mb-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold bg-sky-500/10 text-sky-700 dark:text-sky-300 border border-sky-500/20">
-            <span>{t.heroCtaBanner}</span>
-          </div>
-
           <p className="mb-3 text-sm sm:text-base font-semibold tracking-tight text-sky-800 dark:text-sky-300">
             {personalInfo.role[lang]}
           </p>
@@ -68,12 +63,9 @@ export default function Hero({ lang }) {
             <span className="text-zinc-500 dark:text-zinc-400">{t.headlineSub}</span>
           </h1>
 
-          {/* SOBRE MÍ — Historia real en 3 párrafos honestos */}
-          <div className="mt-8 space-y-4 text-base sm:text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed font-normal border-l-2 border-zinc-300 dark:border-zinc-800 pl-5 sm:pl-6">
-            <p>{t.storyP1}</p>
-            <p className="text-zinc-600 dark:text-zinc-400">{t.storyP2}</p>
-            <p className="text-zinc-900 dark:text-zinc-100 font-medium">{t.storyP3}</p>
-          </div>
+          <p className="mt-6 max-w-2xl text-base sm:text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
+            {t.storyP1}
+          </p>
 
           {/* Acciones Principales y Contacto */}
           <div className="mt-10 flex flex-wrap items-center gap-3">

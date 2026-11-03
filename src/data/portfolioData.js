@@ -42,7 +42,7 @@ export const content = {
         'Administración, finanzas corporativas y herramientas que resuelven ',
       headlineSub: 'el trabajo manual de todos los días.',
       storyP1:
-        'Llevo más de diez años en la trinchera de la administración y las finanzas corporativas. Pasé por empresas de consumo masivo, maquinaria y distribución tecnológica (Saputo Inc., DACAS LATAM, CNH Capital), administrando carteras masivas de clientes, aprobando límites de crédito, conciliando bancos y peleando día a día contra la morosidad para cuidar el flujo de fondos.',
+        'Diez años en Saputo, DACAS y CNH, entre créditos, cobranzas y conciliaciones. Programo en Python para devolverle al equipo las horas que se van en planillas.',
       storyP2:
         'El punto de quiebre fue el hartazgo de ver cómo los equipos queman 15 a 20 horas por semana cruzando planillas a mano, copiando datos entre sistemas y corriendo atrás de cierres interminables. Ahí decidí aprender a programar en serio: scripts en Python, consultas avanzadas en SQL y modelos en Power BI para resolver mis propios cuellos de botella operativos.',
       storyP3:
@@ -478,7 +478,7 @@ export const content = {
         'Corporate finance, operations, and applied code solving ',
       headlineSub: 'everyday manual friction.',
       storyP1:
-        'I have spent over a decade in the operational trenches of corporate administration and finance. I worked across FMCG, heavy machinery, and tech distribution corporations (Saputo Inc., DACAS LATAM, CNH Capital), managing extensive customer portfolios, approving credit limits, reconciling bank accounts, and actively mitigating overdue debt to protect cash flow.',
+        'Ten years at Saputo, DACAS, and CNH, across credit, collections, and bank reconciliations. I write Python so teams get back the hours they spend on spreadsheets.',
       storyP2:
         'The turning point was growing weary of watching teams burn 15 to 20 hours every week manually matching spreadsheets, copying records across fragmented ERPs, and scrambling through never-ending month-end closings. That led me to take programming seriously: writing robust Python scripts, advanced SQL queries, and Power BI models to solve my own team’s operational bottlenecks.',
       storyP3:

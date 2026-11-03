@@ -3,8 +3,6 @@ import {
   Github,
   Lock,
   Layers,
-  ChevronDown,
-  ChevronUp,
   FolderGit2,
   FileText,
   Mail,
@@ -17,20 +15,12 @@ import { content } from '../data/portfolioData';
 import ProjectDetailModal from './ProjectDetailModal';
 
 export default function Projects({ lang, onSelectDemo }) {
-  const [expandedCase, setExpandedCase] = useState({});
   const [activeModalProject, setActiveModalProject] = useState(null);
   const triggerRefs = useRef({});
 
   const t = content[lang].projects;
   const flagshipProject = t.items.find((p) => p.isFlagship) || t.items[0];
   const standardProjects = t.items.filter((p) => p.id !== flagshipProject?.id);
-
-  const toggleCase = (id) => {
-    setExpandedCase((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }));
-  };
 
   const openModal = (project, id) => {
     setActiveModalProject(project);
@@ -318,99 +308,16 @@ export default function Projects({ lang, onSelectDemo }) {
                   </div>
 
                   {/* Título */}
-                  <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 mb-4 leading-snug">
+                  <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 mb-3 leading-snug">
                     {project.title}
                   </h3>
-
-                  {/* Estructura Rígida de 3 Puntos: Problema -> Solución -> Impacto */}
-                  <div className="space-y-3.5 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                    <div>
-                      <span className="font-semibold text-zinc-900 dark:text-zinc-200 block text-xs uppercase font-mono tracking-wider mb-1">
-                        {t.problemLabel}
-                      </span>
-                      <p>{project.problem}</p>
-                    </div>
-
-                    <div>
-                      <span className="font-semibold text-zinc-900 dark:text-zinc-200 block text-xs uppercase font-mono tracking-wider mb-1">
-                        {t.solutionLabel}
-                      </span>
-                      <p>{project.solution}</p>
-                    </div>
-
-                    <div className="p-3.5 rounded-xl bg-zinc-50 dark:bg-zinc-950/70 border border-zinc-200 dark:border-zinc-800">
-                      <span className="font-semibold text-emerald-700 dark:text-emerald-400 block text-xs uppercase font-mono tracking-wider mb-0.5">
-                        {t.impactLabel}
-                      </span>
-                      <p className="text-zinc-900 dark:text-zinc-200 font-medium text-xs">
-                        {impactText}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Resumen de Caso desplegable */}
-                  {project.summaryCase && (
-                    <div className="mt-4">
-                      <button
-                        type="button"
-                        onClick={() => toggleCase(project.id)}
-                        aria-label={
-                          expandedCase[project.id]
-                            ? `${t.hideCase}: ${project.title}`
-                            : `${t.viewCase}: ${project.title}`
-                        }
-                        className="inline-flex items-center gap-1 text-xs font-mono text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 focus-visible:outline-2 focus-visible:outline-sky-500 rounded"
-                      >
-                        <span>
-                          {expandedCase[project.id] ? t.hideCase : t.viewCase}
-                        </span>
-                        {expandedCase[project.id] ? (
-                          <ChevronUp className="w-3 h-3" />
-                        ) : (
-                          <ChevronDown className="w-3 h-3" />
-                        )}
-                      </button>
-                      {expandedCase[project.id] && (
-                        <p className="mt-2 text-xs text-zinc-600 dark:text-zinc-400 p-3 rounded-lg bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 leading-relaxed">
-                          {project.summaryCase}
-                        </p>
-                      )}
-                    </div>
-                  )}
+                  <p className="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
+                    {impactText}
+                  </p>
                 </div>
 
-                {/* Tags & Botonera Jerárquica Limpia (1 Primario + 1 Secundario Opcional) */}
-                <div className="mt-6 pt-5 border-t border-zinc-200 dark:border-zinc-800">
-                  {project.engineering?.length > 0 && (
-                    <div className="mb-4">
-                      <span className="font-semibold text-zinc-900 dark:text-zinc-200 block text-xs uppercase font-mono tracking-wider mb-2">
-                        {t.engineeringLabel}
-                      </span>
-                      <ul className="space-y-1.5 text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                        {project.engineering.map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                  {isPrivate && (
-                    <p className="mb-4 text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
-                      {t.privacyNote}
-                    </p>
-                  )}
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2 py-0.5 rounded text-[11px] font-mono bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Botonera: Cero enlaces '#' y Cero botones muertos */}
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pt-1 text-xs">
+                <div className="mt-5 pt-5 border-t border-zinc-200 dark:border-zinc-800">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs">
                     {/* Acción Primaria */}
                     {isPrivate ? (
                       <button
@@ -457,20 +364,17 @@ export default function Projects({ lang, onSelectDemo }) {
                       </button>
                     )}
 
-                    {/* Acción Secundaria (Solicitar Demo) */}
-                    <a
-                      href="#contacto"
-                      onClick={(e) => {
-                        if (onSelectDemo) {
-                          e.preventDefault();
-                          onSelectDemo(project.title);
-                        }
-                      }}
-                      className="inline-flex items-center justify-center sm:justify-start gap-1 font-semibold text-zinc-600 dark:text-zinc-400 hover:text-sky-700 dark:hover:text-sky-400 transition-colors py-1 focus-visible:outline-2 focus-visible:outline-sky-500 rounded"
-                    >
-                      <Mail className="w-3 h-3" />
-                      <span>{t.btnRequestDemo}</span>
-                    </a>
+                    {!isPrivate && (
+                      <button
+                        ref={(el) => (triggerRefs.current[project.id] = el)}
+                        type="button"
+                        onClick={() => openModal(project, project.id)}
+                        className="inline-flex items-center justify-center sm:justify-start gap-1 font-semibold text-zinc-600 dark:text-zinc-400 hover:text-sky-700 dark:hover:text-sky-400 transition-colors py-1 focus-visible:outline-2 focus-visible:outline-sky-500 rounded"
+                      >
+                        <FileText className="w-3 h-3" />
+                        <span>{t.btnCaseDetails}</span>
+                      </button>
+                    )}
                   </div>
                 </div>
               </article>

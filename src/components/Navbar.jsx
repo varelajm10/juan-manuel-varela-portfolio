@@ -30,8 +30,6 @@ export default function Navbar({ lang, setLang, theme, toggleTheme }) {
     { name: t.about, href: '#sobre-mi' },
     { name: t.projects, href: '#proyectos' },
     { name: t.skills, href: '#habilidades' },
-    { name: t.simulator, href: '#calculadora-roi' },
-    { name: t.methodology, href: '#metodologia' },
     { name: t.experience, href: '#trayectoria' },
   ];
 

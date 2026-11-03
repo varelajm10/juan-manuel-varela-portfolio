@@ -3,8 +3,6 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
-import RoiCalculator from './components/RoiCalculator';
-import WorkMethodology from './components/WorkMethodology';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -73,8 +71,6 @@ export default function App() {
         <Hero lang={lang} />
         <Projects lang={lang} onSelectDemo={handleSelectDemo} />
         <Skills lang={lang} />
-        <RoiCalculator lang={lang} />
-        <WorkMethodology lang={lang} />
         <Experience lang={lang} />
         <Contact
           lang={lang}

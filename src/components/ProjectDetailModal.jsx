@@ -82,7 +82,15 @@ export default function ProjectDetailModal({ isOpen, onClose, project, lang = 'e
               </span>
               <span className="text-[11px] font-mono text-zinc-600 dark:text-zinc-400 flex items-center gap-1">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400" />
-                <span>{isEs ? 'Proyecto Corporativo / Privado' : 'Corporate / Private System'}</span>
+                <span>
+                  {project.isPrivate
+                    ? isEs
+                      ? 'Proyecto privado'
+                      : 'Private project'
+                    : isEs
+                      ? 'Código disponible'
+                      : 'Code available'}
+                </span>
               </span>
             </div>
             <h2
@@ -160,6 +168,27 @@ export default function ProjectDetailModal({ isOpen, onClose, project, lang = 'e
             </div>
           )}
 
+          {project.engineering?.length > 0 && (
+            <div>
+              <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-400 mb-2">
+                {isEs ? 'Decisiones que el código fija' : 'Decisions the code locks in'}
+              </h3>
+              <ul className="space-y-2 leading-relaxed bg-zinc-50 dark:bg-zinc-950/40 p-4 rounded-xl border border-zinc-200 dark:border-zinc-800/80">
+                {project.engineering.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {project.isPrivate && (
+            <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
+              {isEs
+                ? 'Repositorio privado: contiene datos de clientes. La demo muestra la arquitectura, no la cartera.'
+                : 'Private repository: it holds client data. A demo shows the architecture, not the customer book.'}
+            </p>
+          )}
+
           {/* 5. Impacto Medible */}
           <div>
             <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-400 mb-1.5">
@@ -174,8 +203,18 @@ export default function ProjectDetailModal({ isOpen, onClose, project, lang = 'e
           {/* 6. Estado */}
           <div className="pt-2 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between text-xs font-mono">
             <span className="text-zinc-600 dark:text-zinc-400">{isEs ? 'Estado:' : 'Status:'}</span>
-            <span className="px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20 font-bold">
-              {isEs ? 'Privado — Demostración bajo solicitud' : 'Private — Demo Available Upon Request'}
+            <span className={`px-2.5 py-1 rounded-md font-bold border ${
+              project.isPrivate
+                ? 'bg-amber-500/10 text-amber-700 dark:text-amber-400 border-amber-500/20'
+                : 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/20'
+            }`}>
+              {project.isPrivate
+                ? isEs
+                  ? 'Privado — Demostración bajo solicitud'
+                  : 'Private — Demo available upon request'
+                : isEs
+                  ? 'Código público'
+                  : 'Public code'}
             </span>
           </div>
         </div>
