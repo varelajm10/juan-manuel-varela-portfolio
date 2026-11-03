@@ -1,27 +1,23 @@
 // ============================================================================
-// DICCIONARIO BILINGÜE (ES / EN) CON TONO HUMANO Y DIRECTO
+// DICCIONARIO BILINGÜE Y DATOS - CONSUME siteConfig.js (CERO DUPLICACIÓN)
 // ============================================================================
+import { siteConfig } from '../config/siteConfig';
 
+// Re-exportamos personalInfo consumiendo directamente siteConfig
 export const personalInfo = {
-  name: 'Juan Manuel Varela',
-  initials: 'JMV',
-  role: {
-    es: 'Finanzas Corporativas & Automatización con Python',
-    en: 'Corporate Finance & Python Automation',
-  },
-  location: {
-    es: 'Buenos Aires, Argentina · Remoto / Híbrido',
-    en: 'Buenos Aires, Argentina · Remote / Hybrid',
-  },
-  phone: '+54 9 11 6042-7256',
-  whatsappNumber: '5491160427256',
-  email: 'varelajm84@outlook.com',
-  linkedin: 'https://www.linkedin.com/in/juan-m-varela1984',
-  github: 'https://github.com/varelajm10',
-  cvUrl: '/cv-juan-manuel-varela.pdf',
-  cvUrlEn: '/cv-juan-manuel-varela-en.pdf',
-  cvFileName: 'CV-Juan-Manuel-Varela.pdf',
-  cvFileNameEn: 'CV-Juan-Manuel-Varela-EN.pdf',
+  name: siteConfig.author.name,
+  initials: siteConfig.author.initials,
+  role: siteConfig.author.role,
+  location: siteConfig.author.location,
+  phone: siteConfig.author.phone,
+  whatsappNumber: siteConfig.author.whatsappNumber,
+  email: siteConfig.author.email,
+  linkedin: siteConfig.links.linkedin, // null / TODO
+  github: siteConfig.links.github,
+  cvUrl: siteConfig.documents.cvEs,
+  cvUrlEn: siteConfig.documents.cvEn,
+  cvFileName: siteConfig.documents.cvFileNameEs,
+  cvFileNameEn: siteConfig.documents.cvFileNameEn,
 };
 
 export const content = {
@@ -38,6 +34,10 @@ export const content = {
     },
     hero: {
       badge: 'Disponible para roles en Finanzas, Operaciones & Automatización',
+      // CTA Principal - Opción A (Activa por defecto según aprobación)
+      // Alternativa documentada Opción C: "Finanzas estratégicas con criterio de negocio y código en producción. Conversemos sobre tu circuito operativo."
+      heroCtaBanner:
+        '¿Buscás un perfil que conecte finanzas corporativas, datos y automatización? Hablemos de tu proceso.',
       headline:
         'Administración, finanzas corporativas y herramientas que resuelven ',
       headlineSub: 'el trabajo manual de todos los días.',
@@ -81,57 +81,69 @@ export const content = {
       problemLabel: 'El Problema:',
       solutionLabel: 'La Solución:',
       impactLabel: 'El Impacto / Métrica:',
-      privateBadge: 'Privado',
-      publicBadge: 'Código Disponible',
-      privateCaseLabel: 'Proyecto Corporativo / Privado',
-      viewRepo: 'Ver Repositorio',
-      viewCase: 'Ver resumen de caso',
-      hideCase: 'Cerrar detalle',
+      roleLabel: 'Mi Rol:',
+      stackLabel: 'Stack Tecnológico:',
+      statusLabel: 'Estado del Proyecto:',
+      btnCaseDetails: 'Ver Detalles Técnicos',
+      btnRequestDemo: 'Solicitar Demo',
+      btnViewRepo: 'Ver Repositorio',
+      statusPrivate: 'Privado — Solicitar Demo',
+      statusPrivateCase: 'Proyecto Corporativo / Privado',
+      statusPublic: 'Código Disponible',
       items: [
         {
           id: 'cubo',
           title: 'CUBO — Plataforma de Gestión de Cobranzas & Aging',
           category: 'Web App & API',
+          state: siteConfig.projectStates.PRIVATE_CASE,
           problem:
             'Dispersión constante en el seguimiento de deudores, conciliación manual de pagos y falta de proyección certera de mora entre múltiples canales de cobro.',
           solution:
             'Aplicación web y API construida con FastAPI, MongoDB y frontend interactivo para seguimiento de compromisos, clasificación de riesgo crediticio y aging de saldos.',
-          impactMetric: 'Automatización completa del cálculo de antigüedad de deuda y disparador de alertas de cobro.',
+          role: 'Diseño integral de arquitectura, desarrollo backend en FastAPI, modelado en MongoDB y lógica de cálculo de aging.',
+          impactMetric:
+            'Automatización completa del cálculo de antigüedad de deuda y disparador de alertas de cobro.',
           tags: ['Python', 'FastAPI', 'MongoDB', 'APIs REST', 'Order-to-Cash'],
-          isPrivate: true,
+          demoUrl: null,
+          githubUrl: null, // Repositorio privado (Cobranzas)
           summaryCase:
             'Diseñada para reemplazar el cruce manual de planillas de cobranza por un sistema unificado con estados de cuenta en tiempo real y notificaciones automáticas.',
-          githubUrl: 'https://github.com/varelajm10',
         },
         {
           id: 'gladys',
           title: 'G.L.A.D.Y.S. — Monitor de Riesgo Crediticio & Deudores',
           category: 'Pipeline & Scraping',
+          state: siteConfig.projectStates.PRIVATE_CASE,
           problem:
             'Consulta manual, dispersa y repetitiva de boletines oficiales, fuentes de noticias financieras y registros públicos de morosidad comercial.',
           solution:
             'Pipeline en Python con web scraping y procesamiento de texto que consolida alertas tempranas de insolvencia y emite reportes diarios por correo y panel en Streamlit.',
-          impactMetric: 'Detección temprana de alertas de insolvencia y reducción a minutos en el monitoreo diario.',
+          role: 'Desarrollo de scrapers, normalización de datos y panel analítico en Streamlit.',
+          impactMetric:
+            'Detección temprana de alertas de insolvencia y reducción a minutos en el monitoreo diario.',
           tags: ['Python', 'Web Scraping', 'Streamlit', 'Alertas Automáticas', 'Scoring'],
-          isPrivate: false,
+          demoUrl: null,
+          githubUrl: null, // Repositorio privado (Monitormora)
           summaryCase:
             'Rastreo programado de bases públicas y alertas automáticas a casillas de analistas ante pedidos de quiebra, cheques rechazados o cambios de situación crediticia.',
-          githubUrl: 'https://github.com/varelajm10',
         },
         {
           id: 'ascensort',
           title: 'AscenSort — Análisis Operativo & Control Estadístico',
           category: 'Desktop App',
+          state: siteConfig.projectStates.PRIVATE_CASE,
           problem:
             'Fallas repetitivas sin trazabilidad en reportes de servicio técnico, falta de identificación de causas raíz y riesgo constante de incumplimiento de SLAs.',
           solution:
             'Aplicación de escritorio en Python (CustomTkinter + pandas + matplotlib) para ingesta de registros masivos, métricas de mantenimiento y gráficos de control de desvíos.',
-          impactMetric: 'Detección inmediata de patrones de averías y generación de reportes ejecutivos automatizados.',
+          role: 'Desarrollo de aplicación de escritorio, ingesta de logs masivos y visualizaciones estadísticas.',
+          impactMetric:
+            'Detección inmediata de patrones de averías y generación de reportes ejecutivos automatizados.',
           tags: ['Python', 'Pandas', 'CustomTkinter', 'Matplotlib', 'Control Estadístico'],
-          isPrivate: false,
+          demoUrl: null,
+          githubUrl: null, // Repositorio privado (ascensort)
           summaryCase:
             'Procesa miles de líneas de registros técnicos crudos en segundos, graficando frecuencias de falla y tiempos de resolución sin requerir conexión a internet.',
-          githubUrl: 'https://github.com/varelajm10',
         },
       ],
     },
@@ -332,6 +344,8 @@ export const content = {
     },
     hero: {
       badge: 'Available for Finance, Operations & Automation roles',
+      heroCtaBanner:
+        'Looking for a professional connecting corporate finance, data, and code? Let’s talk.',
       headline:
         'Corporate finance, operations, and applied code solving ',
       headlineSub: 'everyday manual friction.',
@@ -375,57 +389,69 @@ export const content = {
       problemLabel: 'The Problem:',
       solutionLabel: 'The Solution:',
       impactLabel: 'The Impact / Metric:',
-      privateBadge: 'Private',
-      publicBadge: 'Code Available',
-      privateCaseLabel: 'Corporate / Private System',
-      viewRepo: 'View Repository',
-      viewCase: 'View case summary',
-      hideCase: 'Close details',
+      roleLabel: 'My Role:',
+      stackLabel: 'Tech Stack:',
+      statusLabel: 'Project Status:',
+      btnCaseDetails: 'Technical Details',
+      btnRequestDemo: 'Request Demo',
+      btnViewRepo: 'View Repository',
+      statusPrivate: 'Private — Request Demo',
+      statusPrivateCase: 'Corporate / Private System',
+      statusPublic: 'Code Available',
       items: [
         {
           id: 'cubo',
           title: 'CUBO — Collections Management & Aging Platform',
           category: 'Web App & API',
+          state: siteConfig.projectStates.PRIVATE_CASE,
           problem:
             'Fragmented follow-up on overdue debtors, manual payment matching, and lack of reliable aging projections across sales channels.',
           solution:
             'Web platform and API built with FastAPI, MongoDB, and interactive UI for payment commitment tracking, credit risk scoring, and balance aging.',
-          impactMetric: 'Full automation of receivable aging calculations and automated collection alerts.',
+          role: 'Full architectural design, FastAPI backend development, MongoDB data modeling, and aging calculation logic.',
+          impactMetric:
+            'Full automation of receivable aging calculations and automated collection alerts.',
           tags: ['Python', 'FastAPI', 'MongoDB', 'REST APIs', 'Order-to-Cash'],
-          isPrivate: true,
+          demoUrl: null,
+          githubUrl: null,
           summaryCase:
             'Designed to replace manual spreadsheet reconciliation with a unified hub providing real-time statements and automated notifications.',
-          githubUrl: 'https://github.com/varelajm10',
         },
         {
           id: 'gladys',
           title: 'G.L.A.D.Y.S. — Credit Risk & Debtor Monitor',
           category: 'Pipeline & Scraping',
+          state: siteConfig.projectStates.PRIVATE_CASE,
           problem:
             'Manual, repetitive browsing of official gazettes, financial news outlets, and commercial bankruptcy registries.',
           solution:
             'Python pipeline with web scraping and automated text processing that aggregates early insolvency alerts and delivers daily email digests and Streamlit reports.',
-          impactMetric: 'Early insolvency detection reduced from hours to minutes in daily monitoring.',
+          role: 'Web scraper development, data sanitation, and Streamlit analytics UI.',
+          impactMetric:
+            'Early insolvency detection reduced from hours to minutes in daily monitoring.',
           tags: ['Python', 'Web Scraping', 'Streamlit', 'Automated Alerts', 'Scoring'],
-          isPrivate: false,
+          demoUrl: null,
+          githubUrl: null,
           summaryCase:
             'Scheduled scanning of public databases dispatching instant alerts to analysts upon bankruptcy filings, rejected checks, or credit rating downgrades.',
-          githubUrl: 'https://github.com/varelajm10',
         },
         {
           id: 'ascensort',
           title: 'AscenSort — Operational Analysis & Statistical Control',
           category: 'Desktop App',
+          state: siteConfig.projectStates.PRIVATE_CASE,
           problem:
             'Recurring equipment failures without traceability in field reports and constant SLA compliance risks.',
           solution:
             'Python desktop app (CustomTkinter + pandas + matplotlib) for massive raw event log ingestion, maintenance metrics, and statistical control charts.',
-          impactMetric: 'Instant breakdown pattern discovery and automated executive reporting.',
+          role: 'Desktop application development, log parser ingestion, and statistical visualization.',
+          impactMetric:
+            'Instant breakdown pattern discovery and automated executive reporting.',
           tags: ['Python', 'Pandas', 'CustomTkinter', 'Matplotlib', 'Statistical Control'],
-          isPrivate: false,
+          demoUrl: null,
+          githubUrl: null,
           summaryCase:
             'Parses thousands of unstructured log lines in seconds, plotting failure frequencies and resolution times without requiring internet connectivity.',
-          githubUrl: 'https://github.com/varelajm10',
         },
       ],
     },

@@ -134,40 +134,44 @@ export default function Contact({ lang }) {
               </div>
 
               {/* LinkedIn */}
-              <a
-                href={personalInfo.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3.5 p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors group"
-              >
-                <div className="w-9 h-9 rounded-lg bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-400 flex items-center justify-center group-hover:text-sky-600 dark:group-hover:text-sky-400">
-                  <Linkedin className="w-4 h-4" />
-                </div>
-                <div>
-                  <div className="text-[11px] font-mono text-zinc-500">LinkedIn</div>
-                  <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-200 group-hover:text-sky-600 dark:group-hover:text-white">
-                    linkedin.com/in/juan-m-varela1984
+              {personalInfo.linkedin && (
+                <a
+                  href={personalInfo.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3.5 p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors group"
+                >
+                  <div className="w-9 h-9 rounded-lg bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-400 flex items-center justify-center group-hover:text-sky-600 dark:group-hover:text-sky-400">
+                    <Linkedin className="w-4 h-4" />
                   </div>
-                </div>
-              </a>
+                  <div>
+                    <div className="text-[11px] font-mono text-zinc-500">LinkedIn</div>
+                    <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-200 group-hover:text-sky-600 dark:group-hover:text-white">
+                      {personalInfo.name}
+                    </div>
+                  </div>
+                </a>
+              )}
 
               {/* GitHub */}
-              <a
-                href={personalInfo.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3.5 p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors group"
-              >
-                <div className="w-9 h-9 rounded-lg bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-400 flex items-center justify-center group-hover:text-zinc-950 dark:group-hover:text-zinc-200">
-                  <Github className="w-4 h-4" />
-                </div>
-                <div>
-                  <div className="text-[11px] font-mono text-zinc-500">GitHub</div>
-                  <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-200 group-hover:text-zinc-950 dark:group-hover:text-white">
-                    github.com/varelajm10
+              {personalInfo.github && (
+                <a
+                  href={personalInfo.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3.5 p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors group"
+                >
+                  <div className="w-9 h-9 rounded-lg bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-400 flex items-center justify-center group-hover:text-zinc-950 dark:group-hover:text-zinc-200">
+                    <Github className="w-4 h-4" />
                   </div>
-                </div>
-              </a>
+                  <div>
+                    <div className="text-[11px] font-mono text-zinc-500">GitHub</div>
+                    <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-200 group-hover:text-zinc-950 dark:group-hover:text-white">
+                      github.com/varelajm10
+                    </div>
+                  </div>
+                </a>
+              )}
             </div>
           </div>
 
