@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
@@ -10,24 +10,55 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 export default function App() {
-  return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col font-sans antialiased">
-      {/* Navegación fija con enlace a CV y redes */}
-      <Navbar />
+  const [lang, setLang] = useState('es');
+  const [theme, setTheme] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('theme');
+      if (saved) return saved;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    return 'light';
+  });
 
-      {/* Flujo principal */}
+  // Manejo de clase 'dark' en el elemento raíz <html> y persistencia
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === 'dark') {
+      root.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      root.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  };
+
+  return (
+    <div className="min-h-screen bg-[#fafafa] dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 flex flex-col font-sans antialiased transition-colors duration-300">
+      {/* Header con switch de idioma (ES/EN) y switch de tema (Dark/Light) */}
+      <Navbar
+        lang={lang}
+        setLang={setLang}
+        theme={theme}
+        toggleTheme={toggleTheme}
+      />
+
+      {/* Flujo principal bilingüe con soporte completo de tema */}
       <main className="flex-grow">
-        <Hero />
-        <Projects />
-        <Skills />
-        <RoiCalculator />
-        <WorkMethodology />
-        <Experience />
-        <Contact />
+        <Hero lang={lang} />
+        <Projects lang={lang} />
+        <Skills lang={lang} />
+        <RoiCalculator lang={lang} />
+        <WorkMethodology lang={lang} />
+        <Experience lang={lang} />
+        <Contact lang={lang} />
       </main>
 
       {/* Pie de página */}
-      <Footer />
+      <Footer lang={lang} />
     </div>
   );
 }
