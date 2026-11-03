@@ -117,6 +117,15 @@ export default function Projects({ lang, onSelectDemo }) {
                         </span>
                         <p>{flagshipProject.solution}</p>
                       </div>
+
+                      {flagshipProject.role && (
+                        <div>
+                          <span className="font-semibold text-zinc-950 dark:text-zinc-100 block text-xs uppercase font-mono tracking-wider mb-1">
+                            {t.roleLabel}
+                          </span>
+                          <p>{flagshipProject.role}</p>
+                        </div>
+                      )}
                     </div>
                   </div>
 
@@ -180,7 +189,7 @@ export default function Projects({ lang, onSelectDemo }) {
                           <span className="text-[10px] font-mono font-bold text-sky-700 dark:text-sky-400 block">
                             {step.step}
                           </span>
-                          <span className="text-xs font-bold text-zinc-900 dark:text-zinc-200 block truncate mt-0.5">
+                          <span className="text-xs font-bold text-zinc-900 dark:text-zinc-200 block mt-0.5 leading-tight">
                             {step.name}
                           </span>
                           <span className="text-[10px] text-zinc-500 dark:text-zinc-400 block leading-tight mt-0.5">

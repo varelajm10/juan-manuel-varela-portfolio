@@ -92,7 +92,7 @@ export const content = {
       statusPrivate: 'Privado — Solicitar Demo',
       statusPrivateCase: 'Proyecto Corporativo / Privado',
       statusPublic: 'Código Disponible',
-      flagshipBadge: 'Proyecto Destacado · Flagship',
+      flagshipBadge: 'Proyecto destacado',
       flagshipMetricsTitle: 'Métricas de Arquitectura & Negocio',
       flagshipPipelineTitle: 'Pipeline Operativo Automatizado',
       items: [
@@ -104,7 +104,7 @@ export const content = {
           repoUrl: 'https://github.com/varelajm10/agente-cobranzas-ia',
           githubUrl: 'https://github.com/varelajm10/agente-cobranzas-ia',
           problem:
-            'Cada mañana el equipo de cuentas por cobrar enfrenta cientos de clientes vencidos sin una priorización cuantitativa. Se recurre a mensajes genéricos idénticos o se descuidan cuentas clave, deteriorando la relación comercial o incrementando innecesariamente el DSO.',
+            'Cada mañana el equipo de cuentas por cobrar enfrenta cientos de clientes vencidos sin una priorización cuantitativa. Se recurre a mensajes genéricos idénticos o se descuidan cuentas clave, deteriorando la relación comercial o incrementando innecesariamente el DSO (días promedio de cobro).',
           solution:
             'Motor algorítmico en Python con scoring de riesgo ponderado (0–100) que segmenta a los deudores en 4 estrategias operativas. Un redactor con Claude API genera avisos contextualizados para WhatsApp y email, auditados por guardrails determinísticos que impiden alucinaciones en importes o fechas, con fallback offline sin costo de tokens.',
           role: 'Diseño de reglas de riesgo crediticio, arquitectura de validación de prompts, desarrollo de app en Streamlit y suite de 16 tests automatizados.',
@@ -173,7 +173,7 @@ export const content = {
         },
         {
           id: 'cubo',
-          title: 'CUBO — Plataforma de Gestión de Cobranzas & Aging',
+          title: 'CUBO — Cobranzas y Aging (antigüedad de deuda)',
           category: 'Web App & API',
           state: siteConfig.projectStates.PRIVATE_CASE,
           isPrivate: true,
@@ -181,7 +181,7 @@ export const content = {
           problem:
             'Dispersión constante en el seguimiento de deudores, conciliación manual de pagos y falta de proyección certera de mora entre múltiples canales de cobro.',
           solution:
-            'Aplicación web y API construida con FastAPI, MongoDB y frontend interactivo para seguimiento de compromisos, clasificación de riesgo crediticio y aging de saldos.',
+            'Aplicación web y API (FastAPI, MongoDB) para el circuito Order-to-Cash (del pedido al cobro): seguimiento de compromisos, riesgo crediticio y antigüedad de saldos.',
           role: 'Diseño integral de arquitectura, desarrollo backend en FastAPI, modelado en MongoDB y lógica de cálculo de aging.',
           impactMetric:
             'Automatización completa del cálculo de antigüedad de deuda y disparador de alertas de cobro.',
@@ -486,7 +486,7 @@ export const content = {
       statusPrivate: 'Private — Request Demo',
       statusPrivateCase: 'Corporate / Private System',
       statusPublic: 'Code Available',
-      flagshipBadge: 'Featured Project · Flagship',
+      flagshipBadge: 'Featured project',
       flagshipMetricsTitle: 'Architecture & Business Metrics',
       flagshipPipelineTitle: 'Automated Operations Pipeline',
       items: [
@@ -510,7 +510,7 @@ export const content = {
             {
               value: '4 Variables',
               label: 'Weighted Scoring Matrix',
-              detail: '40% aging, 25% balance, 20% history, 15% broken promises',
+              detail: '40% days overdue, 25% balance, 20% history, 15% promises',
             },
             {
               value: '4 Strategies',
@@ -529,7 +529,7 @@ export const content = {
             },
           ],
           pipeline: [
-            { step: '01', name: 'Aging Portfolio', desc: 'Ingestion & normalization' },
+            { step: '01', name: 'Overdue book', desc: 'Ingestion & normalization' },
             { step: '02', name: '0–100 Scoring', desc: 'Risk-weighted grading' },
             { step: '03', name: 'Guardrails', desc: 'Anti-hallucination check' },
             { step: '04', name: 'WhatsApp/Email', desc: 'Production-ready dispatch' },
@@ -567,7 +567,7 @@ export const content = {
         },
         {
           id: 'cubo',
-          title: 'CUBO — Collections Management & Aging Platform',
+          title: 'CUBO — Collections and Aging (age of unpaid invoices)',
           category: 'Web App & API',
           state: siteConfig.projectStates.PRIVATE_CASE,
           isPrivate: true,
@@ -575,7 +575,7 @@ export const content = {
           problem:
             'Fragmented follow-up on overdue debtors, manual payment matching, and lack of reliable aging projections across sales channels.',
           solution:
-            'Web platform and API built with FastAPI, MongoDB, and interactive UI for payment commitment tracking, credit risk scoring, and balance aging.',
+            'Web platform and API (FastAPI, MongoDB) for the Order-to-Cash cycle (from customer order through cash collection): commitment tracking, credit risk, and invoice age.',
           role: 'Full architectural design, FastAPI backend development, MongoDB data modeling, and aging calculation logic.',
           impactMetric:
             'Full automation of receivable aging calculations and automated collection alerts.',

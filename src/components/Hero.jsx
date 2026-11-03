@@ -38,6 +38,8 @@ export default function Hero({ lang }) {
   return (
     <section id="sobre-mi" className="relative pt-32 pb-20 sm:pt-40 sm:pb-24 bg-dot-pattern">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-start">
+        <div className="md:col-span-7 lg:col-span-8">
         {/* Badge de Disponibilidad y Ubicación */}
         <div className="flex flex-wrap items-center gap-3 mb-8">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20">
@@ -52,7 +54,7 @@ export default function Hero({ lang }) {
         </div>
 
         {/* Encabezado Principal Directo */}
-        <div className="max-w-4xl">
+        <div>
           {/* CTA Principal de Conversión - Opción A aprobada */}
           <div className="mb-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold bg-sky-500/10 text-sky-700 dark:text-sky-300 border border-sky-500/20">
             <span>{t.heroCtaBanner}</span>
@@ -153,6 +155,18 @@ export default function Hero({ lang }) {
               </button>
             </div>
           </div>
+        </div>
+        </div>
+
+        <div className="order-first md:order-none md:col-span-5 lg:col-span-4 md:pt-2">
+          <img
+            src="/profile.jpg"
+            alt="Juan Manuel Varela"
+            width="800"
+            height="1000"
+            className="w-24 h-24 sm:w-28 sm:h-28 md:w-full md:h-auto md:aspect-square rounded-2xl object-cover object-top border border-zinc-200 dark:border-zinc-800 shadow-sm bg-zinc-100 dark:bg-zinc-900"
+          />
+        </div>
         </div>
 
         {/* Bloque de Métricas Reales */}
