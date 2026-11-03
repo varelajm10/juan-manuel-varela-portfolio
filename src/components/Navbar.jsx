@@ -16,6 +16,7 @@ export default function Navbar({ lang, setLang, onOpenCvModal }) {
   const [copiedShare, setCopiedShare] = useState(false);
 
   const t = content[lang].nav;
+  const isEs = lang === 'es';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,7 +37,9 @@ export default function Navbar({ lang, setLang, onOpenCvModal }) {
 
   const navLinks = [
     { name: t.impact, href: '#impacto' },
+    { name: isEs ? 'Simulador ROI' : 'ROI Simulator', href: '#calculadora-roi' },
     { name: t.projects, href: '#proyectos' },
+    { name: isEs ? 'Metodología' : 'Methodology', href: '#metodologia' },
     { name: t.skills, href: '#habilidades' },
     { name: t.experience, href: '#trayectoria' },
   ];

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import RoiCalculator from './components/RoiCalculator';
 import Projects from './components/Projects';
+import WorkMethodology from './components/WorkMethodology';
 import Skills from './components/Skills';
 import Experience from './components/Experience';
 import CvSection from './components/CvSection';
@@ -28,7 +30,9 @@ export default function App() {
           lang={lang}
           onOpenCvModal={() => setCvModalOpen(true)}
         />
+        <RoiCalculator lang={lang} />
         <Projects lang={lang} />
+        <WorkMethodology lang={lang} />
         <Skills />
         <Experience />
         <CvSection
