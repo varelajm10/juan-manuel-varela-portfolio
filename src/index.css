@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  body {
+    background-color: #fafafa;
+    color: #09090b;
+    overflow-x: hidden;
+  }
+}
+
+/* Patrón de puntos sutil premium (Linear / Vercel style) */
+.bg-dot-pattern {
+  background-image: radial-gradient(rgba(14, 165, 233, 0.12) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Gradientes mesh suaves de fondo */
+.bg-mesh-gradient {
+  background: 
+    radial-gradient(at 0% 0%, rgba(14, 165, 233, 0.08) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.08) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(16, 185, 129, 0.05) 0px, transparent 50%);
+}
+
+/* Tarjetas Glassmorphism modernas */
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(228, 228, 231, 0.8);
+}
+
+.glass-card-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-hover:hover {
+  transform: translateY(-3px);
+  border-color: rgba(14, 165, 233, 0.4);
+  box-shadow: 0 20px 35px -10px rgba(14, 165, 233, 0.08), 0 8px 16px -6px rgba(0, 0, 0, 0.03);
+}
+
+/* Scrollbar minimalista */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f4f4f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4d4d8;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1aa;
+}
