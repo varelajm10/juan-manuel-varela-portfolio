@@ -10,10 +10,9 @@ import {
   MessageSquare,
   MessageCircle,
 } from 'lucide-react';
-import { personalInfo, content } from '../data/portfolioData';
+import { personalInfo } from '../data/portfolioData';
 
-export default function Contact({ lang }) {
-  const t = content[lang].contact;
+export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -25,9 +24,7 @@ export default function Contact({ lang }) {
   const [status, setStatus] = useState({ submitted: false, message: '' });
 
   const whatsappUrl = `https://wa.me/${personalInfo.whatsappNumber}?text=${encodeURIComponent(
-    lang === 'es'
-      ? 'Hola Juan Manuel, vi tu portfolio online y me gustaría conversar sobre una oportunidad.'
-      : 'Hi Juan Manuel, I viewed your portfolio and would like to connect regarding an opportunity.'
+    'Hola Juan Manuel, vi tu portfolio y me gustaría conversar sobre una oportunidad en finanzas y automatización.'
   )}`;
 
   const handleCopyEmail = () => {
@@ -47,7 +44,7 @@ export default function Contact({ lang }) {
 
     setStatus({
       submitted: true,
-      message: '¡Abriendo tu cliente de correo para enviar el mensaje...',
+      message: 'Abriendo tu correo para enviar el mensaje...',
     });
 
     window.open(`mailto:${personalInfo.email}?subject=${subjectLine}&body=${bodyContent}`, '_self');
@@ -59,110 +56,108 @@ export default function Contact({ lang }) {
   };
 
   return (
-    <section id="contacto" className="py-24 border-t border-zinc-200/80 bg-zinc-50/50">
+    <section id="contacto" className="py-24 border-t border-zinc-800 bg-zinc-950">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Canales Directos */}
           <div className="lg:col-span-5">
-            <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-sky-700 font-bold mb-2 bg-sky-50 px-2.5 py-1 rounded-md border border-sky-200/70">
+            <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-sky-400 font-semibold mb-2">
               <MessageSquare className="w-3.5 h-3.5" />
-              <span>{t.tag}</span>
+              <span>Contacto Directo</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-950">
-              {t.title}
+            <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-zinc-100">
+              Hablemos
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-zinc-600 leading-relaxed">
-              {t.subtitle}
+            <p className="mt-3 text-sm sm:text-base text-zinc-400 leading-relaxed">
+              Si en tu equipo están perdiendo horas con planillas manuales, querés optimizar cobranzas o tenés una oportunidad laboral para un perfil de finanzas y código, escribime directamente.
             </p>
 
             <div className="mt-8 space-y-3">
-              {/* MEJORA 1: Tarjeta Destacada de WhatsApp */}
+              {/* WhatsApp */}
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between p-4 rounded-2xl bg-emerald-50 border border-emerald-300 hover:border-emerald-400 hover:shadow-md transition-all group"
+                className="flex items-center justify-between p-4 rounded-xl border border-emerald-900/60 bg-emerald-950/30 hover:border-emerald-700/60 transition-colors group"
               >
                 <div className="flex items-center gap-3.5">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shadow-xs">
-                    <MessageCircle className="w-5 h-5 fill-white" />
+                  <div className="w-9 h-9 rounded-lg bg-emerald-900/60 text-emerald-400 flex items-center justify-center">
+                    <MessageCircle className="w-4 h-4" />
                   </div>
                   <div>
-                    <div className="text-[11px] font-mono text-emerald-800 font-bold uppercase tracking-wider">
-                      {t.whatsappCardTitle}
-                    </div>
-                    <div className="text-sm font-bold text-zinc-950 group-hover:text-emerald-700">
+                    <div className="text-[11px] font-mono text-emerald-400 font-medium">WhatsApp Directo</div>
+                    <div className="text-sm font-semibold text-zinc-200 group-hover:text-emerald-300">
                       {personalInfo.phone}
                     </div>
                   </div>
                 </div>
-                <span className="text-xs font-bold text-emerald-700 group-hover:underline">
-                  {t.whatsappAction} →
+                <span className="text-xs font-semibold text-emerald-400 group-hover:underline">
+                  Chatear →
                 </span>
               </a>
 
-              <a
-                href={`mailto:${personalInfo.email}`}
-                className="flex items-center justify-between p-4 rounded-2xl bg-white border border-zinc-200 hover:border-sky-300 hover:shadow-sm transition-all group"
-              >
-                <div className="flex items-center gap-3.5">
-                  <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center">
-                    <Mail className="w-5 h-5" />
+              {/* Email */}
+              <div className="flex items-center justify-between p-4 rounded-xl border border-zinc-800 bg-zinc-900/50">
+                <a
+                  href={`mailto:${personalInfo.email}`}
+                  className="flex items-center gap-3.5 group flex-1"
+                >
+                  <div className="w-9 h-9 rounded-lg bg-zinc-800 text-zinc-400 flex items-center justify-center group-hover:text-zinc-200">
+                    <Mail className="w-4 h-4" />
                   </div>
                   <div>
-                    <div className="text-[11px] font-mono text-zinc-400">{t.directEmail}</div>
-                    <div className="text-sm font-bold text-zinc-900 group-hover:text-sky-700">
+                    <div className="text-[11px] font-mono text-zinc-500">Correo Electrónico</div>
+                    <div className="text-sm font-semibold text-zinc-200 group-hover:text-white">
                       {personalInfo.email}
                     </div>
                   </div>
-                </div>
+                </a>
                 <button
                   type="button"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleCopyEmail();
-                  }}
-                  className="p-2 text-zinc-400 hover:text-zinc-900"
-                  title="Copiar"
+                  onClick={handleCopyEmail}
+                  className="p-2 text-zinc-500 hover:text-zinc-200"
+                  title="Copiar email"
                 >
                   {copiedEmail ? (
-                    <Check className="w-4 h-4 text-emerald-500" />
+                    <Check className="w-4 h-4 text-emerald-400" />
                   ) : (
                     <Copy className="w-4 h-4" />
                   )}
                 </button>
-              </a>
+              </div>
 
+              {/* LinkedIn */}
               <a
                 href={personalInfo.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3.5 p-4 rounded-2xl bg-white border border-zinc-200 hover:border-sky-300 hover:shadow-sm transition-all group"
+                className="flex items-center gap-3.5 p-4 rounded-xl border border-zinc-800 bg-zinc-900/50 hover:border-zinc-700 transition-colors group"
               >
-                <div className="w-10 h-10 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center">
-                  <Linkedin className="w-5 h-5" />
+                <div className="w-9 h-9 rounded-lg bg-zinc-800 text-zinc-400 flex items-center justify-center group-hover:text-sky-400">
+                  <Linkedin className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="text-[11px] font-mono text-zinc-400">{t.directLinkedin}</div>
-                  <div className="text-sm font-bold text-zinc-900 group-hover:text-sky-700">
-                    LinkedIn / Juan Manuel Varela
+                  <div className="text-[11px] font-mono text-zinc-500">LinkedIn</div>
+                  <div className="text-sm font-semibold text-zinc-200 group-hover:text-white">
+                    linkedin.com/in/juan-m-varela1984
                   </div>
                 </div>
               </a>
 
+              {/* GitHub */}
               <a
                 href={personalInfo.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3.5 p-4 rounded-2xl bg-white border border-zinc-200 hover:border-zinc-400 hover:shadow-sm transition-all group"
+                className="flex items-center gap-3.5 p-4 rounded-xl border border-zinc-800 bg-zinc-900/50 hover:border-zinc-700 transition-colors group"
               >
-                <div className="w-10 h-10 rounded-xl bg-zinc-100 text-zinc-900 flex items-center justify-center">
-                  <Github className="w-5 h-5" />
+                <div className="w-9 h-9 rounded-lg bg-zinc-800 text-zinc-400 flex items-center justify-center group-hover:text-zinc-200">
+                  <Github className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="text-[11px] font-mono text-zinc-400">{t.directGithub}</div>
-                  <div className="text-sm font-bold text-zinc-900 group-hover:text-zinc-600">
-                    GitHub / varelajm10
+                  <div className="text-[11px] font-mono text-zinc-500">GitHub</div>
+                  <div className="text-sm font-semibold text-zinc-200 group-hover:text-white">
+                    github.com/varelajm10
                   </div>
                 </div>
               </a>
@@ -171,85 +166,85 @@ export default function Contact({ lang }) {
 
           {/* Formulario */}
           <div className="lg:col-span-7">
-            <div className="rounded-3xl border border-zinc-200 bg-white p-7 sm:p-9 shadow-sm">
-              <h3 className="text-xl font-bold text-zinc-950 mb-1">
-                {t.formTitle}
+            <div className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 sm:p-8">
+              <h3 className="text-lg font-bold text-zinc-100 mb-1">
+                Enviar mensaje
               </h3>
-              <p className="text-xs sm:text-sm text-zinc-500 mb-6">
-                {t.formSubtitle}
+              <p className="text-xs text-zinc-400 mb-6">
+                Completá los datos y te respondo a la brevedad.
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-zinc-700 mb-1.5">
-                      {t.nameLabel}
+                    <label className="block text-xs font-medium text-zinc-300 mb-1.5">
+                      Nombre
                     </label>
                     <input
                       type="text"
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      placeholder={t.namePlaceholder}
-                      className="w-full px-4 py-2.5 rounded-xl border border-zinc-200 bg-zinc-50/50 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all"
+                      placeholder="Tu nombre"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-zinc-800 bg-zinc-950 text-zinc-100 text-sm focus:outline-none focus:border-zinc-600"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-zinc-700 mb-1.5">
-                      {t.emailLabel}
+                    <label className="block text-xs font-medium text-zinc-300 mb-1.5">
+                      Correo Electrónico
                     </label>
                     <input
                       type="email"
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder={t.emailPlaceholder}
-                      className="w-full px-4 py-2.5 rounded-xl border border-zinc-200 bg-zinc-50/50 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all"
+                      placeholder="tu@empresa.com"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-zinc-800 bg-zinc-950 text-zinc-100 text-sm focus:outline-none focus:border-zinc-600"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-zinc-700 mb-1.5">
-                    {t.subjectLabel}
+                  <label className="block text-xs font-medium text-zinc-300 mb-1.5">
+                    Asunto
                   </label>
                   <input
                     type="text"
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    placeholder={t.subjectPlaceholder}
-                    className="w-full px-4 py-2.5 rounded-xl border border-zinc-200 bg-zinc-50/50 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all"
+                    placeholder="Motivo de contacto"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-zinc-800 bg-zinc-950 text-zinc-100 text-sm focus:outline-none focus:border-zinc-600"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-zinc-700 mb-1.5">
-                    {t.messageLabel}
+                  <label className="block text-xs font-medium text-zinc-300 mb-1.5">
+                    Mensaje
                   </label>
                   <textarea
                     rows={4}
                     required
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder={t.messagePlaceholder}
-                    className="w-full px-4 py-2.5 rounded-xl border border-zinc-200 bg-zinc-50/50 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all resize-none"
+                    placeholder="Contame brevemente sobre tu equipo, circuito a mejorar o la posición..."
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-zinc-800 bg-zinc-950 text-zinc-100 text-sm focus:outline-none focus:border-zinc-600 resize-none"
                   />
                 </div>
 
                 {status.submitted && (
-                  <div className="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <div className="p-3 rounded-xl bg-emerald-950/60 border border-emerald-800/80 text-emerald-300 text-xs flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 shrink-0" />
                     <span>{status.message}</span>
                   </div>
                 )}
 
                 <button
                   type="submit"
-                  className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-bold bg-zinc-950 hover:bg-zinc-800 text-white shadow-sm transition-all"
+                  className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold bg-zinc-100 hover:bg-white text-zinc-950 transition-colors shadow-sm"
                 >
                   <Send className="w-4 h-4" />
-                  <span>{t.sendBtn}</span>
+                  <span>Enviar Mensaje</span>
                 </button>
               </form>
             </div>

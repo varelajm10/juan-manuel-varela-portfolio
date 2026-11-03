@@ -1,119 +1,83 @@
 import React from 'react';
-import {
-  Briefcase,
-  Calendar,
-  CheckCircle2,
-  GraduationCap,
-  Sparkles,
-} from 'lucide-react';
-import {
-  experienceData,
-  educationAndCertifications,
-} from '../data/portfolioData';
+import { Calendar, CheckCircle2, Briefcase } from 'lucide-react';
+import { experienceData } from '../data/portfolioData';
 
 export default function Experience() {
   return (
-    <section id="trayectoria" className="py-24 border-t border-zinc-200/80 bg-zinc-50/50">
+    <section id="trayectoria" className="py-24 border-t border-zinc-800 bg-zinc-950">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-14">
-          <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-sky-700 font-bold mb-2 bg-sky-50 px-2.5 py-1 rounded-md border border-sky-200/70">
+        <div className="max-w-2xl mb-14">
+          <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-sky-400 font-semibold mb-2">
             <Briefcase className="w-3.5 h-3.5" />
-            <span>Trayectoria Comprobada</span>
+            <span>Trayectoria Real</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-zinc-950">
-            Experiencia Profesional & Logros Cuantificables
+          <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-zinc-100">
+            Experiencia corporativa y logros concretos
           </h2>
-          <p className="mt-2 text-sm sm:text-base text-zinc-600 max-w-2xl">
-            Trayectoria en roles de gestión corporativa con una transición orgánica hacia la automatización con código y la analítica estratégica.
+          <p className="mt-2 text-sm sm:text-base text-zinc-400">
+            Más de una década de gestión en consumo masivo, maquinaria y distribución de tecnología.
           </p>
         </div>
 
-        {/* Timeline Moderno */}
-        <div className="relative pl-6 sm:pl-8 border-l-2 border-zinc-300 space-y-10">
+        {/* Timeline */}
+        <div className="relative pl-6 sm:pl-8 border-l border-zinc-800 space-y-10">
           {experienceData.map((item, idx) => (
-            <div key={item.id} className="relative group">
+            <div key={item.company} className="relative">
               {/* Nodo */}
               <div
-                className={`absolute -left-[31px] sm:-left-[39px] top-2 w-4 h-4 rounded-full border-2 ${
+                className={`absolute -left-[31px] sm:-left-[39px] top-2 w-3.5 h-3.5 rounded-full border-2 ${
                   idx === 0
-                    ? 'bg-sky-600 border-white ring-4 ring-sky-500/20'
-                    : 'bg-white border-zinc-400 group-hover:border-sky-500'
+                    ? 'bg-sky-400 border-zinc-950 ring-4 ring-sky-500/10'
+                    : 'bg-zinc-800 border-zinc-950'
                 }`}
               />
 
-              <div className="rounded-3xl border border-zinc-200/90 bg-white p-7 sm:p-8 shadow-xs hover:border-zinc-300 hover:shadow-md transition-all">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+              <div className="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-6 sm:p-7">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
                   <div>
-                    <h3 className="text-xl font-bold text-zinc-950">
+                    <h3 className="text-lg font-bold text-zinc-100">
                       {item.role}
                     </h3>
-                    <p className="text-sm font-semibold text-sky-700 mt-0.5">
-                      {item.company}
+                    <p className="text-sm font-semibold text-zinc-400 mt-0.5">
+                      {item.company} · <span className="text-zinc-500 font-normal">{item.location}</span>
                     </p>
                   </div>
 
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-100 text-xs font-mono font-semibold text-zinc-700 border border-zinc-200 self-start sm:self-auto">
-                    <Calendar className="w-3.5 h-3.5 text-zinc-400" />
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-zinc-800/80 text-xs font-mono text-zinc-400 border border-zinc-700/60 self-start sm:self-auto">
+                    <Calendar className="w-3 h-3 text-zinc-500" />
                     <span>{item.period}</span>
                   </span>
                 </div>
 
-                <p className="text-sm text-zinc-600 leading-relaxed mb-4">
+                <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed my-3">
                   {item.summary}
                 </p>
 
-                {/* Bullets de Logros */}
-                <ul className="space-y-2.5 mb-5">
+                <ul className="space-y-2 mb-4">
                   {item.achievements.map((ach, i) => (
                     <li
                       key={i}
-                      className="flex items-start gap-2.5 text-xs sm:text-sm text-zinc-700 leading-relaxed"
+                      className="flex items-start gap-2 text-xs sm:text-sm text-zinc-300 leading-relaxed"
                     >
-                      <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-1" />
                       <span>{ach}</span>
                     </li>
                   ))}
                 </ul>
 
-                {/* Badges de Herramientas */}
-                <div className="flex flex-wrap gap-1.5 pt-4 border-t border-zinc-100">
-                  {item.technologies.map((tech) => (
+                <div className="flex flex-wrap gap-1.5 pt-3 border-t border-zinc-800/70">
+                  {item.tags.map((tag) => (
                     <span
-                      key={tech}
-                      className="px-2.5 py-0.5 rounded-md text-xs font-mono bg-zinc-100 text-zinc-600"
+                      key={tag}
+                      className="px-2 py-0.5 rounded text-[11px] font-mono bg-zinc-800/60 text-zinc-400"
                     >
-                      {tech}
+                      {tag}
                     </span>
                   ))}
                 </div>
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Formación y Credenciales */}
-        <div className="mt-16 pt-12 border-t border-zinc-200">
-          <h3 className="text-lg font-bold text-zinc-950 mb-6 flex items-center gap-2">
-            <GraduationCap className="w-5 h-5 text-sky-600" />
-            <span>Formación & Especializaciones</span>
-          </h3>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {educationAndCertifications.map((edu) => (
-              <div
-                key={edu.title}
-                className="p-5 rounded-2xl bg-white border border-zinc-200 shadow-xs"
-              >
-                <div className="font-bold text-sm text-zinc-950">{edu.title}</div>
-                <div className="text-xs text-sky-700 font-medium mt-1">
-                  {edu.institution}
-                </div>
-                <p className="text-xs text-zinc-500 mt-2 leading-relaxed">
-                  {edu.detail}
-                </p>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>
