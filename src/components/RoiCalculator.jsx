@@ -18,7 +18,7 @@ export default function RoiCalculator({ lang }) {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Encabezado */}
         <div className="max-w-2xl mx-auto text-center mb-14">
-          <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-sky-600 dark:text-sky-400 font-semibold mb-2">
+          <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-sky-700 dark:text-sky-400 font-semibold mb-2">
             <Calculator className="w-3.5 h-3.5" />
             <span>{t.tag}</span>
           </div>
@@ -52,9 +52,9 @@ export default function RoiCalculator({ lang }) {
                 step="1"
                 value={teamSize}
                 onChange={(e) => setTeamSize(Number(e.target.value))}
-                className="w-full h-2 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-sky-600 dark:accent-sky-400"
+                className="w-full h-2 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-sky-700 dark:accent-sky-400"
               />
-              <div className="flex justify-between text-[11px] font-mono text-zinc-400 dark:text-zinc-500 mt-1">
+              <div className="flex justify-between text-[11px] font-mono text-zinc-500 dark:text-zinc-400 mt-1">
                 <span>1 {t.personLabel}</span>
                 <span>10</span>
                 <span>20 {t.peopleLabel}</span>
@@ -79,14 +79,14 @@ export default function RoiCalculator({ lang }) {
                 step="1"
                 value={hoursPerWeek}
                 onChange={(e) => setHoursPerWeek(Number(e.target.value))}
-                className="w-full h-2 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-sky-600 dark:accent-sky-400"
+                className="w-full h-2 bg-zinc-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-sky-700 dark:accent-sky-400"
               />
-              <div className="flex justify-between text-[11px] font-mono text-zinc-400 dark:text-zinc-500 mt-1">
+              <div className="flex justify-between text-[11px] font-mono text-zinc-500 dark:text-zinc-400 mt-1">
                 <span>2 {t.hoursSuffix}</span>
                 <span>15 h</span>
                 <span>30 {t.hoursSuffix}</span>
               </div>
-              <p className="text-[11px] text-zinc-500 mt-3 leading-relaxed">
+              <p className="text-[11px] text-zinc-600 dark:text-zinc-400 mt-3 leading-relaxed">
                 {t.hoursNote}
               </p>
             </div>
@@ -95,7 +95,7 @@ export default function RoiCalculator({ lang }) {
           {/* Métricas Dinámicas */}
           <div className="lg:col-span-6 flex flex-col gap-4">
             <div className="p-6 sm:p-7 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/80 text-zinc-900 dark:text-zinc-100 shadow-xs">
-              <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-sky-600 dark:text-sky-400 mb-1">
+              <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">
                 <Clock className="w-4 h-4" />
                 <span>{t.savedMonthlyTitle}</span>
               </div>
@@ -103,7 +103,7 @@ export default function RoiCalculator({ lang }) {
                 <span className="text-4xl sm:text-5xl font-bold font-mono tracking-tight">
                   ~{savedMonthlyHours}
                 </span>
-                <span className="text-sm font-semibold text-zinc-500 dark:text-zinc-400">
+                <span className="text-sm font-semibold text-zinc-600 dark:text-zinc-400">
                   hours / month
                 </span>
               </div>
@@ -114,27 +114,27 @@ export default function RoiCalculator({ lang }) {
 
             <div className="grid grid-cols-2 gap-4">
               <div className="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 shadow-xs">
-                <div className="flex items-center gap-1.5 text-xs font-mono text-zinc-500 dark:text-zinc-400 mb-1">
-                  <Calendar className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+                <div className="flex items-center gap-1.5 text-xs font-mono text-zinc-600 dark:text-zinc-400 mb-1">
+                  <Calendar className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400" />
                   <span>{t.daysLabel}</span>
                 </div>
                 <div className="text-2xl sm:text-3xl font-bold font-mono text-zinc-900 dark:text-zinc-100">
                   {savedDays}
                 </div>
-                <p className="text-[11px] text-zinc-500 mt-1">
+                <p className="text-[11px] text-zinc-600 dark:text-zinc-400 mt-1">
                   {t.daysDesc}
                 </p>
               </div>
 
               <div className="p-5 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 shadow-xs">
-                <div className="flex items-center gap-1.5 text-xs font-mono text-zinc-500 dark:text-zinc-400 mb-1">
-                  <TrendingUp className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400" />
+                <div className="flex items-center gap-1.5 text-xs font-mono text-zinc-600 dark:text-zinc-400 mb-1">
+                  <TrendingUp className="w-3.5 h-3.5 text-sky-700 dark:text-sky-400" />
                   <span>{t.efficiencyLabel}</span>
                 </div>
-                <div className="text-2xl sm:text-3xl font-bold font-mono text-emerald-600 dark:text-emerald-400">
+                <div className="text-2xl sm:text-3xl font-bold font-mono text-emerald-700 dark:text-emerald-400">
                   -70%
                 </div>
-                <p className="text-[11px] text-zinc-500 mt-1">
+                <p className="text-[11px] text-zinc-600 dark:text-zinc-400 mt-1">
                   {t.efficiencyDesc}
                 </p>
               </div>

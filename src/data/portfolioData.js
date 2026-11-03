@@ -87,15 +87,65 @@ export const content = {
       btnCaseDetails: 'Ver Detalles Técnicos',
       btnRequestDemo: 'Solicitar Demo',
       btnViewRepo: 'Ver Repositorio',
+      viewCase: 'Ver resumen',
+      hideCase: 'Ocultar resumen',
       statusPrivate: 'Privado — Solicitar Demo',
       statusPrivateCase: 'Proyecto Corporativo / Privado',
       statusPublic: 'Código Disponible',
       items: [
         {
+          id: 'agente-cobranzas-ia',
+          title: 'Agente de IA de Cobranzas & Scoring de Riesgo',
+          category: 'Python · Streamlit · IA Aplicada',
+          repoUrl: 'https://github.com/varelajm10/agente-cobranzas-ia',
+          githubUrl: 'https://github.com/varelajm10/agente-cobranzas-ia',
+          problem:
+            'Cada mañana el equipo de cobranzas enfrenta cientos de clientes vencidos sin saber a quién priorizar ni qué tono emplear, recurriendo a mensajes genéricos o descuidando cuentas clave.',
+          solution:
+            'Motor en Python con scoring de riesgo transparente (40% atraso, 25% saldo, 20% historial, 15% promesas), segmentación en 4 estrategias y agente redactor validado con guardrails de negocio (Claude API o plantillas locales).',
+          role: 'Diseño de reglas de riesgo crediticio, arquitectura de validación de prompts, desarrollo de app en Streamlit y suite de 16 tests automatizados.',
+          impact:
+            'Scoring de riesgo 0–100 en tiempo real, 16 tests automatizados con pytest y 100% operable offline sin costo de API mediante plantillas.',
+          impactMetric:
+            'Scoring de riesgo 0–100 en tiempo real, 16 tests automatizados con pytest y 100% operable offline sin costo de API mediante plantillas.',
+          tags: ['Python', 'Streamlit', 'Claude API', 'Pytest', 'Credit Risk'],
+          isPublic: true,
+          isPrivate: false,
+          state: siteConfig.projectStates.CODE,
+          demoUrl: null,
+          summaryCase:
+            'Priorización de cartera y redacción validada con guardrails para contactar clientes por WhatsApp o correo según su nivel de criticidad.',
+        },
+        {
+          id: 'conciliacion-bancaria',
+          title: 'Motor de Conciliación Bancaria Automática',
+          category: 'Python · Algoritmos de Negocio · Pandas',
+          repoUrl: 'https://github.com/varelajm10/conciliacion-bancaria',
+          githubUrl: 'https://github.com/varelajm10/conciliacion-bancaria',
+          problem:
+            'Conciliación manual de extractos bancarios contra facturas abiertas: clientes que pagan con referencias incompletas, agrupan facturas o hacen pagos a cuenta, consumiendo días de trabajo manual en cada cierre contable.',
+          solution:
+            'Algoritmo en cascada de 5 reglas determinísticas (Nº factura, CUIT, matching difuso con RapidFuzz, pagos agrupados y pagos parciales FIFO) con exportación a Excel multisolapa formateado con semáforo de confianza.',
+          role: 'Modelado de las 5 reglas de imputación contable, motor de matching en pandas, exportador de reportes con openpyxl y 11 tests unitarios.',
+          impact:
+            '97.2% de imputación automática sobre extractos de prueba y reducción del tiempo de conciliación de días a segundos.',
+          impactMetric:
+            '97.2% de imputación automática sobre extractos de prueba y reducción del tiempo de conciliación de días a segundos.',
+          tags: ['Python', 'Pandas', 'RapidFuzz', 'openpyxl', 'Pytest'],
+          isPublic: true,
+          isPrivate: false,
+          state: siteConfig.projectStates.CODE,
+          demoUrl: null,
+          summaryCase:
+            'Motor determinístico de imputación en 5 reglas que genera reportes de conciliación listos para el cierre contable sin depender de criterio subjetivo.',
+        },
+        {
           id: 'cubo',
           title: 'CUBO — Plataforma de Gestión de Cobranzas & Aging',
           category: 'Web App & API',
           state: siteConfig.projectStates.PRIVATE_CASE,
+          isPrivate: true,
+          isPublic: false,
           problem:
             'Dispersión constante en el seguimiento de deudores, conciliación manual de pagos y falta de proyección certera de mora entre múltiples canales de cobro.',
           solution:
@@ -114,6 +164,8 @@ export const content = {
           title: 'G.L.A.D.Y.S. — Monitor de Riesgo Crediticio & Deudores',
           category: 'Pipeline & Scraping',
           state: siteConfig.projectStates.PRIVATE_CASE,
+          isPrivate: true,
+          isPublic: false,
           problem:
             'Consulta manual, dispersa y repetitiva de boletines oficiales, fuentes de noticias financieras y registros públicos de morosidad comercial.',
           solution:
@@ -132,6 +184,8 @@ export const content = {
           title: 'AscenSort — Análisis Operativo & Control Estadístico',
           category: 'Desktop App',
           state: siteConfig.projectStates.PRIVATE_CASE,
+          isPrivate: true,
+          isPublic: false,
           problem:
             'Fallas repetitivas sin trazabilidad en reportes de servicio técnico, falta de identificación de causas raíz y riesgo constante de incumplimiento de SLAs.',
           solution:
@@ -395,15 +449,65 @@ export const content = {
       btnCaseDetails: 'Technical Details',
       btnRequestDemo: 'Request Demo',
       btnViewRepo: 'View Repository',
+      viewCase: 'View summary',
+      hideCase: 'Hide summary',
       statusPrivate: 'Private — Request Demo',
       statusPrivateCase: 'Corporate / Private System',
       statusPublic: 'Code Available',
       items: [
         {
+          id: 'agente-cobranzas-ia',
+          title: 'AI Collections Agent & Risk Scoring Engine',
+          category: 'Python · Streamlit · Applied AI',
+          repoUrl: 'https://github.com/varelajm10/agente-cobranzas-ia',
+          githubUrl: 'https://github.com/varelajm10/agente-cobranzas-ia',
+          problem:
+            'Every morning the collections team faces hundreds of overdue debtors without knowing whom to prioritize or which tone to use, falling back on generic templates or neglecting critical accounts.',
+          solution:
+            'Python engine with transparent risk scoring (40% overdue days, 25% balance, 20% history, 15% broken promises), segmentation into 4 strategies, and AI copywriter validated with business guardrails (Claude API or local offline templates).',
+          role: 'Credit risk rules design, prompt validation architecture, Streamlit UI development, and 16 automated tests.',
+          impact:
+            'Real-time 0–100 risk scoring, 16 automated tests with pytest, and 100% offline operable with zero API cost via fallback templates.',
+          impactMetric:
+            'Real-time 0–100 risk scoring, 16 automated tests with pytest, and 100% offline operable with zero API cost via fallback templates.',
+          tags: ['Python', 'Streamlit', 'Claude API', 'Pytest', 'Credit Risk'],
+          isPublic: true,
+          isPrivate: false,
+          state: siteConfig.projectStates.CODE,
+          demoUrl: null,
+          summaryCase:
+            'Portfolio prioritization and guardrail-validated drafting to contact customers via WhatsApp or email based on account criticality.',
+        },
+        {
+          id: 'conciliacion-bancaria',
+          title: 'Automated Bank Reconciliation Engine',
+          category: 'Python · Business Algorithms · Pandas',
+          repoUrl: 'https://github.com/varelajm10/conciliacion-bancaria',
+          githubUrl: 'https://github.com/varelajm10/conciliacion-bancaria',
+          problem:
+            'Manual reconciliation of bank statements against open invoices: customers paying with incomplete references, batching invoices, or paying on account, consuming days of manual work at every monthly close.',
+          solution:
+            'Cascading deterministic 5-rule algorithm (Invoice #, Tax ID, fuzzy name matching with RapidFuzz, grouped payments, and FIFO partial payments) with multi-sheet formatted Excel export and confidence scoring.',
+          role: 'Modeling of 5 accounting matching rules, pandas reconciliation engine, openpyxl report generator, and 11 unit tests.',
+          impact:
+            '97.2% automated match rate on test datasets and reduction of reconciliation time from days to seconds.',
+          impactMetric:
+            '97.2% automated match rate on test datasets and reduction of reconciliation time from days to seconds.',
+          tags: ['Python', 'Pandas', 'RapidFuzz', 'openpyxl', 'Pytest'],
+          isPublic: true,
+          isPrivate: false,
+          state: siteConfig.projectStates.CODE,
+          demoUrl: null,
+          summaryCase:
+            'Deterministic 5-rule matching engine that outputs month-end reconciliation Excel workbooks ready for sign-off without subjective guesswork.',
+        },
+        {
           id: 'cubo',
           title: 'CUBO — Collections Management & Aging Platform',
           category: 'Web App & API',
           state: siteConfig.projectStates.PRIVATE_CASE,
+          isPrivate: true,
+          isPublic: false,
           problem:
             'Fragmented follow-up on overdue debtors, manual payment matching, and lack of reliable aging projections across sales channels.',
           solution:
@@ -422,6 +526,8 @@ export const content = {
           title: 'G.L.A.D.Y.S. — Credit Risk & Debtor Monitor',
           category: 'Pipeline & Scraping',
           state: siteConfig.projectStates.PRIVATE_CASE,
+          isPrivate: true,
+          isPublic: false,
           problem:
             'Manual, repetitive browsing of official gazettes, financial news outlets, and commercial bankruptcy registries.',
           solution:
@@ -440,6 +546,8 @@ export const content = {
           title: 'AscenSort — Operational Analysis & Statistical Control',
           category: 'Desktop App',
           state: siteConfig.projectStates.PRIVATE_CASE,
+          isPrivate: true,
+          isPublic: false,
           problem:
             'Recurring equipment failures without traceability in field reports and constant SLA compliance risks.',
           solution:

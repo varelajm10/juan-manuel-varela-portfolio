@@ -10,7 +10,7 @@ export default function Skills({ lang }) {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Encabezado */}
         <div className="max-w-2xl mb-14">
-          <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-sky-600 dark:text-sky-400 font-semibold mb-2">
+          <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-sky-700 dark:text-sky-400 font-semibold mb-2">
             <Cpu className="w-3.5 h-3.5" />
             <span>{t.tag}</span>
           </div>

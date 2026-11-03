@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Mail,
   Linkedin,
@@ -12,15 +12,21 @@ import {
 } from 'lucide-react';
 import { personalInfo, content } from '../data/portfolioData';
 
-export default function Contact({ lang }) {
+export default function Contact({ lang, contactSubject = '', onClearSubject }) {
   const t = content[lang].contact;
 
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    subject: '',
+    subject: contactSubject,
     message: '',
   });
+
+  useEffect(() => {
+    if (contactSubject) {
+      setFormData((prev) => ({ ...prev, subject: contactSubject }));
+    }
+  }, [contactSubject]);
 
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [status, setStatus] = useState({ submitted: false, message: '' });
@@ -58,6 +64,7 @@ export default function Contact({ lang }) {
 
     setTimeout(() => {
       setFormData({ name: '', email: '', subject: '', message: '' });
+      if (onClearSubject) onClearSubject();
       setStatus({ submitted: false, message: '' });
     }, 3000);
   };
@@ -68,7 +75,7 @@ export default function Contact({ lang }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Canales Directos */}
           <div className="lg:col-span-5">
-            <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-sky-600 dark:text-sky-400 font-semibold mb-2">
+            <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-sky-700 dark:text-sky-400 font-semibold mb-2">
               <MessageSquare className="w-3.5 h-3.5" />
               <span>{t.tag}</span>
             </div>
@@ -107,14 +114,15 @@ export default function Contact({ lang }) {
               <div className="flex items-center justify-between p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50">
                 <a
                   href={`mailto:${personalInfo.email}`}
+                  aria-label={`${t.emailTitle}: ${personalInfo.email}`}
                   className="flex items-center gap-3.5 group flex-1"
                 >
                   <div className="w-9 h-9 rounded-lg bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-400 flex items-center justify-center group-hover:text-zinc-950 dark:group-hover:text-zinc-200">
                     <Mail className="w-4 h-4" />
                   </div>
                   <div>
-                    <div className="text-[11px] font-mono text-zinc-500">{t.emailTitle}</div>
-                    <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-200 group-hover:text-sky-600 dark:group-hover:text-white">
+                    <div className="text-[11px] font-mono text-zinc-600 dark:text-zinc-400">{t.emailTitle}</div>
+                    <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-200 group-hover:text-sky-700 dark:group-hover:text-white">
                       {personalInfo.email}
                     </div>
                   </div>
@@ -122,11 +130,12 @@ export default function Contact({ lang }) {
                 <button
                   type="button"
                   onClick={handleCopyEmail}
+                  aria-label={lang === 'es' ? 'Copiar dirección de email' : 'Copy email address'}
                   className="p-2 text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-200"
                   title="Copiar email"
                 >
                   {copiedEmail ? (
-                    <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                    <Check className="w-4 h-4 text-emerald-700 dark:text-emerald-400" />
                   ) : (
                     <Copy className="w-4 h-4" />
                   )}
@@ -217,10 +226,11 @@ export default function Contact({ lang }) {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">
+                  <label htmlFor="contact-subject" className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">
                     {t.subjectLabel}
                   </label>
                   <input
+                    id="contact-subject"
                     type="text"
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
@@ -230,10 +240,11 @@ export default function Contact({ lang }) {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">
+                  <label htmlFor="contact-message" className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">
                     {t.messageLabel}
                   </label>
                   <textarea
+                    id="contact-message"
                     rows={4}
                     required
                     value={formData.message}

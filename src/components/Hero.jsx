@@ -85,7 +85,7 @@ export default function Hero({ lang }) {
               download={lang === 'es' ? personalInfo.cvFileName : personalInfo.cvFileNameEn}
               className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-all"
             >
-              <Download className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+              <Download className="w-4 h-4 text-emerald-700 dark:text-emerald-400" />
               <span>{t.ctaCv}</span>
             </a>
 
@@ -110,6 +110,7 @@ export default function Hero({ lang }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   title="LinkedIn"
+                  aria-label="LinkedIn"
                   className="p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all"
                 >
                   <Linkedin className="w-4 h-4" />
@@ -122,6 +123,7 @@ export default function Hero({ lang }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   title="GitHub"
+                  aria-label="GitHub"
                   className="p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all"
                 >
                   <Github className="w-4 h-4" />
@@ -132,18 +134,19 @@ export default function Hero({ lang }) {
                 type="button"
                 onClick={handleCopyEmail}
                 title="Copiar email"
+                aria-label={lang === 'es' ? `Copiar ${personalInfo.email}` : `Copy ${personalInfo.email}`}
                 className="inline-flex items-center gap-2 px-3.5 py-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-xs font-mono text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all"
               >
                 {copiedEmail ? (
                   <>
-                    <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                    <span className="text-emerald-600 dark:text-emerald-400">
+                    <Check className="w-4 h-4 text-emerald-700 dark:text-emerald-400" />
+                    <span className="text-emerald-700 dark:text-emerald-400">
                       {lang === 'es' ? 'Copiado' : 'Copied'}
                     </span>
                   </>
                 ) : (
                   <>
-                    <Copy className="w-4 h-4 text-zinc-400" />
+                    <Copy className="w-4 h-4 text-zinc-500" />
                     <span>{personalInfo.email}</span>
                   </>
                 )}
@@ -165,7 +168,7 @@ export default function Hero({ lang }) {
               <div className="mt-1 text-sm font-semibold text-zinc-800 dark:text-zinc-300">
                 {metric.label}
               </div>
-              <p className="mt-2 text-xs text-zinc-500 leading-relaxed">
+              <p className="mt-2 text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
                 {metric.detail}
               </p>
             </div>

@@ -87,6 +87,7 @@ export default function Navbar({ lang, setLang, theme, toggleTheme }) {
               <button
                 type="button"
                 onClick={() => setLang('es')}
+                aria-label="ES - Cambiar idioma a Español"
                 className={`px-2 py-1 rounded-lg text-xs font-bold transition-all ${
                   lang === 'es'
                     ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950'
@@ -98,6 +99,7 @@ export default function Navbar({ lang, setLang, theme, toggleTheme }) {
               <button
                 type="button"
                 onClick={() => setLang('en')}
+                aria-label="EN - Switch language to English"
                 className={`px-2 py-1 rounded-lg text-xs font-bold transition-all ${
                   lang === 'en'
                     ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950'
@@ -163,6 +165,7 @@ export default function Navbar({ lang, setLang, theme, toggleTheme }) {
             <button
               type="button"
               onClick={toggleTheme}
+              aria-label={isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
               className="p-2 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300"
             >
               {isDark ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4" />}
@@ -171,6 +174,7 @@ export default function Navbar({ lang, setLang, theme, toggleTheme }) {
             <button
               type="button"
               onClick={() => setLang(lang === 'es' ? 'en' : 'es')}
+              aria-label={lang === 'es' ? 'Cambiar idioma a Inglés' : 'Switch to Spanish'}
               className="px-2.5 py-1.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-xs font-bold text-zinc-800 dark:text-zinc-200"
             >
               {lang.toUpperCase()}
@@ -179,6 +183,8 @@ export default function Navbar({ lang, setLang, theme, toggleTheme }) {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? 'Cerrar menú' : 'Abrir menú de navegación'}
+              aria-expanded={mobileMenuOpen}
               className="p-2 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}

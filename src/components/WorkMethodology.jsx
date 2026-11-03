@@ -11,7 +11,7 @@ export default function WorkMethodology({ lang }) {
     <section id="metodologia" className="py-24 border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mb-14">
-          <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-sky-600 dark:text-sky-400 font-semibold mb-2">
+          <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-sky-700 dark:text-sky-400 font-semibold mb-2">
             <Layers className="w-3.5 h-3.5" />
             <span>{t.tag}</span>
           </div>
@@ -33,11 +33,11 @@ export default function WorkMethodology({ lang }) {
               >
                 <div>
                   <div className="flex items-center justify-between mb-5">
-                    <span className="text-2xl font-bold font-mono text-zinc-400 dark:text-zinc-600">
+                    <span className="text-2xl font-bold font-mono text-zinc-500 dark:text-zinc-500">
                       {step.number}
                     </span>
                     <div className="w-9 h-9 rounded-xl bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 flex items-center justify-center text-zinc-700 dark:text-zinc-300 shadow-xs">
-                      <Icon className="w-4 h-4 text-sky-600 dark:text-sky-400" />
+                      <Icon className="w-4 h-4 text-sky-700 dark:text-sky-400" />
                     </div>
                   </div>
 

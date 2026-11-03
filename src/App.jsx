@@ -36,6 +36,28 @@ export default function App() {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
 
+  const [contactSubject, setContactSubject] = useState('');
+
+  const handleSelectDemo = (projectName) => {
+    const subjectPrefix = lang === 'es' ? 'Solicitud de Demo - ' : 'Demo Request - ';
+    setContactSubject(`${subjectPrefix}${projectName}`);
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const contactSection = document.getElementById('contacto');
+    if (contactSection) {
+      contactSection.scrollIntoView({
+        behavior: prefersReducedMotion ? 'auto' : 'smooth',
+      });
+    }
+
+    setTimeout(() => {
+      const messageInput = document.getElementById('contact-message');
+      if (messageInput) {
+        messageInput.focus();
+      }
+    }, prefersReducedMotion ? 50 : 350);
+  };
+
   return (
     <div className="min-h-screen bg-[#fafafa] dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 flex flex-col font-sans antialiased transition-colors duration-300">
       {/* Header con switch de idioma (ES/EN) y switch de tema (Dark/Light) */}
@@ -49,12 +71,16 @@ export default function App() {
       {/* Flujo principal bilingüe con soporte completo de tema */}
       <main className="flex-grow">
         <Hero lang={lang} />
-        <Projects lang={lang} />
+        <Projects lang={lang} onSelectDemo={handleSelectDemo} />
         <Skills lang={lang} />
         <RoiCalculator lang={lang} />
         <WorkMethodology lang={lang} />
         <Experience lang={lang} />
-        <Contact lang={lang} />
+        <Contact
+          lang={lang}
+          contactSubject={contactSubject}
+          onClearSubject={() => setContactSubject('')}
+        />
       </main>
 
       {/* Pie de página */}

@@ -56,6 +56,7 @@ export default function Footer({ lang }) {
 
             <a
               href={`mailto:${personalInfo.email}`}
+              aria-label={lang === 'es' ? 'Enviar correo electrónico a Juan Manuel Varela' : 'Send email to Juan Manuel Varela'}
               className="p-2 rounded-lg text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
             >
               <Mail className="w-4 h-4" />
