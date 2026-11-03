@@ -95,6 +95,9 @@ export const content = {
       flagshipBadge: 'Proyecto destacado',
       flagshipMetricsTitle: 'Métricas de Arquitectura & Negocio',
       flagshipPipelineTitle: 'Pipeline Operativo Automatizado',
+      engineeringLabel: 'Decisiones que el código fija',
+      privacyNote:
+        'Repositorio privado: contiene datos de clientes. La demo muestra la arquitectura, no la cartera.',
       items: [
         {
           id: 'agente-cobranzas-ia',
@@ -125,8 +128,8 @@ export const content = {
             },
             {
               value: '16 Tests',
-              label: 'Cobertura Pytest en CI',
-              detail: 'Validación de scoring, guardrails y sanitización',
+              label: 'Casos de pytest',
+              detail: 'Segmentos, prioridad y fallback si la IA falla',
             },
             {
               value: '100% Offline',
@@ -139,6 +142,11 @@ export const content = {
             { step: '02', name: 'Scoring 0–100', desc: 'Ponderación de riesgo' },
             { step: '03', name: 'Guardrails', desc: 'Validación anti-alucinación' },
             { step: '04', name: 'WhatsApp/Email', desc: 'Mensaje listo para envío' },
+          ],
+          engineering: [
+            'agente/riesgo.py deja el puntaje 0–100 en factores visibles: 40% atraso, 25% saldo, 20% historial y 15% promesas.',
+            'agente/redactor.py descarta la respuesta si amenaza, no respeta el importe o no devuelve JSON, y usa la plantilla.',
+            '16 casos de pytest fijan segmentos, prioridad y ese fallback. Corren en local; el repo no publica un pipeline de CI.',
           ],
           tags: ['Python', 'Streamlit', 'Claude API', 'Pytest', 'Scoring de Riesgo', 'Offline Fallback'],
           isPublic: true,
@@ -163,6 +171,11 @@ export const content = {
             '97.2% de imputación automática sobre extractos de prueba y reducción del tiempo de conciliación de días a segundos.',
           impactMetric:
             '97.2% de imputación automática sobre extractos de prueba y reducción del tiempo de conciliación de días a segundos.',
+          engineering: [
+            'conciliador/core.py aplica las reglas de la más segura a la más flexible: número de factura, CUIT, nombre difuso, pago agrupado y parcial FIFO.',
+            'Un parecido ambiguo no se imputa. El pago parcial queda para revisar. Los débitos se ignoran.',
+            '11 tests exigen más del 90% en el dataset de prueba (el README mide 97,2% del importe) y que cada factura se use una sola vez.',
+          ],
           tags: ['Python', 'Pandas', 'RapidFuzz', 'openpyxl', 'Pytest'],
           isPublic: true,
           isPrivate: false,
@@ -489,6 +502,9 @@ export const content = {
       flagshipBadge: 'Featured project',
       flagshipMetricsTitle: 'Architecture & Business Metrics',
       flagshipPipelineTitle: 'Automated Operations Pipeline',
+      engineeringLabel: 'Decisions the code locks in',
+      privacyNote:
+        'Private repository: it holds client data. A demo shows the architecture, not the customer book.',
       items: [
         {
           id: 'agente-cobranzas-ia',
@@ -519,8 +535,8 @@ export const content = {
             },
             {
               value: '16 Tests',
-              label: 'Pytest Suite in CI',
-              detail: 'Scoring validation, prompt guardrails, and sanitization',
+              label: 'Pytest cases',
+              detail: 'Segments, priority, and fallback when the model fails',
             },
             {
               value: '100% Offline',
@@ -533,6 +549,11 @@ export const content = {
             { step: '02', name: '0–100 Scoring', desc: 'Risk-weighted grading' },
             { step: '03', name: 'Guardrails', desc: 'Anti-hallucination check' },
             { step: '04', name: 'WhatsApp/Email', desc: 'Production-ready dispatch' },
+          ],
+          engineering: [
+            'agente/riesgo.py keeps the 0–100 score explainable: 40% days overdue, 25% balance, 20% history, 15% broken promises.',
+            'agente/redactor.py rejects a draft that threatens, misses the amount, or is not JSON, then uses the template.',
+            '16 pytest cases lock the segments, the sort order, and that fallback. They run locally; the repo does not publish a CI workflow.',
           ],
           tags: ['Python', 'Streamlit', 'Claude API', 'Pytest', 'Credit Risk', 'Offline Fallback'],
           isPublic: true,
@@ -557,6 +578,11 @@ export const content = {
             '97.2% automated match rate on test datasets and reduction of reconciliation time from days to seconds.',
           impactMetric:
             '97.2% automated match rate on test datasets and reduction of reconciliation time from days to seconds.',
+          engineering: [
+            'conciliador/core.py runs rules from safest to loosest: invoice number, tax ID, fuzzy name, grouped payment, and FIFO partials.',
+            'An ambiguous name match is left unmatched. Partial payments are flagged for review. Debits are ignored.',
+            '11 tests require over 90% on the sample book (the README measures 97.2% of amount) and that each invoice is used once.',
+          ],
           tags: ['Python', 'Pandas', 'RapidFuzz', 'openpyxl', 'Pytest'],
           isPublic: true,
           isPrivate: false,

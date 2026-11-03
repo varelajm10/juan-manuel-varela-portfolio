@@ -60,6 +60,9 @@ export default function Hero({ lang }) {
             <span>{t.heroCtaBanner}</span>
           </div>
 
+          <p className="mb-3 text-sm sm:text-base font-semibold tracking-tight text-sky-800 dark:text-sky-300">
+            {personalInfo.role[lang]}
+          </p>
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 leading-[1.15]">
             {t.headline}
             <span className="text-zinc-500 dark:text-zinc-400">{t.headlineSub}</span>

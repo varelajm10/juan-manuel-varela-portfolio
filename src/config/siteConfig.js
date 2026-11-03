@@ -22,7 +22,7 @@ export const siteConfig = {
   // Enlaces sociales y profesionales
   links: {
     github: 'https://github.com/varelajm10', // Confirmado
-    linkedin: null, // TODO: PEGAR_URL_LINKEDIN (Confirmar URL real por escrito antes de enlazar)
+    linkedin: 'https://www.linkedin.com/in/juan-m-varela1984',
   },
 
   // Documentos estáticos verificados en /public

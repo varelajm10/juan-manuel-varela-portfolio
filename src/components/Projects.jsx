@@ -129,6 +129,21 @@ export default function Projects({ lang, onSelectDemo }) {
                     </div>
                   </div>
 
+                  {flagshipProject.engineering?.length > 0 && (
+                    <div>
+                      <span className="font-semibold text-zinc-950 dark:text-zinc-100 block text-xs uppercase font-mono tracking-wider mb-2">
+                        {t.engineeringLabel}
+                      </span>
+                      <ul className="space-y-2 text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
+                        {flagshipProject.engineering.map((item) => (
+                          <li key={item} className="pl-3 border-l-2 border-sky-600/40">
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
                   {/* Badges del Stack Tecnológico del Flagship */}
                   <div>
                     <span className="font-semibold text-zinc-950 dark:text-zinc-100 block text-xs uppercase font-mono tracking-wider mb-2">
@@ -347,6 +362,23 @@ export default function Projects({ lang, onSelectDemo }) {
 
                 {/* Tags & Botonera Jerárquica Limpia (1 Primario + 1 Secundario Opcional) */}
                 <div className="mt-6 pt-5 border-t border-zinc-200 dark:border-zinc-800">
+                  {project.engineering?.length > 0 && (
+                    <div className="mb-4">
+                      <span className="font-semibold text-zinc-900 dark:text-zinc-200 block text-xs uppercase font-mono tracking-wider mb-2">
+                        {t.engineeringLabel}
+                      </span>
+                      <ul className="space-y-1.5 text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                        {project.engineering.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  {isPrivate && (
+                    <p className="mb-4 text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                      {t.privacyNote}
+                    </p>
+                  )}
                   <div className="flex flex-wrap gap-1.5 mb-4">
                     {project.tags.map((tag) => (
                       <span

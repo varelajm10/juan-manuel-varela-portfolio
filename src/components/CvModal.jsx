@@ -108,7 +108,7 @@ export default function CvModal({ isOpen, onClose }) {
               <span>•</span>
               <span>{personalInfo.location}</span>
               <span>•</span>
-              <span>linkedin.com/in/juan-manuel-varela</span>
+              <span>linkedin.com/in/juan-m-varela1984</span>
             </div>
           </div>
 
