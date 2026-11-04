@@ -70,35 +70,25 @@ export function buildCvDefinition(lang) {
     { text: personalInfo.role[lang], style: 'role' },
     { text: contact, style: 'contact' },
     sectionTitle(t.profile),
-    { text: plain(copy.hero.storyP1, lang), style: 'body' },
-    {
-      columns: copy.metrics.map((metric) => ({
-        stack: [
-          { text: plain(metric.value, lang), style: 'metricValue' },
-          { text: plain(metric.label, lang), style: 'metricLabel' },
-        ],
-        width: '*',
-      })),
-      columnGap: 8,
-      margin: [0, 8, 0, 0],
-    },
+    { text: plain(copy.hero.storyP1, lang), style: 'body', margin: [0, 0, 0, 4] },
+    ...copy.metrics.map((metric) => ({
+      text: [
+        { text: plain(metric.value, lang), bold: true },
+        { text: ` — ${plain(metric.label, lang)}` },
+      ],
+      style: 'body',
+      margin: [0, 1, 0, 0],
+    })),
     sectionTitle(t.experience),
   ];
 
   experience.items.forEach((item) => {
     body.push({
-      columns: [
-        {
-          text: plain(item.role, lang),
-          style: 'jobTitle',
-          width: '*',
-        },
-        {
-          text: plain(item.period, lang),
-          style: 'period',
-          width: 'auto',
-        },
+      text: [
+        { text: plain(item.role, lang), bold: true },
+        { text: `  ·  ${plain(item.period, lang)}`, color: '#52525b' },
       ],
+      style: 'jobTitle',
       margin: [0, 6, 0, 0],
     });
     body.push({
@@ -175,21 +165,10 @@ export function buildCvDefinition(lang) {
       metricLabel: { fontSize: 7.5, color: '#3f3f46', margin: [0, 1, 0, 0] },
     },
     footer: (currentPage, pageCount) => ({
-      columns: [
-        {
-          text: 'juan-manuel-varela-portfolio.vercel.app',
-          fontSize: 8,
-          color: '#71717a',
-          margin: [40, 8, 0, 0],
-        },
-        {
-          text: `${currentPage} / ${pageCount}`,
-          alignment: 'right',
-          fontSize: 8,
-          color: '#71717a',
-          margin: [0, 8, 40, 0],
-        },
-      ],
+      text: `juan-manuel-varela-portfolio.vercel.app  ·  ${currentPage} / ${pageCount}`,
+      fontSize: 8,
+      color: '#71717a',
+      margin: [40, 8, 40, 0],
     }),
     content: body,
   };
