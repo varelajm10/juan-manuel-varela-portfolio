@@ -3,12 +3,13 @@
 // ============================================================================
 
 export const siteConfig = {
+  url: 'https://jvarela.dev',
   author: {
     name: 'Juan Manuel Varela',
     initials: 'JMV',
-    phone: '+54 9 11 6042-7256',
-    whatsappNumber: '5491160427256',
-    email: 'varelajm84@outlook.com',
+    phone: '+54 9 11 3069-1984',
+    whatsappNumber: '5491130691984',
+    email: 'juan@jmvarela.dev',
     location: {
       es: 'Buenos Aires, Argentina · Remoto / Híbrido',
       en: 'Buenos Aires, Argentina · Remote / Hybrid',

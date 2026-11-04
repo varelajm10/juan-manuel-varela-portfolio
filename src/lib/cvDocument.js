@@ -168,7 +168,7 @@ export function buildCvDefinition(lang) {
       metricLabel: { fontSize: 7.5, color: '#3f3f46', margin: [0, 1, 0, 0] },
     },
     footer: (currentPage, pageCount) => ({
-      text: `juan-manuel-varela-portfolio.vercel.app  ·  ${currentPage} / ${pageCount}`,
+      text: `${personalInfo.siteUrl.replace('https://', '')}  ·  ${currentPage} / ${pageCount}`,
       fontSize: 8,
       color: '#71717a',
       margin: [40, 8, 40, 0],

@@ -12,6 +12,7 @@ export const personalInfo = {
   phone: siteConfig.author.phone,
   whatsappNumber: siteConfig.author.whatsappNumber,
   email: siteConfig.author.email,
+  siteUrl: siteConfig.url,
   linkedin: siteConfig.links.linkedin, // null / TODO
   github: siteConfig.links.github,
   cvUrl: siteConfig.documents.cvEs,
