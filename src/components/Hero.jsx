@@ -158,8 +158,8 @@ export default function Hero({ lang }) {
           <img
             src="/profile.jpg"
             alt="Juan Manuel Varela"
-            width="800"
-            height="1000"
+            width="1024"
+            height="1024"
             className="w-24 h-24 sm:w-28 sm:h-28 md:w-full md:h-auto md:aspect-square rounded-2xl object-cover object-top border border-zinc-200 dark:border-zinc-800 shadow-sm bg-zinc-100 dark:bg-zinc-900"
           />
         </div>
