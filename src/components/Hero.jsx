@@ -13,6 +13,7 @@ import {
   personalInfo,
   content,
 } from '../data/portfolioData';
+import { downloadCv } from '../lib/downloadCv';
 
 export default function Hero({ lang }) {
   const [copiedEmail, setCopiedEmail] = useState(false);
@@ -77,14 +78,14 @@ export default function Hero({ lang }) {
               <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </a>
 
-            <a
-              href={lang === 'es' ? personalInfo.cvUrl : personalInfo.cvUrlEn}
-              download={lang === 'es' ? personalInfo.cvFileName : personalInfo.cvFileNameEn}
+            <button
+              type="button"
+              onClick={() => downloadCv(lang)}
               className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-all"
             >
               <Download className="w-4 h-4 text-emerald-700 dark:text-emerald-400" />
               <span>{t.ctaCv}</span>
-            </a>
+            </button>
 
             <a
               href={whatsappUrl}

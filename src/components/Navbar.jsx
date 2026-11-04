@@ -10,6 +10,7 @@ import {
   Globe,
 } from 'lucide-react';
 import { personalInfo, content } from '../data/portfolioData';
+import { downloadCv } from '../lib/downloadCv';
 
 export default function Navbar({ lang, setLang, theme, toggleTheme }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -148,14 +149,14 @@ export default function Navbar({ lang, setLang, theme, toggleTheme }) {
             )}
 
             {/* Descarga de CV en el idioma actual */}
-            <a
-              href={lang === 'es' ? personalInfo.cvUrl : personalInfo.cvUrlEn}
-              download={lang === 'es' ? personalInfo.cvFileName : personalInfo.cvFileNameEn}
+            <button
+              type="button"
+              onClick={() => downloadCv(lang)}
               className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950 hover:bg-zinc-800 dark:hover:bg-white shadow-xs transition-all"
             >
               <Download className="w-3.5 h-3.5" />
               <span>{t.downloadCv}</span>
-            </a>
+            </button>
           </div>
 
           {/* Botones Mobile */}
@@ -214,14 +215,14 @@ export default function Navbar({ lang, setLang, theme, toggleTheme }) {
             </a>
           </div>
           <div className="pt-3 border-t border-zinc-200 dark:border-zinc-800">
-            <a
-              href={lang === 'es' ? personalInfo.cvUrl : personalInfo.cvUrlEn}
-              download={lang === 'es' ? personalInfo.cvFileName : personalInfo.cvFileNameEn}
+            <button
+              type="button"
+              onClick={() => downloadCv(lang)}
               className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950 text-xs font-semibold"
             >
               <Download className="w-4 h-4" />
               <span>{t.downloadCv}</span>
-            </a>
+            </button>
           </div>
         </div>
       )}
