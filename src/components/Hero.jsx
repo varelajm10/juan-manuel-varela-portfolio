@@ -172,7 +172,7 @@ export default function Hero({ lang }) {
               key={metric.label}
               className="p-6 rounded-2xl border border-zinc-200/90 dark:border-zinc-800/90 bg-white/80 dark:bg-zinc-900/40 backdrop-blur-sm"
             >
-              <div className="text-2xl sm:text-3xl font-bold font-mono text-zinc-900 dark:text-zinc-100">
+              <div className="text-xl sm:text-2xl font-bold font-mono leading-none tracking-tight whitespace-nowrap text-zinc-900 dark:text-zinc-100">
                 {metric.value}
               </div>
               <div className="mt-1 text-sm font-semibold text-zinc-800 dark:text-zinc-300">

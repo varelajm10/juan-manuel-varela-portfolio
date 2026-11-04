@@ -90,7 +90,7 @@ export default function Projects({ lang, onSelectDemo }) {
                   alt=""
                   width="1200"
                   height="675"
-                  className="mt-6 w-full aspect-video object-cover rounded-2xl border border-zinc-200 dark:border-zinc-800"
+                  className="project-media mt-6 w-full aspect-video object-cover rounded-2xl border border-zinc-200 dark:border-zinc-800"
                 />
               )}
 
@@ -263,7 +263,7 @@ export default function Projects({ lang, onSelectDemo }) {
         })()}
 
         {/* GRILLA SIMÉTRICA 2x2 PARA LOS 4 PROYECTOS RESTANTES */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="project-grid grid grid-cols-1 md:grid-cols-2 gap-6">
           {standardProjects.map((project) => {
             const isPrivate =
               project.isPrivate !== undefined
@@ -280,15 +280,17 @@ export default function Projects({ lang, onSelectDemo }) {
                 className="flex flex-col justify-between rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 p-6 sm:p-7 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors shadow-xs"
               >
                 <div>
-                  {project.image && (
-                    <img
-                      src={project.image}
-                      alt=""
-                      width="1200"
-                      height="675"
-                      className="mb-4 w-full aspect-video object-cover rounded-xl border border-zinc-200 dark:border-zinc-800"
-                    />
-                  )}
+                  <div className="project-media mb-4 w-full aspect-video overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900">
+                    {project.image ? (
+                      <img
+                        src={project.image}
+                        alt=""
+                        width="1200"
+                        height="675"
+                        className="h-full w-full object-cover"
+                      />
+                    ) : null}
+                  </div>
                   {/* Categoría */}
                   <div className="flex items-center justify-between gap-2 mb-4">
                     <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-mono bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700">

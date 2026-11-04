@@ -42,7 +42,7 @@ export const content = {
         'Administración, finanzas corporativas y herramientas que resuelven ',
       headlineSub: 'el trabajo manual de todos los días.',
       storyP1:
-        'Diez años en Saputo, DACAS y CNH, entre créditos, cobranzas y conciliaciones. Desde mayo de 2024 trabajo de forma independiente: CoopMora, CUBO y SECSA ya están en uso. Programo en Python para devolverle al equipo las horas que se van en planillas.',
+        'Diez años en Saputo, DACAS y CNH, entre créditos, cobranzas y conciliaciones. Desde 2024 diseño e implemento sistemas de automatización, portales internos e IA en producción (CoopMora, CUBO, SECSA e Intranet RRHH), combinando más de una década de criterio financiero y operativo con desarrollo de software. Programo en Python para devolverle al equipo las horas que se van en planillas.',
       storyP2:
         'El punto de quiebre fue el hartazgo de ver cómo los equipos queman 15 a 20 horas por semana cruzando planillas a mano, copiando datos entre sistemas y corriendo atrás de cierres interminables. Ahí decidí aprender a programar en serio: scripts en Python, consultas avanzadas en SQL y modelos en Power BI para resolver mis propios cuellos de botella operativos.',
       storyP3:
@@ -75,7 +75,7 @@ export const content = {
     ],
     projects: {
       tag: 'Casos Reales con Prueba de Negocio',
-      title: 'Herramientas construidas para resolver fricción operativa',
+      title: 'Proyectos Destacados & Sistemas en Producción',
       subtitle:
         'Cada proyecto responde a una necesidad concreta: eliminar horas manuales, evitar errores en conciliaciones o monitorear deudores en tiempo real.',
       problemLabel: 'El Problema:',
@@ -213,7 +213,7 @@ export const content = {
         {
           id: 'cubo',
           image: '/projects/cubo.jpg',
-          title: 'CUBO — Cobranzas y Aging (antigüedad de deuda)',
+          title: 'CUBO - SaaS de Créditos, Cobranzas y Aging',
           category: 'Web App & API',
           state: siteConfig.projectStates.PRIVATE_CASE,
           isPrivate: true,
@@ -224,7 +224,7 @@ export const content = {
             'Aplicación web y API (FastAPI, MongoDB) para el circuito Order-to-Cash (del pedido al cobro): seguimiento de compromisos, riesgo crediticio y antigüedad de saldos.',
           role: 'Diseño integral de arquitectura, desarrollo backend en FastAPI, modelado en MongoDB y lógica de cálculo de aging.',
           impactMetric:
-            'Automatización completa del cálculo de antigüedad de deuda y disparador de alertas de cobro.',
+            'Plataforma multiempresa en producción (10 empresas). Automatización de antigüedad de deuda (aging), alertas de cobro y agente de consultas por Telegram.',
           tags: ['Python', 'FastAPI', 'MongoDB', 'APIs REST', 'Order-to-Cash'],
           demoUrl: null,
           githubUrl: null, // Repositorio privado (Cobranzas)
@@ -234,7 +234,7 @@ export const content = {
         {
           id: 'gladys',
           image: '/projects/gladys.jpg',
-          title: 'G.L.A.D.Y.S. — Monitor de Riesgo Crediticio & Deudores',
+          title: 'G.L.A.D.Y.S. / CoopMora - Radar de Riesgo Crediticio & BCRA',
           category: 'Pipeline & Scraping',
           state: siteConfig.projectStates.PRIVATE_CASE,
           isPrivate: true,
@@ -245,7 +245,7 @@ export const content = {
             'Pipeline en Python con web scraping y procesamiento de texto que consolida alertas tempranas de insolvencia y emite reportes diarios por correo y panel en Streamlit.',
           role: 'Desarrollo de scrapers, normalización de datos y panel analítico en Streamlit.',
           impactMetric:
-            'Detección temprana de alertas de insolvencia y reducción a minutos en el monitoreo diario.',
+            'Pipeline diario automatizado que releva situación crediticia en el BCRA y alertas de concursos, procesando desvíos con LLMs para reducir el monitoreo diario a minutos.',
           tags: ['Python', 'Web Scraping', 'Streamlit', 'Alertas Automáticas', 'Scoring'],
           demoUrl: null,
           githubUrl: null, // Repositorio privado (Monitormora)
@@ -272,6 +272,26 @@ export const content = {
           githubUrl: null, // Repositorio privado (ascensort)
           summaryCase:
             'Procesa miles de líneas de registros técnicos crudos en segundos, graficando frecuencias de falla y tiempos de resolución sin requerir conexión a internet.',
+        },
+        {
+          id: 'portal-rrhh',
+          title: 'Portal Comunidad - Intranet & Autogestión de RRHH',
+          category: 'Intranet · React',
+          state: siteConfig.projectStates.PRIVATE_CASE,
+          isPrivate: true,
+          isPublic: false,
+          problem:
+            'Licencias, adelantos, comunicados y pedidos a Sistemas circulaban por mail y planillas, sin un saldo ni un estado visible para cada persona.',
+          solution:
+            'Intranet corporativa para gestionar licencias y vacaciones, adelantos de sueldo, comunicados oficiales, directorio, credencial ART y mesa de ayuda de Sistemas.',
+          role: 'Diseño y desarrollo del portal de autogestión y de los circuitos de RRHH y soporte.',
+          impactMetric:
+            'Centralización de comunicación interna y autogestión operativa: solicitud y saldo de vacaciones/licencias, adelantos de sueldo, directorio de personal, credencial ART y tickets de soporte IT.',
+          tags: ['React', 'Tailwind CSS', 'Intranet', 'RRHH'],
+          demoUrl: null,
+          githubUrl: null,
+          summaryCase:
+            'Portal Comunidad & Autogestión RRHH: intranet corporativa para gestión de licencias/vacaciones, solicitudes de adelantos de sueldo, comunicados oficiales, directorio y mesa de ayuda de Sistemas.',
         },
       ],
     },
@@ -308,7 +328,7 @@ export const content = {
             { name: 'Sistemas ERP (SAP FI/AR, Odoo)', detail: 'Operación transaccional y extracción de módulos de clientes y facturación.' },
             { name: 'FastAPI & APIs REST', detail: 'Construcción de endpoints ligeros y microservicios para intercomunicar sistemas.' },
             { name: 'Git & GitHub / Linux & Bash', detail: 'Control de versiones, trabajo estructurado y ejecución de rutinas en servidores.' },
-            { name: 'React básico & Tailwind CSS', detail: 'Desarrollo de interfaces de usuario funcionales para portales y tableros web.' },
+            { name: 'React & Tailwind CSS', detail: 'Diseño y desarrollo de interfaces corporativas, intranets de autogestión y tableros operativos responsivos.' },
           ],
         },
       ],
@@ -374,8 +394,8 @@ export const content = {
         'Más de una década de gestión en consumo masivo, maquinaria y distribución de tecnología.',
       items: [
         {
-          role: 'Desarrollador de soluciones de automatización e IA',
-          company: 'Independiente',
+          role: 'Consultor de Automatización, Procesos & Desarrollador de Soluciones',
+          company: 'Proyectos en Producción',
           period: 'Mayo 2024 — Actualidad',
           location: 'Remoto',
           summary:
@@ -384,6 +404,7 @@ export const content = {
             'CoopMora: pipeline diario que releva cambios de situación crediticia en el BCRA y alertas de concursos, los procesa con un LLM y envía el informe al equipo de créditos.',
             'CUBO: sistema de créditos y cobranzas multiempresa, con un agente de consultas por Telegram y recordatorios de facturas. En producción, en 10 empresas.',
             'SECSA: cuentas corrientes sobre Odoo, con un LLM que asiste el análisis de saldos y vencimientos junto a un tablero de cobro.',
+            'Portal Comunidad & Autogestión RRHH: intranet corporativa para gestión de licencias/vacaciones, solicitudes de adelantos de sueldo, comunicados oficiales, directorio y mesa de ayuda de Sistemas.',
           ],
           tags: ['Python', 'LLM', 'SQL', 'Odoo'],
         },
@@ -418,7 +439,7 @@ export const content = {
         {
           role: 'Analista de Procesos y Cuentas',
           company: 'XCMG - CNH Capital (Maquinaria & Créditos)',
-          period: 'Sep 2016 — Jun 2018',
+          period: 'Oct 2016 — Jun 2018',
           location: 'Buenos Aires',
           summary:
             'Conciliaciones bancarias complejas, seguimiento de financiamiento y recupero de créditos.',
@@ -431,7 +452,7 @@ export const content = {
         {
           role: 'Analista de Reportes y Gestión Operativa',
           company: 'CCU Argentina (Consumo Masivo)',
-          period: 'Oct 2014 — Oct 2016',
+          period: 'Oct 2014 — Sep 2016',
           location: 'Buenos Aires',
           summary:
             'Confección de informes operativos de cuentas corrientes y seguimiento de desvíos con macros de Excel.',
@@ -515,7 +536,7 @@ export const content = {
         'Corporate finance, operations, and applied code solving ',
       headlineSub: 'everyday manual friction.',
       storyP1:
-        'Ten years at Saputo, DACAS, and CNH, across credit, collections, and bank reconciliations. Since May 2024 I have worked independently: CoopMora, CUBO, and SECSA are already in use. I write Python so teams get back the hours they spend on spreadsheets.',
+        'Ten years at Saputo, DACAS, and CNH, across credit, collections, and bank reconciliations. Since 2024 I have designed and shipped automation systems, internal portals, and production AI (CoopMora, CUBO, SECSA, and an HR intranet), combining more than a decade of financial and operational judgment with software development. I write Python so teams get back the hours they spend on spreadsheets.',
       storyP2:
         'The turning point was growing weary of watching teams burn 15 to 20 hours every week manually matching spreadsheets, copying records across fragmented ERPs, and scrambling through never-ending month-end closings. That led me to take programming seriously: writing robust Python scripts, advanced SQL queries, and Power BI models to solve my own team’s operational bottlenecks.',
       storyP3:
@@ -548,7 +569,7 @@ export const content = {
     ],
     projects: {
       tag: 'Real-World Business Cases',
-      title: 'Tools Engineered to Eliminate Operational Friction',
+      title: 'Featured Projects & Production Systems',
       subtitle:
         'Each project addresses an exact business pain: eliminating manual hours, avoiding reconciliation errors, or tracking debtors in real time.',
       problemLabel: 'The Problem:',
@@ -686,7 +707,7 @@ export const content = {
         {
           id: 'cubo',
           image: '/projects/cubo.jpg',
-          title: 'CUBO — Collections and Aging (age of unpaid invoices)',
+          title: 'CUBO - Credit, Collections and Aging SaaS',
           category: 'Web App & API',
           state: siteConfig.projectStates.PRIVATE_CASE,
           isPrivate: true,
@@ -697,7 +718,7 @@ export const content = {
             'Web platform and API (FastAPI, MongoDB) for the Order-to-Cash cycle (from customer order through cash collection): commitment tracking, credit risk, and invoice age.',
           role: 'Full architectural design, FastAPI backend development, MongoDB data modeling, and aging calculation logic.',
           impactMetric:
-            'Full automation of receivable aging calculations and automated collection alerts.',
+            'Multi-company platform in production (10 companies). Automated receivable aging, collection alerts, and a Telegram query assistant.',
           tags: ['Python', 'FastAPI', 'MongoDB', 'REST APIs', 'Order-to-Cash'],
           demoUrl: null,
           githubUrl: null,
@@ -707,7 +728,7 @@ export const content = {
         {
           id: 'gladys',
           image: '/projects/gladys.jpg',
-          title: 'G.L.A.D.Y.S. — Credit Risk & Debtor Monitor',
+          title: 'G.L.A.D.Y.S. / CoopMora - Credit Risk & BCRA Radar',
           category: 'Pipeline & Scraping',
           state: siteConfig.projectStates.PRIVATE_CASE,
           isPrivate: true,
@@ -718,7 +739,7 @@ export const content = {
             'Python pipeline with web scraping and automated text processing that aggregates early insolvency alerts and delivers daily email digests and Streamlit reports.',
           role: 'Web scraper development, data sanitation, and Streamlit analytics UI.',
           impactMetric:
-            'Early insolvency detection reduced from hours to minutes in daily monitoring.',
+            'A daily pipeline that checks BCRA credit status and insolvency filings, then uses an LLM to flag exceptions and cut daily monitoring to minutes.',
           tags: ['Python', 'Web Scraping', 'Streamlit', 'Automated Alerts', 'Scoring'],
           demoUrl: null,
           githubUrl: null,
@@ -745,6 +766,26 @@ export const content = {
           githubUrl: null,
           summaryCase:
             'Parses thousands of unstructured log lines in seconds, plotting failure frequencies and resolution times without requiring internet connectivity.',
+        },
+        {
+          id: 'portal-rrhh',
+          title: 'Community Portal - HR Intranet & Self-Service',
+          category: 'Intranet · React',
+          state: siteConfig.projectStates.PRIVATE_CASE,
+          isPrivate: true,
+          isPublic: false,
+          problem:
+            'Leave, salary advances, announcements, and IT requests moved through email and spreadsheets, with no visible balance or status for each person.',
+          solution:
+            'Corporate intranet for leave and vacation requests, salary advances, official announcements, a staff directory, ART credentials, and an IT help desk.',
+          role: 'Design and development of the self-service portal and the HR and support workflows.',
+          impactMetric:
+            'Centralized internal communication and self-service: vacation and leave requests with balances, salary advances, staff directory, ART credential, and IT support tickets.',
+          tags: ['React', 'Tailwind CSS', 'Intranet', 'HR'],
+          demoUrl: null,
+          githubUrl: null,
+          summaryCase:
+            'Community Portal and HR self-service: a corporate intranet for leave and vacation, salary-advance requests, official announcements, a directory, and an IT help desk.',
         },
       ],
     },
@@ -781,7 +822,7 @@ export const content = {
             { name: 'ERP Systems (SAP FI/AR, Odoo)', detail: 'Transactional operations and customer ledger extraction from core enterprise modules.' },
             { name: 'FastAPI & REST APIs', detail: 'Lightweight microservices and webhook endpoints connecting decoupled internal systems.' },
             { name: 'Git & GitHub / Linux & Bash', detail: 'Structured version control, collaborative workflows, and automated cron execution.' },
-            { name: 'Core React & Tailwind CSS', detail: 'Functional frontends and clean dashboards for internal portals and web tools.' },
+            { name: 'React & Tailwind CSS', detail: 'Design and development of corporate interfaces, self-service intranets, and responsive operational dashboards.' },
           ],
         },
       ],
@@ -847,8 +888,8 @@ export const content = {
         'Over a decade of leadership in FMCG, heavy equipment, and technology distribution.',
       items: [
         {
-          role: 'Developer of automation and applied-AI solutions',
-          company: 'Independent',
+          role: 'Automation, Process & Solutions Consultant',
+          company: 'Production Projects',
           period: 'May 2024 — Present',
           location: 'Remote',
           summary:
@@ -857,6 +898,7 @@ export const content = {
             'CoopMora: a daily pipeline that checks BCRA credit-status changes and insolvency filings, processes them with an LLM, and sends the report to the credit team.',
             'CUBO: a multi-company credit and collections system, with a Telegram assistant and invoice reminders. In production, across 10 companies.',
             'SECSA: receivables on Odoo, with an LLM assisting balance and due-date analysis next to a collections board.',
+            'Community Portal & HR Self-Service: a corporate intranet for leave and vacation requests, salary advances, official announcements, a staff directory, and an IT help desk.',
           ],
           tags: ['Python', 'LLM', 'SQL', 'Odoo'],
         },
@@ -891,7 +933,7 @@ export const content = {
         {
           role: 'Process & Receivables Analyst',
           company: 'XCMG - CNH Capital (Machinery & Financing)',
-          period: 'Sep 2016 — Jun 2018',
+          period: 'Oct 2016 — Jun 2018',
           location: 'Buenos Aires',
           summary:
             'Complex bank reconciliations, corporate financing audits, and debt recovery.',
@@ -904,7 +946,7 @@ export const content = {
         {
           role: 'Operations & Reporting Analyst',
           company: 'CCU Argentina (Beverages & FMCG)',
-          period: 'Oct 2014 — Oct 2016',
+          period: 'Oct 2014 — Sep 2016',
           location: 'Buenos Aires',
           summary:
             'Compilation of daily/monthly receivable status reports and deviation audits with Excel macros.',

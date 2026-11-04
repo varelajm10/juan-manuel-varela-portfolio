@@ -19,7 +19,7 @@ const labels = {
   },
 };
 
-function sectionTitle(text) {
+function sectionTitle(text, pageBreak) {
   return {
     stack: [
       { text, style: 'section' },
@@ -38,7 +38,8 @@ function sectionTitle(text) {
         margin: [0, 2, 0, 6],
       },
     ],
-    margin: [0, 12, 0, 0],
+    margin: [0, pageBreak ? 0 : 10, 0, 0],
+    pageBreak,
   };
 }
 
@@ -73,7 +74,7 @@ export function buildCvDefinition(lang) {
     { text: plain(copy.hero.storyP1, lang), style: 'body', margin: [0, 0, 0, 4] },
     ...copy.metrics.map((metric) => ({
       text: [
-        { text: plain(metric.value, lang), bold: true },
+        { text: plain(metric.value, lang), bold: true, noWrap: true },
         { text: ` — ${plain(metric.label, lang)}` },
       ],
       style: 'body',
@@ -89,7 +90,7 @@ export function buildCvDefinition(lang) {
         { text: `  ·  ${plain(item.period, lang)}`, color: '#52525b' },
       ],
       style: 'jobTitle',
-      margin: [0, 6, 0, 0],
+      margin: [0, 4, 0, 0],
     });
     body.push({
       text: plain(`${item.company} · ${item.location}`, lang),
@@ -102,11 +103,11 @@ export function buildCvDefinition(lang) {
     });
   });
 
-  body.push(sectionTitle(t.education));
+  const educationBlocks = [sectionTitle(t.education)];
   education.items.forEach((item) => {
     const place = item.place ? ` — ${item.place}` : '';
     const detail = item.detail ? `. ${item.detail}` : '';
-    body.push({
+    educationBlocks.push({
       text: [
         { text: plain(item.name, lang), bold: true },
         { text: plain(`${place}${detail}`, lang) },
@@ -116,15 +117,15 @@ export function buildCvDefinition(lang) {
     });
   });
 
-  body.push(sectionTitle(t.projects));
+  body.push(sectionTitle(t.projects, 'before'));
   copy.projects.items.forEach((project) => {
-    body.push({ text: plain(project.title, lang), style: 'jobTitle', margin: [0, 4, 0, 0] });
+    body.push({ text: plain(project.title, lang), style: 'jobTitle', margin: [0, 3, 0, 0] });
     body.push({ text: plain(project.impact || project.impactMetric, lang), style: 'body' });
   });
 
   body.push(sectionTitle(t.skills));
   copy.skills.blocks.forEach((block) => {
-    body.push({ text: plain(block.category, lang), style: 'jobTitle', margin: [0, 4, 0, 1] });
+    body.push({ text: plain(block.category, lang), style: 'jobTitle', margin: [0, 3, 0, 1] });
     block.items.forEach((item) => {
       body.push({
         text: [
@@ -137,9 +138,11 @@ export function buildCvDefinition(lang) {
     });
   });
 
+  body.push(...educationBlocks);
+
   return {
     pageSize: 'A4',
-    pageMargins: [40, 40, 40, 48],
+    pageMargins: [36, 32, 36, 40],
     info: {
       title: `${personalInfo.name} — CV`,
       author: personalInfo.name,
@@ -147,20 +150,20 @@ export function buildCvDefinition(lang) {
     },
     defaultStyle: {
       font: 'Roboto',
-      fontSize: 9,
+      fontSize: 8.5,
       color: '#18181b',
-      lineHeight: 1.25,
+      lineHeight: 1.12,
     },
     styles: {
       name: { fontSize: 18, bold: true, color: '#09090b' },
       role: { fontSize: 11, color: '#0369a1', margin: [0, 2, 0, 4] },
       contact: { fontSize: 8, color: '#52525b' },
       section: { fontSize: 11, bold: true, color: '#09090b' },
-      body: { fontSize: 9, color: '#27272a' },
+      body: { fontSize: 8.5, color: '#27272a' },
       jobTitle: { fontSize: 10, bold: true, color: '#09090b' },
       period: { fontSize: 8, color: '#52525b', alignment: 'right' },
       meta: { fontSize: 8.5, color: '#3f3f46', margin: [0, 1, 0, 0] },
-      bullet: { fontSize: 9, color: '#27272a' },
+      bullet: { fontSize: 8.5, color: '#27272a' },
       metricValue: { fontSize: 11, bold: true, color: '#09090b' },
       metricLabel: { fontSize: 7.5, color: '#3f3f46', margin: [0, 1, 0, 0] },
     },

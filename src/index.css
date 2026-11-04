@@ -59,3 +59,45 @@ html.dark ::-webkit-scrollbar-thumb {
 html.dark ::-webkit-scrollbar-thumb:hover {
   background: #3f3f46;
 }
+
+@media print {
+  header,
+  footer,
+  #contacto {
+    display: none !important;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #sobre-mi { order: 1; }
+  #trayectoria { order: 2; }
+  #proyectos { order: 3; break-before: page; }
+  #habilidades { order: 4; }
+  #formacion { order: 5; }
+
+  #sobre-mi,
+  #trayectoria,
+  #proyectos,
+  #habilidades,
+  #formacion {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+
+  #proyectos .project-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  #proyectos .project-media {
+    display: none !important;
+  }
+
+  #proyectos article {
+    break-inside: avoid;
+    padding: 0.75rem !important;
+  }
+}

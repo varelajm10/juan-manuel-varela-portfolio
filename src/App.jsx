@@ -67,7 +67,7 @@ export default function App() {
       />
 
       {/* Flujo principal bilingüe con soporte completo de tema */}
-      <main className="flex-grow">
+      <main className="flex-grow flex flex-col">
         <Hero lang={lang} />
         <Projects lang={lang} onSelectDemo={handleSelectDemo} />
         <Skills lang={lang} />

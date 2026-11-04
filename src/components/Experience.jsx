@@ -6,7 +6,8 @@ export default function Experience({ lang }) {
   const t = content[lang].experience;
 
   return (
-    <section id="trayectoria" className="py-24 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950">
+    <>
+    <section id="trayectoria" className="pt-24 pb-10 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mb-14">
           <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-sky-700 dark:text-sky-400 font-semibold mb-2">
@@ -81,12 +82,15 @@ export default function Experience({ lang }) {
             </div>
           ))}
         </div>
-
+      </div>
+    </section>
+    <section id="formacion" className="pb-24 bg-zinc-50 dark:bg-zinc-950">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {t.education && (
-          <div className="mt-16">
-            <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+          <div>
+            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
               {t.education.title}
-            </h3>
+            </h2>
             <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
               {t.education.items.map((item) => (
                 <li
@@ -113,5 +117,6 @@ export default function Experience({ lang }) {
         )}
       </div>
     </section>
+    </>
   );
 }
