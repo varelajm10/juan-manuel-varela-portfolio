@@ -287,7 +287,7 @@ export default function Projects({ lang, onSelectDemo }) {
                         alt={project.imageAlt || ''}
                         width="1200"
                         height="675"
-                        className={project.imageFit === 'contain' ? 'h-full w-full object-contain p-4 bg-white' : 'h-full w-full object-cover'}
+                        className={project.imageFit === 'contain' ? `h-full w-full object-contain bg-white ${project.imagePad === false ? '' : 'p-4'}` : 'h-full w-full object-cover'}
                       />
                     ) : null}
                   </div>

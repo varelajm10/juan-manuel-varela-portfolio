@@ -119,7 +119,17 @@ export default function ProjectDetailModal({ isOpen, onClose, project, lang = 'e
           aria-label={isEs ? 'Detalles del proyecto desplazables' : 'Scrollable project details'}
           className="p-6 sm:p-8 overflow-y-auto space-y-6 text-sm text-zinc-700 dark:text-zinc-300 focus-visible:outline-none"
         >
-          {project.image && project.imageFit === 'contain' && (
+          {project.image && project.imageRole === 'screenshot' && (
+            <img
+              src={project.image}
+              alt={project.imageAlt || ''}
+              width="1024"
+              height="454"
+              className="w-full rounded-xl border border-zinc-200 bg-white dark:border-zinc-800"
+            />
+          )}
+
+          {project.image && project.imageRole === 'logo' && (
             <div className="rounded-xl border border-zinc-200 bg-white px-6 py-5 dark:border-zinc-800">
               <img
                 src={project.image}
