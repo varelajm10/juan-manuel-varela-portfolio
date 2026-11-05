@@ -3,6 +3,7 @@ import {
   Mail,
   Linkedin,
   Github,
+  Download,
   Send,
   CheckCircle2,
   Copy,
@@ -11,9 +12,11 @@ import {
   MessageCircle,
 } from 'lucide-react';
 import { personalInfo, content } from '../data/portfolioData';
+import { downloadCv } from '../lib/downloadCv';
 
 export default function Contact({ lang, contactSubject = '', onClearSubject }) {
   const t = content[lang].contact;
+  const ui = content[lang].ui;
 
   const [formData, setFormData] = useState({
     name: '',
@@ -127,9 +130,9 @@ export default function Contact({ lang, contactSubject = '', onClearSubject }) {
                 <button
                   type="button"
                   onClick={handleCopyEmail}
-                  aria-label={lang === 'es' ? 'Copiar dirección de email' : 'Copy email address'}
+                  aria-label={ui.copyEmailAddress}
                   className="p-2 text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-200"
-                  title="Copiar email"
+                  title={ui.copyEmail}
                 >
                   {copiedEmail ? (
                     <Check className="w-4 h-4 text-emerald-700 dark:text-emerald-400" />
@@ -178,6 +181,22 @@ export default function Contact({ lang, contactSubject = '', onClearSubject }) {
                   </div>
                 </a>
               )}
+
+              <button
+                type="button"
+                onClick={() => downloadCv(lang)}
+                className="flex w-full items-center gap-3.5 p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors text-left"
+              >
+                <div className="w-9 h-9 rounded-lg bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-400 flex items-center justify-center">
+                  <Download className="w-4 h-4" />
+                </div>
+                <div>
+                  <div className="text-[11px] font-mono text-zinc-500">CV</div>
+                  <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-200">
+                    {content[lang].nav.downloadCv}
+                  </div>
+                </div>
+              </button>
             </div>
           </div>
 

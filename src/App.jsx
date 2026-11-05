@@ -8,9 +8,14 @@ import Skills from './components/Skills';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import { content } from './data/portfolioData';
 
 export default function App() {
-  const [lang, setLang] = useState('es');
+  const [lang, setLang] = useState(() => {
+    if (typeof window === 'undefined') return 'es';
+    const saved = localStorage.getItem('lang');
+    return saved === 'en' || saved === 'es' ? saved : 'es';
+  });
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('theme');
@@ -31,6 +36,20 @@ export default function App() {
       localStorage.setItem('theme', 'light');
     }
   }, [theme]);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    root.lang = lang;
+    localStorage.setItem('lang', lang);
+
+    const seo = content[lang].seo;
+    document.title = seo.title;
+    document.querySelector('meta[name="description"]')?.setAttribute('content', seo.description);
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', seo.title);
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', seo.description);
+    document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', seo.title);
+    document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', seo.description);
+  }, [lang]);
 
   const toggleTheme = () => {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
@@ -71,9 +90,9 @@ export default function App() {
       {/* Flujo principal bilingüe con soporte completo de tema */}
       <main className="flex-grow flex flex-col">
         <Hero lang={lang} />
-        <ToolMarquee lang={lang} />
         <Services lang={lang} />
         <Projects lang={lang} onSelectDemo={handleSelectDemo} />
+        <ToolMarquee lang={lang} />
         <Skills lang={lang} />
         <Experience lang={lang} />
         <Contact

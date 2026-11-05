@@ -9,7 +9,6 @@ import {
   Sparkles,
   ArrowRight,
   CheckCircle2,
-  Cpu,
 } from 'lucide-react';
 import { content } from '../data/portfolioData';
 import ProjectDetailModal from './ProjectDetailModal';
@@ -103,7 +102,7 @@ export default function Projects({ lang, onSelectDemo }) {
                       {flagshipProject.title}
                     </h3>
 
-                    <div className="mt-5 space-y-4 text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
+                    <div className="mt-5 space-y-4 text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
                       <div>
                         <span className="font-semibold text-zinc-950 dark:text-zinc-100 block text-xs uppercase font-mono tracking-wider mb-1">
                           {t.problemLabel}
@@ -111,13 +110,39 @@ export default function Projects({ lang, onSelectDemo }) {
                         <p>{flagshipProject.problem}</p>
                       </div>
 
+                      {flagshipProject.summaryCase && (
+                        <div>
+                          <span className="font-semibold text-zinc-950 dark:text-zinc-100 block text-xs uppercase font-mono tracking-wider mb-1">
+                            {t.valueLabel}
+                          </span>
+                          <p>{flagshipProject.summaryCase}</p>
+                        </div>
+                      )}
+
+                      {(flagshipProject.impact || flagshipProject.impactMetric) && (
+                        <div>
+                          <span className="font-semibold text-zinc-950 dark:text-zinc-100 block text-xs uppercase font-mono tracking-wider mb-1">
+                            {t.impactLabel}
+                          </span>
+                          <p>{flagshipProject.impact || flagshipProject.impactMetric}</p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-5">
+                  <details className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/80 dark:bg-zinc-950/40 p-4 sm:p-5">
+                    <summary className="cursor-pointer text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+                      {t.techToggle}
+                    </summary>
+                    <div className="mt-5 space-y-5 text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
                       <div>
                         <span className="font-semibold text-zinc-950 dark:text-zinc-100 block text-xs uppercase font-mono tracking-wider mb-1">
                           {t.solutionLabel}
                         </span>
                         <p>{flagshipProject.solution}</p>
                       </div>
-
                       {flagshipProject.role && (
                         <div>
                           <span className="font-semibold text-zinc-950 dark:text-zinc-100 block text-xs uppercase font-mono tracking-wider mb-1">
@@ -126,96 +151,90 @@ export default function Projects({ lang, onSelectDemo }) {
                           <p>{flagshipProject.role}</p>
                         </div>
                       )}
-                    </div>
-                  </div>
-
-                  {flagshipProject.engineering?.length > 0 && (
-                    <div>
-                      <span className="font-semibold text-zinc-950 dark:text-zinc-100 block text-xs uppercase font-mono tracking-wider mb-2">
-                        {t.engineeringLabel}
-                      </span>
-                      <ul className="space-y-2 text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
-                        {flagshipProject.engineering.map((item) => (
-                          <li key={item} className="pl-3 border-l-2 border-sky-600/40">
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {/* Badges del Stack Tecnológico del Flagship */}
-                  <div>
-                    <span className="font-semibold text-zinc-950 dark:text-zinc-100 block text-xs uppercase font-mono tracking-wider mb-2">
-                      {t.stackLabel}
-                    </span>
-                    <div className="flex flex-wrap gap-2">
-                      {flagshipProject.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-2.5 py-1 rounded-lg text-xs font-mono bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-700 font-medium"
-                        >
-                          {tag}
+                      {flagshipProject.engineering?.length > 0 && (
+                        <div>
+                          <span className="font-semibold text-zinc-950 dark:text-zinc-100 block text-xs uppercase font-mono tracking-wider mb-2">
+                            {t.engineeringLabel}
+                          </span>
+                          <ul className="space-y-2">
+                            {flagshipProject.engineering.map((item) => (
+                              <li key={item} className="pl-3 border-l-2 border-sky-600/40">
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                      <div>
+                        <span className="font-semibold text-zinc-950 dark:text-zinc-100 block text-xs uppercase font-mono tracking-wider mb-2">
+                          {t.stackLabel}
                         </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Columna Derecha: Métricas Clave y Pipeline Visual */}
-                <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
-                  {/* Cuadrícula de 4 Métricas Clave */}
-                  <div>
-                    <span className="font-semibold text-zinc-950 dark:text-zinc-100 block text-xs uppercase font-mono tracking-wider mb-3">
-                      {t.flagshipMetricsTitle}
-                    </span>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      {flagshipProject.flagshipMetrics?.map((metric, idx) => (
-                        <div
-                          key={idx}
-                          className="p-3.5 rounded-xl bg-zinc-50 dark:bg-zinc-950/70 border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between"
-                        >
-                          <span className="text-sm sm:text-base font-bold font-mono text-sky-800 dark:text-sky-300">
-                            {metric.value}
-                          </span>
-                          <span className="text-xs font-semibold text-zinc-900 dark:text-zinc-200 mt-1">
-                            {metric.label}
-                          </span>
-                          <span className="text-[11px] text-zinc-600 dark:text-zinc-400 mt-0.5 leading-tight">
-                            {metric.detail}
-                          </span>
+                        <div className="flex flex-wrap gap-2">
+                          {flagshipProject.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="px-2.5 py-1 rounded-lg text-xs font-mono bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 border border-zinc-200 dark:border-zinc-700 font-medium"
+                            >
+                              {tag}
+                            </span>
+                          ))}
                         </div>
-                      ))}
+                      </div>
                     </div>
-                  </div>
-
-                  {/* Mini-Pipeline de Arquitectura */}
-                  <div className="p-4 rounded-xl bg-zinc-50/80 dark:bg-zinc-950/80 border border-zinc-200 dark:border-zinc-800">
-                    <span className="font-semibold text-zinc-950 dark:text-zinc-100 block text-xs uppercase font-mono tracking-wider mb-3 flex items-center gap-1.5">
-                      <Cpu className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400" />
-                      <span>{t.flagshipPipelineTitle}</span>
-                    </span>
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center">
-                      {flagshipProject.pipeline?.map((step, idx) => (
-                        <div
-                          key={idx}
-                          className="relative p-2 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800"
-                        >
-                          <span className="text-[10px] font-mono font-bold text-sky-700 dark:text-sky-400 block">
-                            {step.step}
-                          </span>
-                          <span className="text-xs font-bold text-zinc-900 dark:text-zinc-200 block mt-0.5 leading-tight">
-                            {step.name}
-                          </span>
-                          <span className="text-[10px] text-zinc-500 dark:text-zinc-400 block leading-tight mt-0.5">
-                            {step.desc}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                  </details>
                 </div>
               </div>
+
+              {(flagshipProject.flagshipMetrics?.length > 0 || flagshipProject.pipeline?.length > 0) && (
+                <div className="mt-6">
+                  <details className="rounded-2xl border border-zinc-200 dark:border-zinc-800 p-4 sm:p-5">
+                    <summary className="cursor-pointer text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+                      {t.flagshipMetricsTitle}
+                    </summary>
+                    <div className="mt-5 space-y-6">
+                      {flagshipProject.flagshipMetrics?.length > 0 && (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          {flagshipProject.flagshipMetrics.map((metric) => (
+                            <div key={metric.label}>
+                              <span className="text-sm font-bold font-mono text-sky-800 dark:text-sky-300">
+                                {metric.value}
+                              </span>
+                              <span className="block text-xs font-semibold text-zinc-900 dark:text-zinc-200 mt-1">
+                                {metric.label}
+                              </span>
+                              <span className="block text-[11px] text-zinc-600 dark:text-zinc-400 mt-0.5 leading-tight">
+                                {metric.detail}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                      {flagshipProject.pipeline?.length > 0 && (
+                        <div>
+                          <span className="font-semibold text-zinc-950 dark:text-zinc-100 block text-xs uppercase font-mono tracking-wider mb-3">
+                            {t.flagshipPipelineTitle}
+                          </span>
+                          <ol className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm">
+                            {flagshipProject.pipeline.map((step) => (
+                              <li key={step.step}>
+                                <span className="text-[10px] font-mono font-bold text-sky-700 dark:text-sky-400 block">
+                                  {step.step}
+                                </span>
+                                <span className="font-semibold text-zinc-900 dark:text-zinc-200 block mt-0.5">
+                                  {step.name}
+                                </span>
+                                <span className="text-xs text-zinc-500 dark:text-zinc-400 block">
+                                  {step.desc}
+                                </span>
+                              </li>
+                            ))}
+                          </ol>
+                        </div>
+                      )}
+                    </div>
+                  </details>
+                </div>
+              )}
 
               {/* Botonera Principal del Flagship */}
               <div className="mt-8 pt-6 border-t border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">

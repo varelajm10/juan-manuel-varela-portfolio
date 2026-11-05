@@ -26,6 +26,7 @@ export const content = {
   es: {
     nav: {
       about: 'Sobre Mí',
+      solutions: 'Soluciones',
       projects: 'Proyectos',
       skills: 'Habilidades',
       simulator: 'Simulador',
@@ -34,6 +35,24 @@ export const content = {
       contact: 'Contacto',
       downloadCv: 'Descargar CV (PDF)',
     },
+    ui: {
+      toSpanish: 'ES - Cambiar idioma a Español',
+      toEnglish: 'EN - Cambiar idioma a Inglés',
+      toggleToEnglish: 'Cambiar idioma a Inglés',
+      toggleToSpanish: 'Cambiar idioma a Español',
+      themeToLight: 'Cambiar a modo claro',
+      themeToDark: 'Cambiar a modo oscuro',
+      openMenu: 'Abrir menú de navegación',
+      closeMenu: 'Cerrar menú',
+      copyEmail: 'Copiar email',
+      copyEmailAddress: 'Copiar dirección de email',
+      sendEmail: 'Enviar correo electrónico a Juan Manuel Varela',
+    },
+    seo: {
+      title: 'Juan Manuel Varela | Automatización, software e IA para empresas',
+      description:
+        'Juan Manuel Varela, profesional independiente en Buenos Aires. Desarrollo automatizaciones, aplicaciones empresariales e inteligencia artificial para reducir trabajo manual y ordenar procesos.',
+    },
     hero: {
       badge: 'Profesional independiente',
       heroCtaBanner:
@@ -41,14 +60,14 @@ export const content = {
       headline: 'Transformo problemas operativos en soluciones digitales.',
       headlineSub: '',
       subheadline:
-        'Combino más de 10 años en créditos, cobranzas y procesos con automatización, software e inteligencia artificial. Armo herramientas que sacan el trabajo manual de la operación.',
+        'Trabajé más de 10 años en créditos, cobranzas y procesos. Hoy desarrollo automatizaciones, herramientas de gestión y soluciones con inteligencia artificial para ese tipo de operación.',
       storyP1:
         'Diez años en Saputo, DACAS y CNH, entre créditos, cobranzas y conciliaciones. Desde 2024 diseño e implemento sistemas de automatización, portales internos e IA en producción (CoopMora, SECSA e Intranet RRHH), combinando más de una década de criterio financiero y operativo con desarrollo de software. Programo en Python para devolverle al equipo las horas que se van en planillas.',
       storyP2:
         'El punto de quiebre fue el hartazgo de ver cómo los equipos queman 15 a 20 horas por semana cruzando planillas a mano, copiando datos entre sistemas y corriendo atrás de cierres interminables. Ahí decidí aprender a programar en serio: scripts en Python, consultas avanzadas en SQL y modelos en Power BI para resolver mis propios cuellos de botella operativos.',
       storyP3:
         'Hoy uno esos dos mundos. No soy un desarrollador teórico ni un analista que solo hace presentaciones en PowerPoint: construyo herramientas, pipelines y tableros que funcionan en producción, le quitan el trabajo repetitivo a la gente y le devuelven tiempo al negocio para tomar decisiones estratégicas.',
-      ctaProjects: 'Conocé mis soluciones',
+      ctaProjects: 'Ver proyectos',
       ctaContact: 'Hablemos de tu proyecto',
       ctaCv: 'Descargar CV (PDF)',
       ctaWhatsapp: 'WhatsApp Directo',
@@ -87,7 +106,9 @@ export const content = {
       roleLabel: 'Mi Rol:',
       stackLabel: 'Stack Tecnológico:',
       statusLabel: 'Estado del Proyecto:',
-      btnCaseDetails: 'Ver Detalles Técnicos',
+      btnCaseDetails: 'Ver el caso',
+      valueLabel: 'Qué hace:',
+      techToggle: 'Detalle técnico',
       btnRequestDemo: 'Solicitar Demo',
       btnViewRepo: 'Ver Repositorio',
       viewCase: 'Ver resumen',
@@ -99,6 +120,22 @@ export const content = {
       flagshipMetricsTitle: 'Métricas de Arquitectura & Negocio',
       flagshipPipelineTitle: 'Pipeline Operativo Automatizado',
       engineeringLabel: 'Decisiones que el código fija',
+      modalProblem: '1. Problema de Negocio',
+      modalSolution: '2. Solución Técnica',
+      modalFeatures: 'Qué hace el sistema',
+      modalStack: '3. Stack Tecnológico',
+      modalRole: '4. Mi Rol',
+      modalImpact: '5. Impacto Medible',
+      modalStatus: 'Estado:',
+      privateProject: 'Proyecto privado',
+      codeAvailable: 'Código disponible',
+      privateDemo: 'Privado — Demostración bajo solicitud',
+      publicCode: 'Código público',
+      closeDialog: 'Cerrar ventana de detalles',
+      scrollDetails: 'Detalles del proyecto desplazables',
+      consultPrompt: 'Si te interesa el producto, escribime y lo vemos con la herramienta a la vista.',
+      demoPrompt: '¿Te interesa conocer la arquitectura o ver una demo funcional?',
+      requestDemo: 'Solicitar Demostración',
       privacyNote:
         'Repositorio privado: contiene datos de clientes. La demo muestra la arquitectura, no la cartera.',
       items: [
@@ -550,35 +587,26 @@ export const content = {
         {
           id: 'automatizacion',
           title: 'Automatización de procesos',
-          description:
-            'Automatizo tareas repetitivas, procesamiento de datos, reportes y conciliaciones para reducir el trabajo manual y mejorar la eficiencia operativa.',
-          applications: [
-            'Automatización de Excel y procesos administrativos',
-            'Conciliaciones y procesamiento de información',
-            'Reportes automáticos',
-          ],
+          problem: '¿Tu equipo pierde horas juntando Excel, armando reportes o conciliando datos a mano?',
+          solution: 'Desarrollo herramientas que hacen esas tareas de forma automática.',
+          benefit: 'Menos trabajo repetitivo en cierres, conciliaciones y reportes.',
+          tools: 'Python, Excel y SQL',
         },
         {
           id: 'aplicaciones',
-          title: 'Desarrollo de aplicaciones empresariales',
-          description:
-            'Desarrollo aplicaciones web y herramientas internas adaptadas a los procesos reales de cada empresa.',
-          applications: [
-            'Sistemas de gestión y dashboards operativos',
-            'Seguimiento de incidencias',
-            'Portales internos y autogestión',
-          ],
+          title: 'Herramientas de gestión',
+          problem: '¿La operación está repartida en planillas que no se hablan entre sí?',
+          solution: 'Armo aplicaciones y tableros internos según cómo trabaja la empresa.',
+          benefit: 'Un lugar para seguir saldos, incidencias o trámites, en lugar de perseguir archivos.',
+          tools: 'Aplicaciones web, tableros y portales internos',
         },
         {
           id: 'ia',
           title: 'Inteligencia artificial aplicada',
-          description:
-            'Integro inteligencia artificial en procesos existentes para asistir tareas de análisis, clasificación, consultas y generación de información.',
-          applications: [
-            'Agentes de IA',
-            'Análisis de documentos y datos',
-            'Auditorías y reportes asistidos',
-          ],
+          problem: '¿Hay lecturas, clasificaciones o textos que consumen tiempo y conviene asistir?',
+          solution: 'Integro inteligencia artificial en procesos que ya existen, para analizar, clasificar o redactar.',
+          benefit: 'El equipo llega antes a un borrador o una clasificación, y una persona sigue revisando el resultado.',
+          tools: 'Agentes, documentos y reportes asistidos',
         },
       ],
     },
@@ -618,6 +646,7 @@ export const content = {
   en: {
     nav: {
       about: 'About Me',
+      solutions: 'Solutions',
       projects: 'Projects',
       skills: 'Skills',
       simulator: 'Simulator',
@@ -626,6 +655,24 @@ export const content = {
       contact: 'Contact',
       downloadCv: 'Download Resume (PDF)',
     },
+    ui: {
+      toSpanish: 'ES - Switch language to Spanish',
+      toEnglish: 'EN - Switch language to English',
+      toggleToEnglish: 'Switch language to English',
+      toggleToSpanish: 'Switch language to Spanish',
+      themeToLight: 'Switch to light mode',
+      themeToDark: 'Switch to dark mode',
+      openMenu: 'Open navigation menu',
+      closeMenu: 'Close menu',
+      copyEmail: 'Copy email',
+      copyEmailAddress: 'Copy email address',
+      sendEmail: 'Send email to Juan Manuel Varela',
+    },
+    seo: {
+      title: 'Juan Manuel Varela | Automation, software and AI for companies',
+      description:
+        'Juan Manuel Varela, an independent professional in Buenos Aires. He builds automations, business applications, and AI tools that cut manual work and bring processes under control.',
+    },
     hero: {
       badge: 'Independent professional',
       heroCtaBanner:
@@ -633,15 +680,15 @@ export const content = {
       headline: 'I turn operational problems into digital tools.',
       headlineSub: '',
       subheadline:
-        'I combine 10+ years in credit, collections, and business processes with automation, software, and applied AI. I build tools that take manual work out of the operation.',
+        'I spent 10+ years in credit, collections, and business processes. I now build automations, management tools, and AI solutions for that kind of operation.',
       storyP1:
         'Ten years at Saputo, DACAS, and CNH, across credit, collections, and bank reconciliations. Since 2024 I have designed and shipped automation systems, internal portals, and production AI (CoopMora, SECSA, and an HR intranet), combining more than a decade of financial and operational judgment with software development. I write Python so teams get back the hours they spend on spreadsheets.',
       storyP2:
         'The turning point was growing weary of watching teams burn 15 to 20 hours every week manually matching spreadsheets, copying records across fragmented ERPs, and scrambling through never-ending month-end closings. That led me to take programming seriously: writing robust Python scripts, advanced SQL queries, and Power BI models to solve my own team’s operational bottlenecks.',
       storyP3:
         'Today, I bridge those two worlds. I am neither an abstract developer nor an analyst confined to PowerPoint decks: I build tools, pipelines, and dashboards that run in production, strip away repetitive grunt work, and give businesses back the time they need to make strategic decisions.',
-      ctaProjects: 'See my solutions',
-      ctaContact: "Let's talk about your project",
+      ctaProjects: 'View Projects',
+      ctaContact: "Let's Discuss Your Project",
       ctaCv: 'Download Resume (PDF)',
       ctaWhatsapp: 'Direct WhatsApp',
       metricsLabel: 'Results from my corporate experience',
@@ -679,7 +726,9 @@ export const content = {
       roleLabel: 'My Role:',
       stackLabel: 'Tech Stack:',
       statusLabel: 'Project Status:',
-      btnCaseDetails: 'Technical Details',
+      btnCaseDetails: 'See the case',
+      valueLabel: 'What it does:',
+      techToggle: 'Technical detail',
       btnRequestDemo: 'Request Demo',
       btnViewRepo: 'View Repository',
       viewCase: 'View summary',
@@ -690,7 +739,23 @@ export const content = {
       flagshipBadge: 'Featured project',
       flagshipMetricsTitle: 'Architecture & Business Metrics',
       flagshipPipelineTitle: 'Automated Operations Pipeline',
-      engineeringLabel: 'Decisions the code locks in',
+      engineeringLabel: 'What the code decides',
+      modalProblem: '1. Business problem',
+      modalSolution: '2. Technical solution',
+      modalFeatures: 'What the system does',
+      modalStack: '3. Tech stack',
+      modalRole: '4. My role',
+      modalImpact: '5. Measurable result',
+      modalStatus: 'Status:',
+      privateProject: 'Private project',
+      codeAvailable: 'Code available',
+      privateDemo: 'Private — Demo on request',
+      publicCode: 'Public code',
+      closeDialog: 'Close project details',
+      scrollDetails: 'Scrollable project details',
+      consultPrompt: 'If this product is relevant, write to me and we can look at the tool together.',
+      demoPrompt: 'Want to see how it is built, or walk through a working demo?',
+      requestDemo: 'Request a demo',
       privacyNote:
         'Private repository: it holds client data. A demo shows the architecture, not the customer book.',
       items: [
@@ -1142,35 +1207,26 @@ export const content = {
         {
           id: 'automatizacion',
           title: 'Process automation',
-          description:
-            'I automate repetitive tasks, data processing, reports, and reconciliations to reduce manual work and improve how the operation runs.',
-          applications: [
-            'Excel and administrative process automation',
-            'Reconciliations and data processing',
-            'Automatic reports',
-          ],
+          problem: 'Does your team lose hours merging Excel files, building reports, or reconciling data by hand?',
+          solution: 'I build tools that do those tasks automatically.',
+          benefit: 'Less repetitive work in closings, reconciliations, and reports.',
+          tools: 'Python, Excel, and SQL',
         },
         {
           id: 'aplicaciones',
-          title: 'Business application development',
-          description:
-            'I build web applications and internal tools adapted to each company’s actual processes.',
-          applications: [
-            'Management systems and operational dashboards',
-            'Incident tracking',
-            'Internal portals and self-service',
-          ],
+          title: 'Management tools',
+          problem: 'Is the operation split across spreadsheets that do not talk to each other?',
+          solution: 'I build internal applications and dashboards around how the company actually works.',
+          benefit: 'One place to follow balances, incidents, or internal requests, instead of chasing files.',
+          tools: 'Web applications, dashboards, and internal portals',
         },
         {
           id: 'ia',
           title: 'Applied artificial intelligence',
-          description:
-            'I add artificial intelligence to existing processes to assist analysis, classification, queries, and the production of information.',
-          applications: [
-            'AI agents',
-            'Document and data analysis',
-            'Assisted audits and reports',
-          ],
+          problem: 'Are reading, sorting, or writing tasks taking time that software could assist?',
+          solution: 'I add artificial intelligence to processes that already exist, to analyze, classify, or draft.',
+          benefit: 'The team reaches a draft or a classification sooner, and a person still reviews the result.',
+          tools: 'Agents, documents, and assisted reports',
         },
       ],
     },

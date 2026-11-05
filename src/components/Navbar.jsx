@@ -3,11 +3,8 @@ import {
   Download,
   Menu,
   X,
-  Linkedin,
-  Github,
   Sun,
   Moon,
-  Globe,
 } from 'lucide-react';
 import { personalInfo, content } from '../data/portfolioData';
 import { downloadCv } from '../lib/downloadCv';
@@ -17,6 +14,7 @@ export default function Navbar({ lang, setLang, theme, toggleTheme }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const t = content[lang].nav;
+  const ui = content[lang].ui;
   const isDark = theme === 'dark';
 
   useEffect(() => {
@@ -28,10 +26,10 @@ export default function Navbar({ lang, setLang, theme, toggleTheme }) {
   }, []);
 
   const navLinks = [
-    { name: t.about, href: '#sobre-mi' },
+    { name: t.solutions, href: '#soluciones' },
     { name: t.projects, href: '#proyectos' },
-    { name: t.skills, href: '#habilidades' },
     { name: t.experience, href: '#trayectoria' },
+    { name: t.skills, href: '#habilidades' },
   ];
 
   return (
@@ -86,7 +84,7 @@ export default function Navbar({ lang, setLang, theme, toggleTheme }) {
               <button
                 type="button"
                 onClick={() => setLang('es')}
-                aria-label="ES - Cambiar idioma a Español"
+                aria-label={ui.toSpanish}
                 className={`px-2 py-1 rounded-lg text-xs font-bold transition-all ${
                   lang === 'es'
                     ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950'
@@ -98,7 +96,7 @@ export default function Navbar({ lang, setLang, theme, toggleTheme }) {
               <button
                 type="button"
                 onClick={() => setLang('en')}
-                aria-label="EN - Switch language to English"
+                aria-label={ui.toEnglish}
                 className={`px-2 py-1 rounded-lg text-xs font-bold transition-all ${
                   lang === 'en'
                     ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950'
@@ -113,7 +111,7 @@ export default function Navbar({ lang, setLang, theme, toggleTheme }) {
             <button
               type="button"
               onClick={toggleTheme}
-              aria-label={isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+              aria-label={isDark ? ui.themeToLight : ui.themeToDark}
               className="p-2 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
             >
               {isDark ? (
@@ -123,40 +121,6 @@ export default function Navbar({ lang, setLang, theme, toggleTheme }) {
               )}
             </button>
 
-            {/* Redes */}
-            {personalInfo.linkedin && (
-              <a
-                href={personalInfo.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="p-2 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
-              >
-                <Linkedin className="w-4 h-4" />
-              </a>
-            )}
-
-            {personalInfo.github && (
-              <a
-                href={personalInfo.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-                className="p-2 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
-              >
-                <Github className="w-4 h-4" />
-              </a>
-            )}
-
-            {/* Descarga de CV en el idioma actual */}
-            <button
-              type="button"
-              onClick={() => downloadCv(lang)}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950 hover:bg-zinc-800 dark:hover:bg-white shadow-xs transition-all"
-            >
-              <Download className="w-3.5 h-3.5" />
-              <span>{t.downloadCv}</span>
-            </button>
           </div>
 
           {/* Botones Mobile */}
@@ -164,7 +128,7 @@ export default function Navbar({ lang, setLang, theme, toggleTheme }) {
             <button
               type="button"
               onClick={toggleTheme}
-              aria-label={isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+              aria-label={isDark ? ui.themeToLight : ui.themeToDark}
               className="p-2 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300"
             >
               {isDark ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4" />}
@@ -173,7 +137,7 @@ export default function Navbar({ lang, setLang, theme, toggleTheme }) {
             <button
               type="button"
               onClick={() => setLang(lang === 'es' ? 'en' : 'es')}
-              aria-label={lang === 'es' ? 'Cambiar idioma a Inglés' : 'Switch to Spanish'}
+              aria-label={lang === 'es' ? ui.toggleToEnglish : ui.toggleToSpanish}
               className="px-2.5 py-1.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-xs font-bold text-zinc-800 dark:text-zinc-200"
             >
               {lang.toUpperCase()}
@@ -182,7 +146,7 @@ export default function Navbar({ lang, setLang, theme, toggleTheme }) {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label={mobileMenuOpen ? 'Cerrar menú' : 'Abrir menú de navegación'}
+              aria-label={mobileMenuOpen ? ui.closeMenu : ui.openMenu}
               aria-expanded={mobileMenuOpen}
               className="p-2 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300"
             >

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { X, Layers, CheckCircle2, ArrowRight, ShieldCheck, ExternalLink, MessageCircle } from 'lucide-react';
-import { personalInfo } from '../data/portfolioData';
+import { personalInfo, content } from '../data/portfolioData';
 
 export default function ProjectDetailModal({ isOpen, onClose, project, lang = 'es', onSelectDemo }) {
   const modalRef = useRef(null);
@@ -58,7 +58,7 @@ export default function ProjectDetailModal({ isOpen, onClose, project, lang = 'e
 
   if (!isOpen || !project) return null;
 
-  const isEs = lang === 'es';
+  const t = content[lang].projects;
 
   return (
     <div
@@ -87,12 +87,8 @@ export default function ProjectDetailModal({ isOpen, onClose, project, lang = 'e
                   {project.statusLabel
                     ? project.statusLabel
                     : project.isPrivate
-                      ? isEs
-                        ? 'Proyecto privado'
-                        : 'Private project'
-                      : isEs
-                        ? 'Código disponible'
-                        : 'Code available'}
+                      ? t.privateProject
+                      : t.codeAvailable}
                 </span>
               </span>
             </div>
@@ -108,7 +104,7 @@ export default function ProjectDetailModal({ isOpen, onClose, project, lang = 'e
             ref={closeButtonRef}
             type="button"
             onClick={onClose}
-            aria-label={isEs ? 'Cerrar ventana de detalles' : 'Close detail dialog'}
+            aria-label={t.closeDialog}
             className="p-2 rounded-xl text-zinc-500 hover:text-zinc-950 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors shrink-0 focus-visible:outline-2 focus-visible:outline-sky-500"
           >
             <X className="w-5 h-5" />
@@ -119,7 +115,7 @@ export default function ProjectDetailModal({ isOpen, onClose, project, lang = 'e
         <div
           tabIndex={0}
           role="region"
-          aria-label={isEs ? 'Detalles del proyecto desplazables' : 'Scrollable project details'}
+          aria-label={t.scrollDetails}
           className="p-6 sm:p-8 overflow-y-auto space-y-6 text-sm text-zinc-700 dark:text-zinc-300 focus-visible:outline-none"
         >
           {project.image && project.imageRole === 'screenshot' && (
@@ -147,7 +143,7 @@ export default function ProjectDetailModal({ isOpen, onClose, project, lang = 'e
           {/* 1. Problema de Negocio */}
           <div>
             <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-400 mb-1.5">
-              {isEs ? '1. Problema de Negocio' : '1. Business Challenge'}
+              {t.modalProblem}
             </h3>
             <p className="leading-relaxed bg-zinc-50 dark:bg-zinc-950/40 p-4 rounded-xl border border-zinc-200 dark:border-zinc-800/80">
               {project.problem}
@@ -157,7 +153,7 @@ export default function ProjectDetailModal({ isOpen, onClose, project, lang = 'e
           {/* 2. Solución Técnica */}
           <div>
             <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-400 mb-1.5">
-              {isEs ? '2. Solución Técnica' : '2. Technical Solution'}
+              {t.modalSolution}
             </h3>
             <p className="leading-relaxed bg-zinc-50 dark:bg-zinc-950/40 p-4 rounded-xl border border-zinc-200 dark:border-zinc-800/80">
               {project.solution}
@@ -167,7 +163,7 @@ export default function ProjectDetailModal({ isOpen, onClose, project, lang = 'e
           {project.features?.length > 0 && (
             <div>
               <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-400 mb-2">
-                {isEs ? 'Qué hace el sistema' : 'What the system does'}
+                {t.modalFeatures}
               </h3>
               <ul className="space-y-2 leading-relaxed bg-zinc-50 dark:bg-zinc-950/40 p-4 rounded-xl border border-zinc-200 dark:border-zinc-800/80">
                 {project.features.map((item) => (
@@ -183,7 +179,7 @@ export default function ProjectDetailModal({ isOpen, onClose, project, lang = 'e
           {/* 3. Stack Tecnológico */}
           <div>
             <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-400 mb-2">
-              {isEs ? '3. Stack Tecnológico' : '3. Tech Stack'}
+              {t.modalStack}
             </h3>
             <div className="flex flex-wrap gap-2">
               {project.tags.map((tag) => (
@@ -201,7 +197,7 @@ export default function ProjectDetailModal({ isOpen, onClose, project, lang = 'e
           {project.role && (
             <div>
               <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-400 mb-1.5">
-                {isEs ? '4. Mi Rol' : '4. My Role'}
+                {t.modalRole}
               </h3>
               <p className="leading-relaxed bg-zinc-50 dark:bg-zinc-950/40 p-4 rounded-xl border border-zinc-200 dark:border-zinc-800/80">
                 {project.role}
@@ -212,7 +208,7 @@ export default function ProjectDetailModal({ isOpen, onClose, project, lang = 'e
           {project.engineering?.length > 0 && (
             <div>
               <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-400 mb-2">
-                {isEs ? 'Decisiones que el código fija' : 'Decisions the code locks in'}
+                {t.engineeringLabel}
               </h3>
               <ul className="space-y-2 leading-relaxed bg-zinc-50 dark:bg-zinc-950/40 p-4 rounded-xl border border-zinc-200 dark:border-zinc-800/80">
                 {project.engineering.map((item) => (
@@ -224,17 +220,14 @@ export default function ProjectDetailModal({ isOpen, onClose, project, lang = 'e
 
           {project.isPrivate && (
             <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
-              {project.privacyNote ||
-                (isEs
-                  ? 'Repositorio privado: contiene datos de clientes. La demo muestra la arquitectura, no la cartera.'
-                  : 'Private repository: it holds client data. A demo shows the architecture, not the customer book.')}
+              {project.privacyNote || t.privacyNote}
             </p>
           )}
 
           {project.impactMetric && (
             <div>
               <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-400 mb-1.5">
-                {isEs ? '5. Impacto Medible' : '5. Measurable Impact'}
+                {t.modalImpact}
               </h3>
               <div className="flex items-start gap-2.5 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-900 dark:text-emerald-300">
                 <CheckCircle2 className="w-5 h-5 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
@@ -245,7 +238,7 @@ export default function ProjectDetailModal({ isOpen, onClose, project, lang = 'e
 
           {/* 6. Estado */}
           <div className="pt-2 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between text-xs font-mono">
-            <span className="text-zinc-600 dark:text-zinc-400">{isEs ? 'Estado:' : 'Status:'}</span>
+            <span className="text-zinc-600 dark:text-zinc-400">{t.modalStatus}</span>
             <span className={`px-2.5 py-1 rounded-md font-bold border ${
               project.isPrivate
                 ? 'bg-amber-500/10 text-amber-700 dark:text-amber-400 border-amber-500/20'
@@ -254,12 +247,8 @@ export default function ProjectDetailModal({ isOpen, onClose, project, lang = 'e
               {project.statusLabel
                 ? project.statusLabel
                 : project.isPrivate
-                  ? isEs
-                    ? 'Privado — Demostración bajo solicitud'
-                    : 'Private — Demo available upon request'
-                  : isEs
-                    ? 'Código público'
-                    : 'Public code'}
+                  ? t.privateDemo
+                  : t.publicCode}
             </span>
           </div>
         </div>
@@ -267,13 +256,7 @@ export default function ProjectDetailModal({ isOpen, onClose, project, lang = 'e
         {/* Footer con CTA funcional (scroll a contacto) */}
         <div className="p-4 sm:p-6 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950/50 flex flex-col sm:flex-row items-center justify-between gap-3">
           <span className="text-xs text-zinc-600 dark:text-zinc-400 text-center sm:text-left">
-            {project.consultLabel
-              ? isEs
-                ? 'Si te interesa el producto, escribime y lo vemos con la herramienta a la vista.'
-                : 'If the product is relevant, write to me and we can look at the tool together.'
-              : isEs
-                ? '¿Te interesa conocer la arquitectura o ver una demo funcional?'
-                : 'Interested in architecture details or scheduling a walkthrough?'}
+            {project.consultLabel ? t.consultPrompt : t.demoPrompt}
           </span>
 
           <a
@@ -287,7 +270,7 @@ export default function ProjectDetailModal({ isOpen, onClose, project, lang = 'e
             }}
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold bg-zinc-950 hover:bg-zinc-800 text-white dark:bg-zinc-100 dark:text-zinc-950 dark:hover:bg-white shadow-xs transition-colors"
           >
-            <span>{project.consultLabel || (isEs ? 'Solicitar Demostración' : 'Request Demo')}</span>
+            <span>{project.consultLabel || t.requestDemo}</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </a>
           {project.whatsappText && (

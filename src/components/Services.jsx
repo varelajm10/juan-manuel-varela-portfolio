@@ -44,17 +44,18 @@ export default function Services({ lang }) {
                 <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 leading-snug">
                   {item.title}
                 </h3>
-                <p className="mt-3 text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
-                  {item.description}
+                <p className="mt-3 text-sm font-medium text-zinc-900 dark:text-zinc-100 leading-relaxed">
+                  {item.problem}
                 </p>
-                <ul className="mt-5 space-y-2 text-sm text-zinc-600 dark:text-zinc-400">
-                  {item.applications.map((application) => (
-                    <li key={application} className="flex items-start gap-2">
-                      <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-zinc-400 dark:bg-zinc-500" />
-                      <span>{application}</span>
-                    </li>
-                  ))}
-                </ul>
+                <p className="mt-3 text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
+                  {item.solution}
+                </p>
+                <p className="mt-3 text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
+                  {item.benefit}
+                </p>
+                <p className="mt-5 text-xs font-mono text-zinc-500 dark:text-zinc-400">
+                  {item.tools}
+                </p>
                 <a
                   href="#contacto"
                   className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-900 dark:text-zinc-100 hover:text-sky-700 dark:hover:text-sky-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"

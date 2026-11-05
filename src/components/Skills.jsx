@@ -37,26 +37,21 @@ export default function Skills({ lang }) {
                   {block.subtitle}
                 </p>
 
-                <div className="space-y-3 pt-3 border-t border-zinc-200 dark:border-zinc-800">
+                <ul className="space-y-4 pt-3 border-t border-zinc-200 dark:border-zinc-800">
                   {block.items.map((item) => (
-                    <div
-                      key={item.name}
-                      className="p-3 rounded-xl bg-white dark:bg-zinc-950/80 border border-zinc-200 dark:border-zinc-800 text-xs shadow-xs"
-                    >
-                      <div className="flex items-start gap-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
-                        <div>
-                          <div className="font-semibold text-zinc-900 dark:text-zinc-200">
-                            {item.name}
-                          </div>
-                          <p className="text-zinc-500 dark:text-zinc-400 mt-0.5 leading-relaxed">
-                            {item.detail}
-                          </p>
+                    <li key={item.name} className="flex items-start gap-2 text-xs">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+                      <div>
+                        <div className="font-semibold text-zinc-900 dark:text-zinc-200">
+                          {item.name}
                         </div>
+                        <p className="text-zinc-500 dark:text-zinc-400 mt-0.5 leading-relaxed">
+                          {item.detail}
+                        </p>
                       </div>
-                    </div>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
             </div>
           ))}
