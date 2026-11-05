@@ -255,24 +255,37 @@ export const content = {
         },
         {
           id: 'ascensort',
-          image: '/projects/ascensort.jpg',
-          title: 'AscenSort — Análisis Operativo & Control Estadístico',
-          category: 'Desktop App',
+          image: '/projects/rblca.png',
+          imageFit: 'contain',
+          imageAlt: 'RB&LCA Ascensores y Servicios Verticales',
+          client: 'RB&LCA Ascensores y Servicios Verticales',
+          title: 'AscenSort — Sistema de incidencias y auditorías con IA',
+          category: 'Sistema de incidencias',
           state: siteConfig.projectStates.PRIVATE_CASE,
           isPrivate: true,
           isPublic: false,
           problem:
-            'Fallas repetitivas sin trazabilidad en reportes de servicio técnico, falta de identificación de causas raíz y riesgo constante de incumplimiento de SLAs.',
+            'La operación necesitaba una forma más ordenada de registrar, consultar y seguir incidencias de ascensores y escaleras mecánicas, además de contar con historial y con reportes.',
           solution:
-            'Aplicación de escritorio en Python (CustomTkinter + pandas + matplotlib) para ingesta de registros masivos, métricas de mantenimiento y gráficos de control de desvíos.',
-          role: 'Desarrollo de aplicación de escritorio, ingesta de logs masivos y visualizaciones estadísticas.',
-          impactMetric:
-            'Detección inmediata de patrones de averías y generación de reportes ejecutivos automatizados.',
-          tags: ['Python', 'Pandas', 'CustomTkinter', 'Matplotlib', 'Control Estadístico'],
+            'Desarrollé un sistema para monitorear el funcionamiento de los equipos, consultar el historial, ver gráficos y generar reportes de incidencias. Como complemento, un agente de auditorías conectado a IA asiste la revisión y el control.',
+          role: 'Diseño y desarrollo del sistema de incidencias y del agente de auditorías.',
+          impact:
+            'Sistema de incidencias para el monitoreo de ascensores y escaleras mecánicas, con historial, gráficos, reportes y un agente de auditorías conectado a inteligencia artificial.',
+          features: [
+            'Registro y seguimiento de incidencias',
+            'Historial de eventos',
+            'Visualización de gráficos',
+            'Generación de reportes',
+            'Monitoreo de ascensores y escaleras mecánicas',
+            'Agente de auditorías con IA',
+          ],
+          privacyNote:
+            'Repositorio privado: contiene datos de la operación. Se puede mostrar el sistema, no los registros de los equipos.',
+          tags: ['Incidencias', 'Historial', 'Gráficos', 'Reportes', 'IA'],
           demoUrl: null,
-          githubUrl: null, // Repositorio privado (ascensort)
+          githubUrl: null,
           summaryCase:
-            'Procesa miles de líneas de registros técnicos crudos en segundos, graficando frecuencias de falla y tiempos de resolución sin requerir conexión a internet.',
+            'Sistema de incidencias para RB&LCA: registro, historial, gráficos, reportes y un agente de auditorías con IA.',
         },
         {
           id: 'portal-rrhh',
@@ -751,24 +764,37 @@ export const content = {
         },
         {
           id: 'ascensort',
-          image: '/projects/ascensort.jpg',
-          title: 'AscenSort — Operational Analysis & Statistical Control',
-          category: 'Desktop App',
+          image: '/projects/rblca.png',
+          imageFit: 'contain',
+          imageAlt: 'RB&LCA Ascensores y Servicios Verticales',
+          client: 'RB&LCA Ascensores y Servicios Verticales',
+          title: 'AscenSort — Incident system and AI-assisted audits',
+          category: 'Incident system',
           state: siteConfig.projectStates.PRIVATE_CASE,
           isPrivate: true,
           isPublic: false,
           problem:
-            'Recurring equipment failures without traceability in field reports and constant SLA compliance risks.',
+            'The operation needed a clearer way to record, look up, and follow incidents on elevators and escalators, plus history and the ability to report.',
           solution:
-            'Python desktop app (CustomTkinter + pandas + matplotlib) for massive raw event log ingestion, maintenance metrics, and statistical control charts.',
-          role: 'Desktop application development, log parser ingestion, and statistical visualization.',
-          impactMetric:
-            'Instant breakdown pattern discovery and automated executive reporting.',
-          tags: ['Python', 'Pandas', 'CustomTkinter', 'Matplotlib', 'Statistical Control'],
+            'I built a system to monitor how the equipment is running, review history, see charts, and generate incident reports. Alongside it, an audit agent connected to AI assists review and control.',
+          role: 'Design and development of the incident system and the audit agent.',
+          impact:
+            'An incident system for monitoring elevators and escalators, with history, charts, reports, and an audit agent connected to AI.',
+          features: [
+            'Incident logging and follow-up',
+            'Event history',
+            'Charts',
+            'Incident reports',
+            'Monitoring of elevators and escalators',
+            'AI audit agent',
+          ],
+          privacyNote:
+            'Private repository: it holds operational records. The system can be shown; the equipment logs stay private.',
+          tags: ['Incidents', 'History', 'Charts', 'Reports', 'AI'],
           demoUrl: null,
           githubUrl: null,
           summaryCase:
-            'Parses thousands of unstructured log lines in seconds, plotting failure frequencies and resolution times without requiring internet connectivity.',
+            'Incident system for RB&LCA: logging, history, charts, reports, and an AI audit agent.',
         },
         {
           id: 'portal-rrhh',

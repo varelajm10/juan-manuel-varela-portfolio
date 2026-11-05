@@ -280,14 +280,14 @@ export default function Projects({ lang, onSelectDemo }) {
                 className="flex flex-col justify-between rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 p-6 sm:p-7 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors shadow-xs"
               >
                 <div>
-                  <div className="project-media mb-4 w-full aspect-video overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900">
+                  <div className={`project-media mb-4 w-full aspect-video overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800 ${project.imageFit === 'contain' ? 'bg-white' : 'bg-zinc-100 dark:bg-zinc-900'}`}>
                     {project.image ? (
                       <img
                         src={project.image}
-                        alt=""
+                        alt={project.imageAlt || ''}
                         width="1200"
                         height="675"
-                        className="h-full w-full object-cover"
+                        className={project.imageFit === 'contain' ? 'h-full w-full object-contain p-4 bg-white' : 'h-full w-full object-cover'}
                       />
                     ) : null}
                   </div>
@@ -310,10 +310,15 @@ export default function Projects({ lang, onSelectDemo }) {
                   </div>
 
                   {/* Título */}
-                  <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 mb-3 leading-snug">
+                  <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 mb-1 leading-snug">
                     {project.title}
                   </h3>
-                  <p className="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
+                  {project.client && (
+                    <p className="mb-3 text-xs font-medium text-zinc-500 dark:text-zinc-400">
+                      {project.client}
+                    </p>
+                  )}
+                  <p className={`text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed ${project.client ? '' : 'mt-3'}`}>
                     {impactText}
                   </p>
                 </div>

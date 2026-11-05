@@ -119,6 +119,18 @@ export default function ProjectDetailModal({ isOpen, onClose, project, lang = 'e
           aria-label={isEs ? 'Detalles del proyecto desplazables' : 'Scrollable project details'}
           className="p-6 sm:p-8 overflow-y-auto space-y-6 text-sm text-zinc-700 dark:text-zinc-300 focus-visible:outline-none"
         >
+          {project.image && project.imageFit === 'contain' && (
+            <div className="rounded-xl border border-zinc-200 bg-white px-6 py-5 dark:border-zinc-800">
+              <img
+                src={project.image}
+                alt={project.imageAlt || ''}
+                width="1024"
+                height="384"
+                className="mx-auto h-16 w-auto max-w-full object-contain sm:h-20"
+              />
+            </div>
+          )}
+
           {/* 1. Problema de Negocio */}
           <div>
             <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-400 mb-1.5">
@@ -138,6 +150,22 @@ export default function ProjectDetailModal({ isOpen, onClose, project, lang = 'e
               {project.solution}
             </p>
           </div>
+
+          {project.features?.length > 0 && (
+            <div>
+              <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-400 mb-2">
+                {isEs ? 'Qué hace el sistema' : 'What the system does'}
+              </h3>
+              <ul className="space-y-2 leading-relaxed bg-zinc-50 dark:bg-zinc-950/40 p-4 rounded-xl border border-zinc-200 dark:border-zinc-800/80">
+                {project.features.map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {/* 3. Stack Tecnológico */}
           <div>
@@ -183,22 +211,24 @@ export default function ProjectDetailModal({ isOpen, onClose, project, lang = 'e
 
           {project.isPrivate && (
             <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
-              {isEs
-                ? 'Repositorio privado: contiene datos de clientes. La demo muestra la arquitectura, no la cartera.'
-                : 'Private repository: it holds client data. A demo shows the architecture, not the customer book.'}
+              {project.privacyNote ||
+                (isEs
+                  ? 'Repositorio privado: contiene datos de clientes. La demo muestra la arquitectura, no la cartera.'
+                  : 'Private repository: it holds client data. A demo shows the architecture, not the customer book.')}
             </p>
           )}
 
-          {/* 5. Impacto Medible */}
-          <div>
-            <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-400 mb-1.5">
-              {isEs ? '5. Impacto Medible' : '5. Measurable Impact'}
-            </h3>
-            <div className="flex items-start gap-2.5 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-900 dark:text-emerald-300">
-              <CheckCircle2 className="w-5 h-5 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
-              <span className="font-semibold">{project.impactMetric || project.impact}</span>
+          {project.impactMetric && (
+            <div>
+              <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-400 mb-1.5">
+                {isEs ? '5. Impacto Medible' : '5. Measurable Impact'}
+              </h3>
+              <div className="flex items-start gap-2.5 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-900 dark:text-emerald-300">
+                <CheckCircle2 className="w-5 h-5 text-emerald-700 dark:text-emerald-400 shrink-0 mt-0.5" />
+                <span className="font-semibold">{project.impactMetric}</span>
+              </div>
             </div>
-          </div>
+          )}
 
           {/* 6. Estado */}
           <div className="pt-2 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between text-xs font-mono">
