@@ -8,6 +8,7 @@ export const personalInfo = {
   name: siteConfig.author.name,
   initials: siteConfig.author.initials,
   role: siteConfig.author.role,
+  brand: siteConfig.author.brand,
   location: siteConfig.author.location,
   phone: siteConfig.author.phone,
   whatsappNumber: siteConfig.author.whatsappNumber,
@@ -42,7 +43,7 @@ export const content = {
       subheadline:
         'Combino más de 10 años en créditos, cobranzas y procesos con automatización, software e inteligencia artificial. Armo herramientas que sacan el trabajo manual de la operación.',
       storyP1:
-        'Diez años en Saputo, DACAS y CNH, entre créditos, cobranzas y conciliaciones. Desde 2024 diseño e implemento sistemas de automatización, portales internos e IA en producción (CoopMora, CUBO, SECSA e Intranet RRHH), combinando más de una década de criterio financiero y operativo con desarrollo de software. Programo en Python para devolverle al equipo las horas que se van en planillas.',
+        'Diez años en Saputo, DACAS y CNH, entre créditos, cobranzas y conciliaciones. Desde 2024 diseño e implemento sistemas de automatización, portales internos e IA en producción (CoopMora, SECSA e Intranet RRHH), combinando más de una década de criterio financiero y operativo con desarrollo de software. Programo en Python para devolverle al equipo las horas que se van en planillas.',
       storyP2:
         'El punto de quiebre fue el hartazgo de ver cómo los equipos queman 15 a 20 horas por semana cruzando planillas a mano, copiando datos entre sistemas y corriendo atrás de cierres interminables. Ahí decidí aprender a programar en serio: scripts en Python, consultas avanzadas en SQL y modelos en Power BI para resolver mis propios cuellos de botella operativos.',
       storyP3:
@@ -51,6 +52,7 @@ export const content = {
       ctaContact: 'Hablemos de tu proyecto',
       ctaCv: 'Descargar CV (PDF)',
       ctaWhatsapp: 'WhatsApp Directo',
+      metricsLabel: 'Resultados de mi trayectoria corporativa',
     },
     metrics: [
       {
@@ -214,7 +216,7 @@ export const content = {
         {
           id: 'cubo',
           image: '/projects/cubo.jpg',
-          title: 'CUBO - SaaS de Créditos, Cobranzas y Aging',
+          title: 'CUBO — Plataforma de créditos y cobranzas para empresas',
           category: 'Web App & API',
           state: siteConfig.projectStates.PRIVATE_CASE,
           isPrivate: true,
@@ -225,7 +227,7 @@ export const content = {
             'Aplicación web y API (FastAPI, MongoDB) para el circuito Order-to-Cash (del pedido al cobro): seguimiento de compromisos, riesgo crediticio y antigüedad de saldos.',
           role: 'Diseño integral de arquitectura, desarrollo backend en FastAPI, modelado en MongoDB y lógica de cálculo de aging.',
           impactMetric:
-            'Plataforma multiempresa en producción (10 empresas). Automatización de antigüedad de deuda (aging), alertas de cobro y agente de consultas por Telegram.',
+            'Sistema multiempresa que integra análisis de antigüedad de deuda, alertas de cobro y consultas automatizadas mediante Telegram.',
           tags: ['Python', 'FastAPI', 'MongoDB', 'APIs REST', 'Order-to-Cash'],
           demoUrl: null,
           githubUrl: null, // Repositorio privado (Cobranzas)
@@ -422,7 +424,7 @@ export const content = {
             'Integración de modelos de lenguaje en flujos de crédito, cobranzas y cuentas corrientes que ya están en uso.',
           achievements: [
             'CoopMora: pipeline diario que releva cambios de situación crediticia en el BCRA y alertas de concursos, los procesa con un LLM y envía el informe al equipo de créditos.',
-            'CUBO: sistema de créditos y cobranzas multiempresa, con un agente de consultas por Telegram y recordatorios de facturas. En producción, en 10 empresas.',
+            'CUBO — Plataforma de créditos y cobranzas para empresas. Sistema multiempresa que integra análisis de antigüedad de deuda, alertas de cobro y consultas automatizadas mediante Telegram.',
             'SECSA: cuentas corrientes sobre Odoo, con un LLM que asiste el análisis de saldos y vencimientos junto a un tablero de cobro.',
             'Portal Comunidad & Autogestión RRHH: intranet corporativa para gestión de licencias/vacaciones, solicitudes de adelantos de sueldo, comunicados oficiales, directorio y mesa de ayuda de Sistemas.',
           ],
@@ -506,11 +508,55 @@ export const content = {
         ],
       },
     },
+    services: {
+      tag: 'Servicios',
+      title: 'Soluciones para empresas',
+      subtitle:
+        'Desarrollo herramientas que ayudan a reducir tareas manuales, ordenar información y mejorar el control de los procesos.',
+      cta: 'Consultar',
+      items: [
+        {
+          id: 'automatizacion',
+          title: 'Automatización de procesos',
+          description:
+            'Automatizo tareas repetitivas, procesamiento de datos, reportes y conciliaciones para reducir el trabajo manual y mejorar la eficiencia operativa.',
+          applications: [
+            'Automatización de Excel y procesos administrativos',
+            'Conciliaciones y procesamiento de información',
+            'Reportes automáticos',
+          ],
+        },
+        {
+          id: 'aplicaciones',
+          title: 'Desarrollo de aplicaciones empresariales',
+          description:
+            'Desarrollo aplicaciones web y herramientas internas adaptadas a los procesos reales de cada empresa.',
+          applications: [
+            'Sistemas de gestión y dashboards operativos',
+            'Seguimiento de incidencias',
+            'Portales internos y autogestión',
+          ],
+        },
+        {
+          id: 'ia',
+          title: 'Inteligencia artificial aplicada',
+          description:
+            'Integro inteligencia artificial en procesos existentes para asistir tareas de análisis, clasificación, consultas y generación de información.',
+          applications: [
+            'Agentes de IA',
+            'Análisis de documentos y datos',
+            'Auditorías y reportes asistidos',
+          ],
+        },
+      ],
+    },
     contact: {
       tag: 'Contacto Directo',
       title: 'Hablemos',
       subtitle:
-        'Si en tu equipo están perdiendo horas con planillas manuales, querés optimizar cobranzas o tenés una oportunidad laboral para un perfil de finanzas y código, escribime directamente.',
+        '¿Tu empresa pierde tiempo en tareas manuales, trabaja con información dispersa o necesita mejorar sus procesos? Contame qué necesitás resolver. Podemos evaluar una solución de automatización, software o inteligencia artificial adaptada a tu operación.',
+      whatsappPrefill:
+        'Hola Juan Manuel, vi tu portfolio y me gustaría conversar sobre una solución para mi empresa.',
       whatsappTitle: 'WhatsApp Directo',
       whatsappBtn: 'Chatear →',
       emailTitle: 'Correo Electrónico',
@@ -525,13 +571,13 @@ export const content = {
       subjectPlaceholder: 'Motivo de contacto',
       messageLabel: 'Mensaje',
       messagePlaceholder:
-        'Contame brevemente sobre tu equipo, circuito a mejorar o la posición...',
+        'Contame qué necesitás resolver en tu operación.',
       sendBtn: 'Enviar Mensaje',
       statusSent: 'Abriendo tu correo para enviar el mensaje...',
     },
     footer: {
       location: 'Buenos Aires, Argentina.',
-      title: 'Portfolio profesional',
+      title: 'Profesional independiente',
       vercel: 'Desplegado en Vercel',
       backToTop: 'Inicio',
     },
@@ -557,7 +603,7 @@ export const content = {
       subheadline:
         'I combine 10+ years in credit, collections, and business processes with automation, software, and applied AI. I build tools that take manual work out of the operation.',
       storyP1:
-        'Ten years at Saputo, DACAS, and CNH, across credit, collections, and bank reconciliations. Since 2024 I have designed and shipped automation systems, internal portals, and production AI (CoopMora, CUBO, SECSA, and an HR intranet), combining more than a decade of financial and operational judgment with software development. I write Python so teams get back the hours they spend on spreadsheets.',
+        'Ten years at Saputo, DACAS, and CNH, across credit, collections, and bank reconciliations. Since 2024 I have designed and shipped automation systems, internal portals, and production AI (CoopMora, SECSA, and an HR intranet), combining more than a decade of financial and operational judgment with software development. I write Python so teams get back the hours they spend on spreadsheets.',
       storyP2:
         'The turning point was growing weary of watching teams burn 15 to 20 hours every week manually matching spreadsheets, copying records across fragmented ERPs, and scrambling through never-ending month-end closings. That led me to take programming seriously: writing robust Python scripts, advanced SQL queries, and Power BI models to solve my own team’s operational bottlenecks.',
       storyP3:
@@ -566,6 +612,7 @@ export const content = {
       ctaContact: "Let's talk about your project",
       ctaCv: 'Download Resume (PDF)',
       ctaWhatsapp: 'Direct WhatsApp',
+      metricsLabel: 'Results from my corporate experience',
     },
     metrics: [
       {
@@ -729,7 +776,7 @@ export const content = {
         {
           id: 'cubo',
           image: '/projects/cubo.jpg',
-          title: 'CUBO - Credit, Collections and Aging SaaS',
+          title: 'CUBO — Credit and collections platform for companies',
           category: 'Web App & API',
           state: siteConfig.projectStates.PRIVATE_CASE,
           isPrivate: true,
@@ -740,7 +787,7 @@ export const content = {
             'Web platform and API (FastAPI, MongoDB) for the Order-to-Cash cycle (from customer order through cash collection): commitment tracking, credit risk, and invoice age.',
           role: 'Full architectural design, FastAPI backend development, MongoDB data modeling, and aging calculation logic.',
           impactMetric:
-            'Multi-company platform in production (10 companies). Automated receivable aging, collection alerts, and a Telegram query assistant.',
+            'A multi-company system that brings together receivable-aging analysis, collection alerts, and automated queries through Telegram.',
           tags: ['Python', 'FastAPI', 'MongoDB', 'REST APIs', 'Order-to-Cash'],
           demoUrl: null,
           githubUrl: null,
@@ -937,7 +984,7 @@ export const content = {
             'Language models wired into credit, collections, and receivables workflows that are already in use.',
           achievements: [
             'CoopMora: a daily pipeline that checks BCRA credit-status changes and insolvency filings, processes them with an LLM, and sends the report to the credit team.',
-            'CUBO: a multi-company credit and collections system, with a Telegram assistant and invoice reminders. In production, across 10 companies.',
+            'CUBO — Credit and collections platform for companies. A multi-company system that brings together receivable-aging analysis, collection alerts, and automated queries through Telegram.',
             'SECSA: receivables on Odoo, with an LLM assisting balance and due-date analysis next to a collections board.',
             'Community Portal & HR Self-Service: a corporate intranet for leave and vacation requests, salary advances, official announcements, a staff directory, and an IT help desk.',
           ],
@@ -1021,11 +1068,55 @@ export const content = {
         ],
       },
     },
+    services: {
+      tag: 'Services',
+      title: 'Solutions for companies',
+      subtitle:
+        'I build tools that help reduce manual work, organize information, and improve control over processes.',
+      cta: 'Ask about this',
+      items: [
+        {
+          id: 'automatizacion',
+          title: 'Process automation',
+          description:
+            'I automate repetitive tasks, data processing, reports, and reconciliations to reduce manual work and improve how the operation runs.',
+          applications: [
+            'Excel and administrative process automation',
+            'Reconciliations and data processing',
+            'Automatic reports',
+          ],
+        },
+        {
+          id: 'aplicaciones',
+          title: 'Business application development',
+          description:
+            'I build web applications and internal tools adapted to each company’s actual processes.',
+          applications: [
+            'Management systems and operational dashboards',
+            'Incident tracking',
+            'Internal portals and self-service',
+          ],
+        },
+        {
+          id: 'ia',
+          title: 'Applied artificial intelligence',
+          description:
+            'I add artificial intelligence to existing processes to assist analysis, classification, queries, and the production of information.',
+          applications: [
+            'AI agents',
+            'Document and data analysis',
+            'Assisted audits and reports',
+          ],
+        },
+      ],
+    },
     contact: {
       tag: 'Direct Contact',
       title: "Let's Connect",
       subtitle:
-        'If your team is losing valuable hours to manual spreadsheets, looking to streamline collections, or seeking a proven finance-and-code hybrid, reach out directly.',
+        'Is your company losing time on manual tasks, working with scattered information, or needing to improve its processes? Tell me what you need to solve. We can look at an automation, software, or AI solution adapted to your operation.',
+      whatsappPrefill:
+        'Hi Juan Manuel, I saw your portfolio and I would like to talk about a solution for my company.',
       whatsappTitle: 'Direct WhatsApp',
       whatsappBtn: 'Chat Now →',
       emailTitle: 'Email Address',
@@ -1039,14 +1130,13 @@ export const content = {
       subjectLabel: 'Subject',
       subjectPlaceholder: 'Reason for reaching out',
       messageLabel: 'Message',
-      messagePlaceholder:
-        'Briefly tell me about your team, workflow bottleneck, or open role...',
+      messagePlaceholder: 'Tell me what you need to solve in your operation.',
       sendBtn: 'Send Message',
       statusSent: 'Opening your email client to send the message...',
     },
     footer: {
       location: 'Buenos Aires, Argentina.',
-      title: 'Professional portfolio',
+      title: 'Independent professional',
       vercel: 'Deployed on Vercel',
       backToTop: 'Top',
     },

@@ -24,7 +24,7 @@ export default function Footer({ lang }) {
                 {personalInfo.name}
               </div>
               <div className="text-xs text-zinc-500 font-mono">
-                {personalInfo.role[lang]}
+                {personalInfo.brand[lang]}
               </div>
             </div>
           </div>

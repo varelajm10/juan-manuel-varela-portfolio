@@ -108,7 +108,8 @@ html.dark ::-webkit-scrollbar-thumb:hover {
 }
 
 @media print {
-  #herramientas {
+  #herramientas,
+  #soluciones {
     display: none !important;
   }
 

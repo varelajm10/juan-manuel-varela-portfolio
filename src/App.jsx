@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ToolMarquee from './components/ToolMarquee';
+import Services from './components/Services';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
 import Experience from './components/Experience';
@@ -71,6 +72,7 @@ export default function App() {
       <main className="flex-grow flex flex-col">
         <Hero lang={lang} />
         <ToolMarquee lang={lang} />
+        <Services lang={lang} />
         <Projects lang={lang} onSelectDemo={handleSelectDemo} />
         <Skills lang={lang} />
         <Experience lang={lang} />

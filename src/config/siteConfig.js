@@ -11,12 +11,16 @@ export const siteConfig = {
     whatsappNumber: '5491130691984',
     email: 'juan@jmvarela.dev',
     location: {
-      es: 'Buenos Aires, Argentina · Remoto / Híbrido',
-      en: 'Buenos Aires, Argentina · Remote / Hybrid',
+      es: 'Buenos Aires, Argentina · Servicios para empresas · Trabajo remoto',
+      en: 'Buenos Aires, Argentina · Services for companies · Remote work',
     },
     role: {
       es: 'Finanzas Corporativas & Automatización con Python',
       en: 'Corporate Finance & Python Automation',
+    },
+    brand: {
+      es: 'Automatización, Software e IA para Empresas',
+      en: 'Automation, Software and AI for Companies',
     },
   },
 

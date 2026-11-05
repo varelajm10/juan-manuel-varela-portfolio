@@ -31,10 +31,7 @@ export default function Contact({ lang, contactSubject = '', onClearSubject }) {
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [status, setStatus] = useState({ submitted: false, message: '' });
 
-  const whatsappMsg =
-    lang === 'es'
-      ? 'Hola Juan Manuel, vi tu portfolio y me gustaría conversar sobre una oportunidad en finanzas y automatización.'
-      : 'Hi Juan Manuel, I saw your portfolio and would like to connect regarding an opportunity in finance and automation.';
+  const whatsappMsg = t.whatsappPrefill;
 
   const whatsappUrl = `https://wa.me/${personalInfo.whatsappNumber}?text=${encodeURIComponent(
     whatsappMsg

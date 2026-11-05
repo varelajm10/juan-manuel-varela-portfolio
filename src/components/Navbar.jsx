@@ -55,7 +55,7 @@ export default function Navbar({ lang, setLang, theme, toggleTheme }) {
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
               </div>
               <div className="text-[11px] font-mono text-zinc-500 dark:text-zinc-400">
-                {personalInfo.role[lang]}
+                {personalInfo.brand[lang]}
               </div>
             </div>
           </a>

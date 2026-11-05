@@ -27,10 +27,7 @@ export default function Hero({ lang }) {
     setTimeout(() => setCopiedEmail(false), 2500);
   };
 
-  const whatsappMsg =
-    lang === 'es'
-      ? 'Hola Juan Manuel, vi tu sitio y quiero comentarte un problema operativo de mi empresa.'
-      : 'Hi Juan Manuel, I saw your site and would like to talk about an operational problem in my company.';
+  const whatsappMsg = content[lang].contact.whatsappPrefill;
 
   const whatsappUrl = `https://wa.me/${personalInfo.whatsappNumber}?text=${encodeURIComponent(
     whatsappMsg
@@ -69,7 +66,7 @@ export default function Hero({ lang }) {
 
           <div className="mt-10 flex flex-wrap items-center gap-3">
             <a
-              href="#proyectos"
+              href="#soluciones"
               className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-zinc-100 dark:hover:bg-white dark:text-zinc-950 shadow-xs transition-all group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
             >
               <span>{t.ctaProjects}</span>
@@ -172,8 +169,11 @@ export default function Hero({ lang }) {
         </div>
         </div>
 
-        {/* Bloque de Métricas Reales */}
-        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* Resultados de empleos anteriores, separados de los proyectos de cliente */}
+        <p className="mt-16 mb-4 text-xs font-mono uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+          {t.metricsLabel}
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {metrics.map((metric) => (
             <div
               key={metric.label}
