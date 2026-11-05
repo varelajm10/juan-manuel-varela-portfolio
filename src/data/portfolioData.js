@@ -34,21 +34,21 @@ export const content = {
       downloadCv: 'Descargar CV (PDF)',
     },
     hero: {
-      badge: 'Disponible para roles en Finanzas, Operaciones & Automatización',
-      // CTA Principal - Opción A (Activa por defecto según aprobación)
-      // Alternativa documentada Opción C: "Finanzas estratégicas con criterio de negocio y código en producción. Conversemos sobre tu circuito operativo."
+      badge: 'Profesional independiente',
       heroCtaBanner:
-        '¿Buscás un perfil que conecte finanzas corporativas, datos y automatización? Hablemos de tu proceso.',
-      headline:
-        'Administración, finanzas corporativas y herramientas que resuelven ',
-      headlineSub: 'el trabajo manual de todos los días.',
+        'Si tu equipo pierde horas en planillas, puedo armar la herramienta que las saque de la operación.',
+      headline: 'Transformo problemas operativos en soluciones digitales.',
+      headlineSub: '',
+      subheadline:
+        'Combino más de 10 años en créditos, cobranzas y procesos con automatización, software e inteligencia artificial. Armo herramientas que sacan el trabajo manual de la operación.',
       storyP1:
         'Diez años en Saputo, DACAS y CNH, entre créditos, cobranzas y conciliaciones. Desde 2024 diseño e implemento sistemas de automatización, portales internos e IA en producción (CoopMora, CUBO, SECSA e Intranet RRHH), combinando más de una década de criterio financiero y operativo con desarrollo de software. Programo en Python para devolverle al equipo las horas que se van en planillas.',
       storyP2:
         'El punto de quiebre fue el hartazgo de ver cómo los equipos queman 15 a 20 horas por semana cruzando planillas a mano, copiando datos entre sistemas y corriendo atrás de cierres interminables. Ahí decidí aprender a programar en serio: scripts en Python, consultas avanzadas en SQL y modelos en Power BI para resolver mis propios cuellos de botella operativos.',
       storyP3:
         'Hoy uno esos dos mundos. No soy un desarrollador teórico ni un analista que solo hace presentaciones en PowerPoint: construyo herramientas, pipelines y tableros que funcionan en producción, le quitan el trabajo repetitivo a la gente y le devuelven tiempo al negocio para tomar decisiones estratégicas.',
-      ctaProjects: 'Ver Proyectos Reales',
+      ctaProjects: 'Conocé mis soluciones',
+      ctaContact: 'Hablemos de tu proyecto',
       ctaCv: 'Descargar CV (PDF)',
       ctaWhatsapp: 'WhatsApp Directo',
     },
@@ -530,19 +530,21 @@ export const content = {
       downloadCv: 'Download Resume (PDF)',
     },
     hero: {
-      badge: 'Available for Finance, Operations & Automation roles',
+      badge: 'Independent professional',
       heroCtaBanner:
-        'Looking for a professional connecting corporate finance, data, and code? Let’s talk.',
-      headline:
-        'Corporate finance, operations, and applied code solving ',
-      headlineSub: 'everyday manual friction.',
+        'If your team is losing hours to spreadsheets, I can build the tool that takes that work out of the operation.',
+      headline: 'I turn operational problems into digital tools.',
+      headlineSub: '',
+      subheadline:
+        'I combine 10+ years in credit, collections, and business processes with automation, software, and applied AI. I build tools that take manual work out of the operation.',
       storyP1:
         'Ten years at Saputo, DACAS, and CNH, across credit, collections, and bank reconciliations. Since 2024 I have designed and shipped automation systems, internal portals, and production AI (CoopMora, CUBO, SECSA, and an HR intranet), combining more than a decade of financial and operational judgment with software development. I write Python so teams get back the hours they spend on spreadsheets.',
       storyP2:
         'The turning point was growing weary of watching teams burn 15 to 20 hours every week manually matching spreadsheets, copying records across fragmented ERPs, and scrambling through never-ending month-end closings. That led me to take programming seriously: writing robust Python scripts, advanced SQL queries, and Power BI models to solve my own team’s operational bottlenecks.',
       storyP3:
         'Today, I bridge those two worlds. I am neither an abstract developer nor an analyst confined to PowerPoint decks: I build tools, pipelines, and dashboards that run in production, strip away repetitive grunt work, and give businesses back the time they need to make strategic decisions.',
-      ctaProjects: 'View Practical Projects',
+      ctaProjects: 'See my solutions',
+      ctaContact: "Let's talk about your project",
       ctaCv: 'Download Resume (PDF)',
       ctaWhatsapp: 'Direct WhatsApp',
     },

@@ -29,8 +29,8 @@ export default function Hero({ lang }) {
 
   const whatsappMsg =
     lang === 'es'
-      ? 'Hola Juan Manuel, vi tu portfolio y me gustaría conversar sobre una oportunidad en finanzas y automatización.'
-      : 'Hi Juan Manuel, I saw your portfolio and would like to connect regarding an opportunity in finance and automation.';
+      ? 'Hola Juan Manuel, vi tu sitio y quiero comentarte un problema operativo de mi empresa.'
+      : 'Hi Juan Manuel, I saw your site and would like to talk about an operational problem in my company.';
 
   const whatsappUrl = `https://wa.me/${personalInfo.whatsappNumber}?text=${encodeURIComponent(
     whatsappMsg
@@ -56,28 +56,35 @@ export default function Hero({ lang }) {
 
         {/* Encabezado Principal Directo */}
         <div>
-          <p className="mb-3 text-sm sm:text-base font-semibold tracking-tight text-sky-800 dark:text-sky-300">
-            {personalInfo.role[lang]}
-          </p>
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 leading-[1.15]">
+          <h1 className="max-w-3xl text-3xl sm:text-5xl lg:text-[3.25rem] font-bold tracking-tight text-zinc-900 dark:text-zinc-100 leading-[1.15]">
             {t.headline}
-            <span className="text-zinc-500 dark:text-zinc-400">{t.headlineSub}</span>
+            {t.headlineSub ? (
+              <span className="text-zinc-500 dark:text-zinc-400">{t.headlineSub}</span>
+            ) : null}
           </h1>
 
           <p className="mt-6 max-w-2xl text-base sm:text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
-            {t.storyP1}
+            {t.subheadline || t.storyP1}
           </p>
 
-          {/* Acciones Principales y Contacto */}
           <div className="mt-10 flex flex-wrap items-center gap-3">
             <a
               href="#proyectos"
-              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-zinc-100 dark:hover:bg-white dark:text-zinc-950 shadow-xs transition-all group"
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold bg-zinc-900 hover:bg-zinc-800 text-white dark:bg-zinc-100 dark:hover:bg-white dark:text-zinc-950 shadow-xs transition-all group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
             >
               <span>{t.ctaProjects}</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </a>
 
+            <a
+              href="#contacto"
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+            >
+              <span>{t.ctaContact}</span>
+            </a>
+          </div>
+
+          <div className="mt-4 flex flex-wrap items-center gap-3">
             <button
               type="button"
               onClick={() => downloadCv(lang)}
