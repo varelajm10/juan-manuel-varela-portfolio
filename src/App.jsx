@@ -38,9 +38,9 @@ export default function App() {
 
   const [contactSubject, setContactSubject] = useState('');
 
-  const handleSelectDemo = (projectName) => {
+  const handleSelectDemo = (projectName, subjectOverride) => {
     const subjectPrefix = lang === 'es' ? 'Solicitud de Demo - ' : 'Demo Request - ';
-    setContactSubject(`${subjectPrefix}${projectName}`);
+    setContactSubject(subjectOverride || `${subjectPrefix}${projectName}`);
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const contactSection = document.getElementById('contacto');

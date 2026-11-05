@@ -298,7 +298,11 @@ export default function Projects({ lang, onSelectDemo }) {
                       <span>{project.category}</span>
                     </span>
 
-                    {isPrivate ? (
+                    {project.statusLabel ? (
+                      <span className="text-[11px] font-mono text-zinc-500">
+                        {project.statusLabel}
+                      </span>
+                    ) : isPrivate ? (
                       <span className="text-[11px] font-mono text-zinc-500 flex items-center gap-1">
                         <Lock className="w-3 h-3" /> {t.statusPrivate}
                       </span>
@@ -369,6 +373,22 @@ export default function Projects({ lang, onSelectDemo }) {
                         <FileText className="w-3.5 h-3.5" />
                         <span>{t.btnCaseDetails}</span>
                       </button>
+                    )}
+
+                    {project.consultLabel && (
+                      <a
+                        href="#contacto"
+                        onClick={(e) => {
+                          if (onSelectDemo) {
+                            e.preventDefault();
+                            onSelectDemo(project.title, project.contactSubject);
+                          }
+                        }}
+                        className="inline-flex items-center justify-center sm:justify-start gap-1 font-semibold text-zinc-700 dark:text-zinc-300 hover:text-sky-700 dark:hover:text-sky-400 transition-colors py-1 focus-visible:outline-2 focus-visible:outline-sky-500 rounded"
+                      >
+                        <Mail className="w-3.5 h-3.5" />
+                        <span>{project.consultLabel}</span>
+                      </a>
                     )}
 
                     {!isPrivate && (

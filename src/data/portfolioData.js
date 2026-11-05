@@ -235,6 +235,38 @@ export const content = {
             'Diseñada para reemplazar el cruce manual de planillas de cobranza por un sistema unificado con estados de cuenta en tiempo real y notificaciones automáticas.',
         },
         {
+          id: 'cubo-inspecta',
+          image: '/projects/cubo-inspecta.svg',
+          imageFit: 'contain',
+          imageRole: 'logo',
+          logoSize: 'lg',
+          imageAlt: 'CUBO INSPECTA',
+          title: 'CUBO INSPECTA — Auditorías e inspecciones inteligentes',
+          category: 'Auditorías e inspecciones con IA',
+          statusLabel: 'Producto propio',
+          state: siteConfig.projectStates.PRIVATE_CASE,
+          isPrivate: true,
+          isPublic: false,
+          problem:
+            'Muchas empresas hacen inspecciones y auditorías con planillas, documentos y fotografías guardados por separado. Eso complica ordenar la información, seguir observaciones y armar informes.',
+          solution:
+            'CUBO INSPECTA es una herramienta propia, independiente de los proyectos de clientes, pensada para ese tipo de proceso. El detalle funcional se comparte en una consulta, cuando se puede mostrar la herramienta.',
+          role: 'Diseño y desarrollo del producto.',
+          privacyNote:
+            'Producto propio. Esta ficha no incluye repositorio público ni datos de clientes.',
+          impact:
+            'Producto propio de la marca CUBO, orientado a auditorías e inspecciones.',
+          consultLabel: 'Consultar por CUBO INSPECTA',
+          contactSubject: 'Consulta por CUBO INSPECTA',
+          whatsappText:
+            'Hola Juan Manuel, vi CUBO INSPECTA en tu portfolio y me gustaría conocer más sobre la herramienta de auditorías e inspecciones.',
+          tags: ['Producto propio', 'Auditorías'],
+          demoUrl: null,
+          githubUrl: null,
+          summaryCase:
+            'Producto propio de la marca CUBO para auditorías e inspecciones. Sin clientes, métricas ni funciones publicadas hasta confirmar la implementación.',
+        },
+        {
           id: 'gladys',
           image: '/projects/gladys.jpg',
           title: 'G.L.A.D.Y.S. / CoopMora - Radar de Riesgo Crediticio & BCRA',
@@ -793,6 +825,38 @@ export const content = {
           githubUrl: null,
           summaryCase:
             'Designed to replace manual spreadsheet reconciliation with a unified hub providing real-time statements and automated notifications.',
+        },
+        {
+          id: 'cubo-inspecta',
+          image: '/projects/cubo-inspecta.svg',
+          imageFit: 'contain',
+          imageRole: 'logo',
+          logoSize: 'lg',
+          imageAlt: 'CUBO INSPECTA',
+          title: 'CUBO INSPECTA — Intelligent audits and inspections',
+          category: 'Audits and inspections with AI',
+          statusLabel: 'Own product',
+          state: siteConfig.projectStates.PRIVATE_CASE,
+          isPrivate: true,
+          isPublic: false,
+          problem:
+            'Many companies run inspections and audits with spreadsheets, documents, and photos kept apart. That makes it harder to organize the information, follow up on findings, and prepare reports.',
+          solution:
+            'CUBO INSPECTA is my own tool for that kind of work, separate from client projects. Functional detail is shared in a conversation, when the tool can be shown.',
+          role: 'Product design and development.',
+          privacyNote:
+            'Independent product. This page does not include a public repository or client data.',
+          impact:
+            'An independent product under the CUBO brand, built for audits and inspections.',
+          consultLabel: 'Ask about CUBO INSPECTA',
+          contactSubject: 'Inquiry about CUBO INSPECTA',
+          whatsappText:
+            'Hi Juan Manuel, I saw CUBO INSPECTA on your portfolio and I would like to know more about the audit and inspection tool.',
+          tags: ['Own product', 'Audits'],
+          demoUrl: null,
+          githubUrl: null,
+          summaryCase:
+            'An independent CUBO product for audits and inspections. No clients, metrics, or feature list are published until the implementation is confirmed.',
         },
         {
           id: 'gladys',

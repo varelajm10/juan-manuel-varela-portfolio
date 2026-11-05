@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="250 96 300 156" role="img" aria-label="CUBO INSPECTA">
+  <rect width="800" height="360" fill="#f7f7f5"/>
+  <g transform="translate(400 148)">
+    <g fill="none" stroke="#18181b" stroke-width="1.75" stroke-linejoin="miter" transform="translate(-78 -16)">
+      <rect width="26" height="26"/>
+      <path d="M26 0 L40 -12 L40 14 L26 26"/>
+      <path d="M0 0 L14 -12 L40 -12"/>
+    </g>
+    <text x="-38" y="6" fill="#3f3f46" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="16" font-weight="600" letter-spacing="3.4">CUBO</text>
+  </g>
+  <rect x="382" y="176" width="36" height="2" fill="#0369a1"/>
+  <text x="400" y="228" text-anchor="middle" fill="#18181b" font-family="Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="42" font-weight="600" letter-spacing="2.2">INSPECTA</text>
+</svg>
