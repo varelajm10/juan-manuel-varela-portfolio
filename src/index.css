@@ -60,7 +60,58 @@ html.dark ::-webkit-scrollbar-thumb:hover {
   background: #3f3f46;
 }
 
+.tool-marquee-wrap {
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.tool-marquee {
+  animation: tool-marquee 48s linear infinite;
+}
+
+.tool-marquee-wrap:hover .tool-marquee,
+.tool-marquee-wrap:focus-within .tool-marquee {
+  animation-play-state: paused;
+}
+
+@keyframes tool-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tool-marquee,
+  .tool-marquee ul {
+    animation: none;
+    width: 100%;
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 1.5rem;
+    transform: none;
+  }
+
+  .tool-marquee ul {
+    padding-right: 0;
+  }
+
+  .tool-marquee-wrap {
+    mask-image: none;
+  }
+
+  .tool-marquee ul[aria-hidden='true'] {
+    display: none;
+  }
+}
+
 @media print {
+  #herramientas {
+    display: none !important;
+  }
+
   header,
   footer,
   #contacto {
