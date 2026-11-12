@@ -215,9 +215,9 @@ export const content = {
             'Algoritmo en cascada de 5 reglas determinísticas (Nº factura, CUIT, matching difuso con RapidFuzz, pagos agrupados y pagos parciales FIFO) con exportación a Excel multisolapa formateado con semáforo de confianza.',
           role: 'Modelado de las 5 reglas de imputación contable, motor de matching en pandas, exportador de reportes con openpyxl y 11 tests unitarios.',
           impact:
-            'Motor de conciliación bancaria desarrollado para automatizar el procesamiento de extractos y reducir tareas manuales. En pruebas controladas, el motor concilió automáticamente el 97,2 % del importe evaluado.',
+            'Motor de conciliación bancaria desarrollado para automatizar el procesamiento de extractos y reducir tareas manuales. En un extracto de prueba, el motor concilió automáticamente el 97,2 % del importe total de los créditos.',
           impactMetric:
-            'Motor de conciliación bancaria desarrollado para automatizar el procesamiento de extractos y reducir tareas manuales. En pruebas controladas, el motor concilió automáticamente el 97,2 % del importe evaluado.',
+            'Motor de conciliación bancaria desarrollado para automatizar el procesamiento de extractos y reducir tareas manuales. En un extracto de prueba, el motor concilió automáticamente el 97,2 % del importe total de los créditos.',
           engineering: [
             'conciliador/core.py aplica las reglas de la más segura a la más flexible: número de factura, CUIT, nombre difuso, pago agrupado y parcial FIFO.',
             'Un parecido ambiguo no se imputa. El pago parcial queda para revisar. Los débitos se ignoran.',
@@ -842,9 +842,9 @@ export const content = {
             'Cascading deterministic 5-rule algorithm (Invoice #, Tax ID, fuzzy name matching with RapidFuzz, grouped payments, and FIFO partial payments) with multi-sheet formatted Excel export and confidence scoring.',
           role: 'Modeling of 5 accounting matching rules, pandas reconciliation engine, openpyxl report generator, and 11 unit tests.',
           impact:
-            'Bank reconciliation engine designed to automate statement processing and reduce manual tasks. In controlled tests, the engine automatically reconciled 97.2% of the total amount evaluated.',
+            'Bank reconciliation engine designed to automate statement processing and reduce manual tasks. On a sample bank statement, the engine automatically reconciled 97.2% of the total credit amount.',
           impactMetric:
-            'Bank reconciliation engine designed to automate statement processing and reduce manual tasks. In controlled tests, the engine automatically reconciled 97.2% of the total amount evaluated.',
+            'Bank reconciliation engine designed to automate statement processing and reduce manual tasks. On a sample bank statement, the engine automatically reconciled 97.2% of the total credit amount.',
           engineering: [
             'conciliador/core.py runs rules from safest to loosest: invoice number, tax ID, fuzzy name, grouped payment, and FIFO partials.',
             'An ambiguous name match is left unmatched. Partial payments are flagged for review. Debits are ignored.',
