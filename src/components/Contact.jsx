@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Mail,
   Linkedin,
@@ -32,7 +32,9 @@ export default function Contact({ lang, contactSubject = '', onClearSubject }) {
   }, [contactSubject]);
 
   const [copiedEmail, setCopiedEmail] = useState(false);
-  const [status, setStatus] = useState({ submitted: false, message: '' });
+  const [companyWebsite, setCompanyWebsite] = useState('');
+  const [phase, setPhase] = useState('idle');
+  const sendingRef = useRef(false);
 
   const whatsappMsg = t.whatsappPrefill;
 
@@ -46,31 +48,55 @@ export default function Contact({ lang, contactSubject = '', onClearSubject }) {
     setTimeout(() => setCopiedEmail(false), 2500);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const subjectLine = encodeURIComponent(
-      formData.subject || `Contacto desde Portfolio - ${formData.name}`
-    );
-    const bodyContent = encodeURIComponent(
-      `Nombre: ${formData.name}\nEmail: ${formData.email}\n\nMensaje:\n${formData.message}`
-    );
+  const updateField = (patch) => {
+    setFormData((prev) => ({ ...prev, ...patch }));
+    setPhase((current) => (current === 'sending' ? current : 'idle'));
+  };
 
-    setStatus({
-      submitted: true,
-      message: t.statusSent,
-    });
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (sendingRef.current) return;
 
-    window.open(`mailto:${personalInfo.email}?subject=${subjectLine}&body=${bodyContent}`, '_self');
+    sendingRef.current = true;
+    setPhase('sending');
 
-    setTimeout(() => {
+    const payload = {
+      name: formData.name,
+      email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+      company_website: companyWebsite,
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+      const result = await response.json().catch(() => null);
+
+      if (!response.ok || !result?.ok) {
+        setPhase('error');
+        return;
+      }
+
+      setPhase('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
+      setCompanyWebsite('');
       if (onClearSubject) onClearSubject();
-      setStatus({ submitted: false, message: '' });
-    }, 3000);
+    } catch {
+      setPhase('error');
+    } finally {
+      sendingRef.current = false;
+    }
   };
 
   return (
-    <section id="contacto" className="py-24 border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950">
+    <section id="contacto" className="scroll-mt-24 py-24 border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Canales Directos */}
@@ -210,31 +236,39 @@ export default function Contact({ lang, contactSubject = '', onClearSubject }) {
                 {t.formSubtitle}
               </p>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="relative space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">
+                    <label htmlFor="contact-name" className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">
                       {t.nameLabel}
                     </label>
                     <input
+                      id="contact-name"
+                      name="name"
                       type="text"
                       required
+                      maxLength={80}
+                      autoComplete="name"
                       value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      onChange={(e) => updateField({ name: e.target.value })}
                       placeholder={t.namePlaceholder}
                       className="w-full px-3.5 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 text-sm focus:outline-none focus:border-zinc-500"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">
+                    <label htmlFor="contact-email" className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">
                       {t.emailLabel}
                     </label>
                     <input
+                      id="contact-email"
+                      name="email"
                       type="email"
                       required
+                      maxLength={254}
+                      autoComplete="email"
                       value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      onChange={(e) => updateField({ email: e.target.value })}
                       placeholder={t.emailPlaceholder}
                       className="w-full px-3.5 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 text-sm focus:outline-none focus:border-zinc-500"
                     />
@@ -247,9 +281,11 @@ export default function Contact({ lang, contactSubject = '', onClearSubject }) {
                   </label>
                   <input
                     id="contact-subject"
+                    name="subject"
                     type="text"
+                    maxLength={120}
                     value={formData.subject}
-                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                    onChange={(e) => updateField({ subject: e.target.value })}
                     placeholder={t.subjectPlaceholder}
                     className="w-full px-3.5 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 text-sm focus:outline-none focus:border-zinc-500"
                   />
@@ -261,28 +297,53 @@ export default function Contact({ lang, contactSubject = '', onClearSubject }) {
                   </label>
                   <textarea
                     id="contact-message"
+                    name="message"
                     rows={4}
                     required
+                    minLength={10}
+                    maxLength={4000}
                     value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    onChange={(e) => updateField({ message: e.target.value })}
                     placeholder={t.messagePlaceholder}
                     className="w-full px-3.5 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 text-sm focus:outline-none focus:border-zinc-500 resize-none"
                   />
                 </div>
 
-                {status.submitted && (
-                  <div className="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800/80 text-emerald-800 dark:text-emerald-300 text-xs flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 shrink-0" />
-                    <span>{status.message}</span>
-                  </div>
-                )}
+                <div aria-hidden="true" className="absolute m-0 h-px w-px overflow-hidden whitespace-nowrap border-0 p-0 [clip:rect(0,0,0,0)]">
+                  <label htmlFor="contact-company-website">Website</label>
+                  <input
+                    id="contact-company-website"
+                    name="company_website"
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={companyWebsite}
+                    onChange={(e) => setCompanyWebsite(e.target.value)}
+                  />
+                </div>
+
+                <div aria-live="polite">
+                  {phase === 'success' && (
+                    <div className="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800/80 text-emerald-800 dark:text-emerald-300 text-xs flex items-center gap-2">
+                      <CheckCircle2 className="w-4 h-4 shrink-0" />
+                      <span>{t.statusAccepted}</span>
+                    </div>
+                  )}
+                  {phase === 'error' && (
+                    <div className="p-3 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900/70 text-rose-800 dark:text-rose-200 text-xs">
+                      {t.statusError}
+                    </div>
+                  )}
+                </div>
 
                 <button
                   type="submit"
-                  className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950 hover:bg-zinc-800 dark:hover:bg-white transition-colors shadow-xs"
+                  disabled={phase === 'sending'}
+                  aria-busy={phase === 'sending'}
+                  className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950 hover:bg-zinc-800 dark:hover:bg-white transition-colors shadow-xs disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   <Send className="w-4 h-4" />
-                  <span>{t.sendBtn}</span>
+                  <span>{phase === 'sending' ? t.sending : t.sendBtn}</span>
                 </button>
               </form>
             </div>

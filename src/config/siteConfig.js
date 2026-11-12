@@ -22,6 +22,10 @@ export const siteConfig = {
       es: 'Automatización, Software e IA para Empresas',
       en: 'Automation, Software and AI for Companies',
     },
+    brandShort: {
+      es: 'Software e IA',
+      en: 'Software and AI',
+    },
   },
 
   // Enlaces sociales y profesionales

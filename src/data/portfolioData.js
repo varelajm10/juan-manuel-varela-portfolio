@@ -9,6 +9,7 @@ export const personalInfo = {
   initials: siteConfig.author.initials,
   role: siteConfig.author.role,
   brand: siteConfig.author.brand,
+  brandShort: siteConfig.author.brandShort,
   location: siteConfig.author.location,
   phone: siteConfig.author.phone,
   whatsappNumber: siteConfig.author.whatsappNumber,
@@ -633,7 +634,9 @@ export const content = {
       messagePlaceholder:
         'Contame qué necesitás resolver en tu operación.',
       sendBtn: 'Enviar Mensaje',
-      statusSent: 'Abriendo tu correo para enviar el mensaje...',
+      sending: 'Enviando mensaje...',
+      statusAccepted: 'El mensaje fue aceptado. Te respondo a la brevedad.',
+      statusError: 'No se pudo enviar. Tus datos siguen en el formulario: probá de nuevo o escribinos por WhatsApp.',
     },
     footer: {
       location: 'Buenos Aires, Argentina.',
@@ -1252,7 +1255,9 @@ export const content = {
       messageLabel: 'Message',
       messagePlaceholder: 'Tell me what you need to solve in your operation.',
       sendBtn: 'Send Message',
-      statusSent: 'Opening your email client to send the message...',
+      sending: 'Sending message...',
+      statusAccepted: 'The message was accepted. I will get back to you shortly.',
+      statusError: 'The message could not be sent. Your details are still in the form. Try again or use WhatsApp.',
     },
     footer: {
       location: 'Buenos Aires, Argentina.',

@@ -25,6 +25,15 @@ export default function Navbar({ lang, setLang, theme, toggleTheme }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (!mobileMenuOpen) return undefined;
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') setMobileMenuOpen(false);
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [mobileMenuOpen]);
+
   const navLinks = [
     { name: t.solutions, href: '#soluciones' },
     { name: t.projects, href: '#proyectos' },
@@ -36,24 +45,25 @@ export default function Navbar({ lang, setLang, theme, toggleTheme }) {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800 py-3 shadow-xs'
-          : 'bg-white/50 dark:bg-zinc-950/40 backdrop-blur-sm border-b border-transparent py-4'
+          ? 'bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800 py-2 sm:py-3 shadow-xs'
+          : 'bg-white/50 dark:bg-zinc-950/40 backdrop-blur-sm border-b border-transparent py-2.5 sm:py-4'
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo / Nombre */}
-          <a href="#" className="flex items-center gap-3 group">
-            <div className="w-9 h-9 rounded-xl bg-zinc-900 text-white dark:bg-zinc-800 dark:border dark:border-zinc-700 flex items-center justify-center font-mono font-bold text-sm tracking-tight transition-colors">
+          <a href="#" className="flex min-w-0 items-center gap-2.5 group sm:gap-3">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-zinc-900 font-mono text-sm font-bold tracking-tight text-white transition-colors dark:border dark:border-zinc-700 dark:bg-zinc-800">
               JV
             </div>
-            <div>
-              <div className="font-semibold text-sm sm:text-base tracking-tight text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
+            <div className="min-w-0">
+              <div className="flex items-center gap-2 text-sm font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-base">
                 <span>{personalInfo.name}</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500"></span>
               </div>
-              <div className="text-[11px] font-mono text-zinc-500 dark:text-zinc-400">
-                {personalInfo.brand[lang]}
+              <div className="whitespace-nowrap text-[11px] font-mono leading-4 text-zinc-500 dark:text-zinc-400">
+                <span className="sm:hidden">{personalInfo.brandShort[lang]}</span>
+                <span className="hidden sm:inline">{personalInfo.brand[lang]}</span>
               </div>
             </div>
           </a>
@@ -123,13 +133,12 @@ export default function Navbar({ lang, setLang, theme, toggleTheme }) {
 
           </div>
 
-          {/* Botones Mobile */}
-          <div className="flex items-center gap-2 sm:hidden">
+          <div className="flex shrink-0 items-center gap-1.5 lg:hidden">
             <button
               type="button"
               onClick={toggleTheme}
               aria-label={isDark ? ui.themeToLight : ui.themeToDark}
-              className="p-2 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-zinc-200 bg-white text-zinc-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 sm:hidden"
             >
               {isDark ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4" />}
             </button>
@@ -138,7 +147,7 @@ export default function Navbar({ lang, setLang, theme, toggleTheme }) {
               type="button"
               onClick={() => setLang(lang === 'es' ? 'en' : 'es')}
               aria-label={lang === 'es' ? ui.toggleToEnglish : ui.toggleToSpanish}
-              className="px-2.5 py-1.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-xs font-bold text-zinc-800 dark:text-zinc-200"
+              className="inline-flex h-11 min-w-11 items-center justify-center rounded-xl border border-zinc-200 bg-white px-2 text-xs font-bold text-zinc-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 sm:hidden"
             >
               {lang.toUpperCase()}
             </button>
@@ -148,7 +157,8 @@ export default function Navbar({ lang, setLang, theme, toggleTheme }) {
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? ui.closeMenu : ui.openMenu}
               aria-expanded={mobileMenuOpen}
-              className="p-2 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300"
+              aria-controls="menu-movil"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-zinc-200 bg-white text-zinc-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -158,14 +168,14 @@ export default function Navbar({ lang, setLang, theme, toggleTheme }) {
 
       {/* Menú Desplegable Mobile */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-b border-zinc-200 dark:border-zinc-800 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl px-5 py-4 space-y-3 mt-3">
-          <div className="flex flex-col space-y-1">
+        <div id="menu-movil" className="mt-2 space-y-3 border-b border-zinc-200 bg-white/95 px-4 py-3 backdrop-blur-xl dark:border-zinc-800 dark:bg-zinc-950/95 lg:hidden">
+          <div className="flex flex-col">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-2 rounded-lg text-sm text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-900"
+                className="flex min-h-11 items-center rounded-lg px-3 text-sm text-zinc-700 hover:bg-zinc-100 focus-visible:outline-2 focus-visible:outline-sky-600 dark:text-zinc-300 dark:hover:bg-zinc-900"
               >
                 {link.name}
               </a>
@@ -173,7 +183,7 @@ export default function Navbar({ lang, setLang, theme, toggleTheme }) {
             <a
               href="#contacto"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-lg text-sm font-semibold text-sky-600 dark:text-sky-400"
+              className="mt-1 flex min-h-11 items-center rounded-lg bg-sky-50 px-3 text-sm font-semibold text-sky-800 focus-visible:outline-2 focus-visible:outline-sky-600 dark:bg-sky-950/50 dark:text-sky-200"
             >
               {t.contact}
             </a>
