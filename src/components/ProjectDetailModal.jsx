@@ -218,6 +218,40 @@ export default function ProjectDetailModal({ isOpen, onClose, project, lang = 'e
             </div>
           )}
 
+          {project.flagshipMetrics?.length > 0 && (
+            <div>
+              <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-400 mb-2">
+                {t.flagshipMetricsTitle}
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {project.flagshipMetrics.map((metric) => (
+                  <div key={metric.label} className="rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-950/40">
+                    <span className="block text-sm font-bold font-mono text-sky-800 dark:text-sky-300">{metric.value}</span>
+                    <span className="mt-1 block text-xs font-semibold text-zinc-900 dark:text-zinc-200">{metric.label}</span>
+                    <span className="mt-0.5 block text-[11px] leading-tight text-zinc-600 dark:text-zinc-400">{metric.detail}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {project.pipeline?.length > 0 && (
+            <div>
+              <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-400 mb-2">
+                {t.flagshipPipelineTitle}
+              </h3>
+              <ol className="grid grid-cols-2 gap-3 text-sm">
+                {project.pipeline.map((step) => (
+                  <li key={step.step}>
+                    <span className="block text-[10px] font-mono font-bold text-sky-700 dark:text-sky-400">{step.step}</span>
+                    <span className="mt-0.5 block font-semibold text-zinc-900 dark:text-zinc-200">{step.name}</span>
+                    <span className="block text-xs text-zinc-500 dark:text-zinc-400">{step.desc}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          )}
+
           {project.isPrivate && (
             <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
               {project.privacyNote || t.privacyNote}

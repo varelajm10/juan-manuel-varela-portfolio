@@ -50,6 +50,9 @@ export default function Hero({ lang }) {
                 <span>{t.ctaProjects}</span>
               </a>
             </div>
+            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+              {t.availability}
+            </p>
           </div>
 
           <div className="order-first md:order-none md:col-span-5 lg:col-span-4">

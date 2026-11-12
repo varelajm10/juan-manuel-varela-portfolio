@@ -70,6 +70,8 @@ export const content = {
         'Hoy uno esos dos mundos. No soy un desarrollador teórico ni un analista que solo hace presentaciones en PowerPoint: construyo herramientas, pipelines y tableros que funcionan en producción, le quitan el trabajo repetitivo a la gente y le devuelven tiempo al negocio para tomar decisiones estratégicas.',
       ctaProjects: 'Ver proyectos',
       ctaContact: 'Hablemos de tu proyecto',
+      availability:
+        'Colaboro con empresas y equipos en proyectos de automatización, análisis de datos y desarrollo de soluciones digitales.',
       ctaCv: 'Descargar CV (PDF)',
       ctaWhatsapp: 'WhatsApp Directo',
       metricsLabel: 'Resultados de mi trayectoria corporativa',
@@ -98,12 +100,12 @@ export const content = {
     ],
     projects: {
       tag: 'Casos Reales con Prueba de Negocio',
-      title: 'Proyectos Destacados & Sistemas en Producción',
+      title: 'Proyectos destacados',
       subtitle:
-        'Cada proyecto responde a una necesidad concreta: eliminar horas manuales, evitar errores en conciliaciones o monitorear deudores en tiempo real.',
+        'Un producto propio y dos sistemas con pruebas concretas. El resto de los casos sigue disponible.',
       problemLabel: 'El Problema:',
       solutionLabel: 'La Solución:',
-      impactLabel: 'El Impacto / Métrica:',
+      impactLabel: 'Qué está probado:',
       roleLabel: 'Mi Rol:',
       stackLabel: 'Stack Tecnológico:',
       statusLabel: 'Estado del Proyecto:',
@@ -118,6 +120,8 @@ export const content = {
       statusPrivateCase: 'Proyecto Corporativo / Privado',
       statusPublic: 'Código Disponible',
       flagshipBadge: 'Proyecto destacado',
+      viewAllProjects: 'Ver todos los proyectos',
+      showFeaturedOnly: 'Mostrar solo los destacados',
       flagshipMetricsTitle: 'Métricas de Arquitectura & Negocio',
       flagshipPipelineTitle: 'Pipeline Operativo Automatizado',
       engineeringLabel: 'Decisiones que el código fija',
@@ -211,9 +215,9 @@ export const content = {
             'Algoritmo en cascada de 5 reglas determinísticas (Nº factura, CUIT, matching difuso con RapidFuzz, pagos agrupados y pagos parciales FIFO) con exportación a Excel multisolapa formateado con semáforo de confianza.',
           role: 'Modelado de las 5 reglas de imputación contable, motor de matching en pandas, exportador de reportes con openpyxl y 11 tests unitarios.',
           impact:
-            '97.2% de imputación automática sobre extractos de prueba y reducción del tiempo de conciliación de días a segundos.',
+            'Motor de conciliación bancaria desarrollado para automatizar el procesamiento de extractos y reducir tareas manuales. En pruebas controladas, el motor concilió automáticamente el 97,2 % del importe evaluado.',
           impactMetric:
-            '97.2% de imputación automática sobre extractos de prueba y reducción del tiempo de conciliación de días a segundos.',
+            'Motor de conciliación bancaria desarrollado para automatizar el procesamiento de extractos y reducir tareas manuales. En pruebas controladas, el motor concilió automáticamente el 97,2 % del importe evaluado.',
           engineering: [
             'conciliador/core.py aplica las reglas de la más segura a la más flexible: número de factura, CUIT, nombre difuso, pago agrupado y parcial FIFO.',
             'Un parecido ambiguo no se imputa. El pago parcial queda para revisar. Los débitos se ignoran.',
@@ -282,6 +286,7 @@ export const content = {
           title: 'CUBO INSPECTA — Auditorías e inspecciones inteligentes',
           category: 'Auditorías e inspecciones con IA',
           statusLabel: 'Producto propio',
+          cardProof: false,
           state: siteConfig.projectStates.PRIVATE_CASE,
           isPrivate: true,
           isPublic: false,
@@ -483,7 +488,7 @@ export const content = {
       tag: 'Trayectoria Real',
       title: 'Experiencia corporativa y logros concretos',
       subtitle:
-        'Más de una década de gestión en consumo masivo, maquinaria y distribución de tecnología.',
+        'Más de una década de gestión en consumo masivo, maquinaria y distribución de tecnología. Ese criterio es el que uso cuando una empresa me pide automatizar un proceso.',
       items: [
         {
           role: 'Consultor de Automatización, Procesos & Desarrollador de Soluciones',
@@ -623,7 +628,7 @@ export const content = {
       emailTitle: 'Correo Electrónico',
       copiedEmail: 'Copiado',
       formTitle: 'Enviar mensaje',
-      formSubtitle: 'Completá los datos y te respondo a la brevedad.',
+      formSubtitle: 'Contame qué proceso necesitás mejorar o qué solución tenés en mente.',
       nameLabel: 'Nombre',
       namePlaceholder: 'Tu nombre',
       emailLabel: 'Correo Electrónico',
@@ -635,7 +640,7 @@ export const content = {
         'Contame qué necesitás resolver en tu operación.',
       sendBtn: 'Enviar Mensaje',
       sending: 'Enviando mensaje...',
-      statusAccepted: 'El mensaje fue aceptado. Te respondo a la brevedad.',
+      statusAccepted: 'Tu mensaje se envió correctamente. Gracias por contactarme.',
       statusError: 'No se pudo enviar. Tus datos siguen en el formulario: probá de nuevo o escribinos por WhatsApp.',
     },
     footer: {
@@ -692,6 +697,8 @@ export const content = {
         'Today, I bridge those two worlds. I am neither an abstract developer nor an analyst confined to PowerPoint decks: I build tools, pipelines, and dashboards that run in production, strip away repetitive grunt work, and give businesses back the time they need to make strategic decisions.',
       ctaProjects: 'View Projects',
       ctaContact: "Let's Discuss Your Project",
+      availability:
+        'I work with companies and teams on automation, data analysis, and digital tools, as an external professional.',
       ctaCv: 'Download Resume (PDF)',
       ctaWhatsapp: 'Direct WhatsApp',
       metricsLabel: 'Results from my corporate experience',
@@ -720,12 +727,12 @@ export const content = {
     ],
     projects: {
       tag: 'Real-World Business Cases',
-      title: 'Featured Projects & Production Systems',
+      title: 'Featured projects',
       subtitle:
-        'Each project addresses an exact business pain: eliminating manual hours, avoiding reconciliation errors, or tracking debtors in real time.',
+        'One product of my own and two systems with concrete tests. The other cases stay available.',
       problemLabel: 'The Problem:',
       solutionLabel: 'The Solution:',
-      impactLabel: 'The Impact / Metric:',
+      impactLabel: 'What was tested:',
       roleLabel: 'My Role:',
       stackLabel: 'Tech Stack:',
       statusLabel: 'Project Status:',
@@ -740,6 +747,8 @@ export const content = {
       statusPrivateCase: 'Corporate / Private System',
       statusPublic: 'Code Available',
       flagshipBadge: 'Featured project',
+      viewAllProjects: 'View all projects',
+      showFeaturedOnly: 'Show featured projects only',
       flagshipMetricsTitle: 'Architecture & Business Metrics',
       flagshipPipelineTitle: 'Automated Operations Pipeline',
       engineeringLabel: 'What the code decides',
@@ -833,9 +842,9 @@ export const content = {
             'Cascading deterministic 5-rule algorithm (Invoice #, Tax ID, fuzzy name matching with RapidFuzz, grouped payments, and FIFO partial payments) with multi-sheet formatted Excel export and confidence scoring.',
           role: 'Modeling of 5 accounting matching rules, pandas reconciliation engine, openpyxl report generator, and 11 unit tests.',
           impact:
-            '97.2% automated match rate on test datasets and reduction of reconciliation time from days to seconds.',
+            'Bank reconciliation engine designed to automate statement processing and reduce manual tasks. In controlled tests, the engine automatically reconciled 97.2% of the total amount evaluated.',
           impactMetric:
-            '97.2% automated match rate on test datasets and reduction of reconciliation time from days to seconds.',
+            'Bank reconciliation engine designed to automate statement processing and reduce manual tasks. In controlled tests, the engine automatically reconciled 97.2% of the total amount evaluated.',
           engineering: [
             'conciliador/core.py runs rules from safest to loosest: invoice number, tax ID, fuzzy name, grouped payment, and FIFO partials.',
             'An ambiguous name match is left unmatched. Partial payments are flagged for review. Debits are ignored.',
@@ -904,6 +913,7 @@ export const content = {
           title: 'CUBO INSPECTA — Intelligent audits and inspections',
           category: 'Audits and inspections with AI',
           statusLabel: 'Own product',
+          cardProof: false,
           state: siteConfig.projectStates.PRIVATE_CASE,
           isPrivate: true,
           isPublic: false,
@@ -1105,7 +1115,7 @@ export const content = {
       tag: 'Proven Career',
       title: 'Corporate Background & Measurable Results',
       subtitle:
-        'Over a decade of leadership in FMCG, heavy equipment, and technology distribution.',
+        'Over a decade in FMCG, heavy equipment, and technology distribution. That judgment is what I use when a company asks me to automate a process.',
       items: [
         {
           role: 'Automation, Process & Solutions Consultant',
@@ -1245,7 +1255,7 @@ export const content = {
       emailTitle: 'Email Address',
       copiedEmail: 'Copied',
       formTitle: 'Send a Message',
-      formSubtitle: 'Leave your details below and I will get back to you promptly.',
+      formSubtitle: 'Tell me which process you need to improve, or what solution you have in mind.',
       nameLabel: 'Name',
       namePlaceholder: 'Your name',
       emailLabel: 'Email Address',
@@ -1256,7 +1266,7 @@ export const content = {
       messagePlaceholder: 'Tell me what you need to solve in your operation.',
       sendBtn: 'Send Message',
       sending: 'Sending message...',
-      statusAccepted: 'The message was accepted. I will get back to you shortly.',
+      statusAccepted: 'Your message was sent successfully. Thank you for reaching out.',
       statusError: 'The message could not be sent. Your details are still in the form. Try again or use WhatsApp.',
     },
     footer: {
