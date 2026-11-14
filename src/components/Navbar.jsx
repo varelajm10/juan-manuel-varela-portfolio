@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { personalInfo, content } from '../data/portfolioData';
 import { downloadCv } from '../lib/downloadCv';
+import { track } from '../lib/track';
 
 export default function Navbar({ lang, setLang, theme, toggleTheme }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,8 +38,9 @@ export default function Navbar({ lang, setLang, theme, toggleTheme }) {
   const navLinks = [
     { name: t.solutions, href: '#soluciones' },
     { name: t.projects, href: '#proyectos' },
+    { name: t.collaborate, href: '#colaboracion' },
+    { name: t.methodology, href: '#metodologia' },
     { name: t.experience, href: '#trayectoria' },
-    { name: t.skills, href: '#habilidades' },
   ];
 
   return (
@@ -69,19 +71,20 @@ export default function Navbar({ lang, setLang, theme, toggleTheme }) {
           </a>
 
           {/* Navegación Desktop */}
-          <nav className="hidden lg:flex items-center gap-1 p-1 rounded-full bg-zinc-100/90 dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800">
+          <nav className="hidden xl:flex items-center gap-1 p-1 rounded-full bg-zinc-100/90 dark:bg-zinc-900/90 border border-zinc-200 dark:border-zinc-800">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="px-3.5 py-1.5 rounded-full text-xs font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-100 hover:bg-white dark:hover:bg-zinc-800 transition-all"
+                className="px-2.5 py-1.5 rounded-full text-xs font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-100 hover:bg-white dark:hover:bg-zinc-800 transition-all"
               >
                 {link.name}
               </a>
             ))}
             <a
               href="#contacto"
-              className="px-3.5 py-1.5 rounded-full text-xs font-semibold text-sky-600 dark:text-sky-400 hover:bg-white dark:hover:bg-zinc-800 transition-all"
+              onClick={() => track('cta_click', { location: 'nav', target: 'contact' })}
+              className="px-3 py-1.5 rounded-full text-xs font-semibold text-sky-600 dark:text-sky-400 hover:bg-white dark:hover:bg-zinc-800 transition-all"
             >
               {t.contact}
             </a>
@@ -133,7 +136,7 @@ export default function Navbar({ lang, setLang, theme, toggleTheme }) {
 
           </div>
 
-          <div className="flex shrink-0 items-center gap-1.5 lg:hidden">
+          <div className="flex shrink-0 items-center gap-1.5 xl:hidden">
             <button
               type="button"
               onClick={toggleTheme}
@@ -146,7 +149,7 @@ export default function Navbar({ lang, setLang, theme, toggleTheme }) {
             <button
               type="button"
               onClick={() => setLang(lang === 'es' ? 'en' : 'es')}
-              aria-label={lang === 'es' ? ui.toggleToEnglish : ui.toggleToSpanish}
+              aria-label={`${lang.toUpperCase()} ${lang === 'es' ? ui.toggleToEnglish : ui.toggleToSpanish}`}
               className="inline-flex h-11 min-w-11 items-center justify-center rounded-xl border border-zinc-200 bg-white px-2 text-xs font-bold text-zinc-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 sm:hidden"
             >
               {lang.toUpperCase()}
@@ -168,7 +171,7 @@ export default function Navbar({ lang, setLang, theme, toggleTheme }) {
 
       {/* Menú Desplegable Mobile */}
       {mobileMenuOpen && (
-        <div id="menu-movil" className="mt-2 space-y-3 border-b border-zinc-200 bg-white/95 px-4 py-3 backdrop-blur-xl dark:border-zinc-800 dark:bg-zinc-950/95 lg:hidden">
+        <div id="menu-movil" className="mt-2 space-y-3 border-b border-zinc-200 bg-white/95 px-4 py-3 backdrop-blur-xl dark:border-zinc-800 dark:bg-zinc-950/95 xl:hidden">
           <div className="flex flex-col">
             {navLinks.map((link) => (
               <a
@@ -182,7 +185,10 @@ export default function Navbar({ lang, setLang, theme, toggleTheme }) {
             ))}
             <a
               href="#contacto"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={() => {
+                track('cta_click', { location: 'nav_mobile', target: 'contact' });
+                setMobileMenuOpen(false);
+              }}
               className="mt-1 flex min-h-11 items-center rounded-lg bg-sky-50 px-3 text-sm font-semibold text-sky-800 focus-visible:outline-2 focus-visible:outline-sky-600 dark:bg-sky-950/50 dark:text-sky-200"
             >
               {t.contact}

@@ -3,7 +3,7 @@
 // ============================================================================
 
 export const siteConfig = {
-  url: 'https://jvarela.dev',
+  url: 'https://jmvarela.dev',
   author: {
     name: 'Juan Manuel Varela',
     initials: 'JMV',

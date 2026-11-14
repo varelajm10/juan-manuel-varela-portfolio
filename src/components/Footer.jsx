@@ -1,6 +1,7 @@
 import React from 'react';
 import { Linkedin, Github, Mail, ArrowUp } from 'lucide-react';
 import { personalInfo, content } from '../data/portfolioData';
+import { track } from '../lib/track';
 
 export default function Footer({ lang }) {
   const t = content[lang].footer;
@@ -23,7 +24,7 @@ export default function Footer({ lang }) {
               <div className="font-semibold text-sm text-zinc-900 dark:text-zinc-200">
                 {personalInfo.name}
               </div>
-              <div className="text-xs text-zinc-500 font-mono">
+              <div className="text-xs font-mono text-zinc-500 dark:text-zinc-400">
                 {personalInfo.brand[lang]}
               </div>
             </div>
@@ -57,6 +58,7 @@ export default function Footer({ lang }) {
             <a
               href={`mailto:${personalInfo.email}`}
               aria-label={content[lang].ui.sendEmail}
+              onClick={() => track('contact_email', { location: 'footer' })}
               className="p-2 rounded-lg text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
             >
               <Mail className="w-4 h-4" />
@@ -73,7 +75,7 @@ export default function Footer({ lang }) {
           </div>
         </div>
 
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-zinc-500 font-mono">
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-zinc-500 dark:text-zinc-400">
           <div>
             © {currentYear} {personalInfo.name}. {t.location}
           </div>

@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { personalInfo, content } from '../data/portfolioData';
 import { downloadCv } from '../lib/downloadCv';
+import { track } from '../lib/track';
 
 export default function Contact({ lang, contactSubject = '', onClearSubject }) {
   const t = content[lang].contact;
@@ -31,6 +32,7 @@ export default function Contact({ lang, contactSubject = '', onClearSubject }) {
     }
   }, [contactSubject]);
 
+  const [formStarted] = useState(() => Date.now());
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [companyWebsite, setCompanyWebsite] = useState('');
   const [phase, setPhase] = useState('idle');
@@ -66,6 +68,7 @@ export default function Contact({ lang, contactSubject = '', onClearSubject }) {
       subject: formData.subject,
       message: formData.message,
       company_website: companyWebsite,
+      form_started: formStarted,
     };
 
     try {
@@ -85,6 +88,7 @@ export default function Contact({ lang, contactSubject = '', onClearSubject }) {
       }
 
       setPhase('success');
+      track('form_submit_success', { location: 'contact' });
       setFormData({ name: '', email: '', subject: '', message: '' });
       setCompanyWebsite('');
       if (onClearSubject) onClearSubject();
@@ -118,6 +122,7 @@ export default function Contact({ lang, contactSubject = '', onClearSubject }) {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => track('contact_whatsapp', { location: 'contact' })}
                 className="flex items-center justify-between p-4 rounded-xl border border-emerald-200 dark:border-emerald-900/60 bg-emerald-50 dark:bg-emerald-950/30 hover:border-emerald-400 dark:hover:border-emerald-700/60 transition-colors group"
               >
                 <div className="flex items-center gap-3.5">
@@ -140,8 +145,8 @@ export default function Contact({ lang, contactSubject = '', onClearSubject }) {
               <div className="flex items-center justify-between p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50">
                 <a
                   href={`mailto:${personalInfo.email}`}
-                  aria-label={`${t.emailTitle}: ${personalInfo.email}`}
                   className="flex items-center gap-3.5 group flex-1"
+                  onClick={() => track('contact_email', { location: 'contact' })}
                 >
                   <div className="w-9 h-9 rounded-lg bg-zinc-200 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-400 flex items-center justify-center group-hover:text-zinc-950 dark:group-hover:text-zinc-200">
                     <Mail className="w-4 h-4" />
@@ -180,7 +185,7 @@ export default function Contact({ lang, contactSubject = '', onClearSubject }) {
                     <Linkedin className="w-4 h-4" />
                   </div>
                   <div>
-                    <div className="text-[11px] font-mono text-zinc-500">LinkedIn</div>
+                    <div className="text-[11px] font-mono text-zinc-500 dark:text-zinc-400">LinkedIn</div>
                     <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-200 group-hover:text-sky-600 dark:group-hover:text-white">
                       {personalInfo.name}
                     </div>
@@ -200,7 +205,7 @@ export default function Contact({ lang, contactSubject = '', onClearSubject }) {
                     <Github className="w-4 h-4" />
                   </div>
                   <div>
-                    <div className="text-[11px] font-mono text-zinc-500">GitHub</div>
+                    <div className="text-[11px] font-mono text-zinc-500 dark:text-zinc-400">GitHub</div>
                     <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-200 group-hover:text-zinc-950 dark:group-hover:text-white">
                       github.com/varelajm10
                     </div>
@@ -217,7 +222,7 @@ export default function Contact({ lang, contactSubject = '', onClearSubject }) {
                   <Download className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="text-[11px] font-mono text-zinc-500">CV</div>
+                  <div className="text-[11px] font-mono text-zinc-500 dark:text-zinc-400">CV</div>
                   <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-200">
                     {content[lang].nav.downloadCv}
                   </div>

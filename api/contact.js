@@ -9,6 +9,51 @@ const LIMITS = {
 };
 
 const EMAIL_RE = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+const MIN_FILL_MS = 2_000;
+const MAX_AGE_MS = 24 * 60 * 60 * 1000;
+const WINDOW_MS = 15 * 60 * 1000;
+const MAX_POSTS = 8;
+const recentPosts = new Map();
+const ALLOWED_ORIGINS = new Set([
+  'https://jmvarela.dev',
+  'http://127.0.0.1:4173',
+  'http://localhost:4173',
+  'http://127.0.0.1:3000',
+  'http://localhost:3000',
+]);
+
+function clientIp(req) {
+  const forwarded = req.headers['x-forwarded-for'];
+  const value = Array.isArray(forwarded) ? forwarded[0] : forwarded;
+  if (typeof value === 'string' && value.trim()) {
+    return value.split(',')[0].trim().slice(0, 80);
+  }
+  return String(req.socket?.remoteAddress || 'unknown');
+}
+
+function isRateLimited(ip) {
+  const now = Date.now();
+  const stamps = (recentPosts.get(ip) || []).filter((stamp) => now - stamp < WINDOW_MS);
+  if (stamps.length >= MAX_POSTS) {
+    recentPosts.set(ip, stamps);
+    return true;
+  }
+  stamps.push(now);
+  recentPosts.set(ip, stamps);
+  if (recentPosts.size > 2000) {
+    for (const [key, values] of recentPosts) {
+      if (!values.some((stamp) => now - stamp < WINDOW_MS)) recentPosts.delete(key);
+    }
+  }
+  return false;
+}
+
+function originAllowed(req) {
+  const origin = req.headers.origin;
+  if (!origin) return true;
+  const value = Array.isArray(origin) ? origin[0] : origin;
+  return ALLOWED_ORIGINS.has(value);
+}
 
 export const config = {
   api: {
@@ -81,10 +126,24 @@ export default async function handler(req, res) {
     return sendJson(res, 400, { ok: false, error: 'invalid' });
   }
 
+  if (!originAllowed(req)) {
+    return sendJson(res, 403, { ok: false, error: 'invalid' });
+  }
+
+  if (isRateLimited(clientIp(req))) {
+    return sendJson(res, 429, { ok: false, error: 'invalid' });
+  }
+
   const { payload } = parsed;
   const honeypot = typeof payload.company_website === 'string' ? payload.company_website.trim() : '';
   if (honeypot) {
     return sendJson(res, 200, { ok: true });
+  }
+
+  const started = Number(payload.form_started);
+  const age = Date.now() - started;
+  if (!Number.isFinite(started) || age < MIN_FILL_MS || age > MAX_AGE_MS) {
+    return sendJson(res, 400, { ok: false, error: 'invalid' });
   }
 
   const name = cleanLine(payload.name, LIMITS.name);

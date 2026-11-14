@@ -9,6 +9,7 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
@@ -83,6 +84,10 @@ html.dark ::-webkit-scrollbar-thumb:hover {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .tool-marquee,
   .tool-marquee ul {
     animation: none;

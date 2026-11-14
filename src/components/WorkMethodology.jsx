@@ -8,7 +8,7 @@ export default function WorkMethodology({ lang }) {
   const t = content[lang].methodology;
 
   return (
-    <section id="metodologia" className="py-24 border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950">
+    <section id="metodologia" className="scroll-mt-24 py-24 border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mb-14">
           <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-sky-700 dark:text-sky-400 font-semibold mb-2">

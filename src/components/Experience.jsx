@@ -7,7 +7,7 @@ export default function Experience({ lang }) {
 
   return (
     <>
-    <section id="trayectoria" className="pt-24 pb-10 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950">
+    <section id="trayectoria" className="scroll-mt-24 pt-24 pb-10 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mb-14">
           <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-sky-700 dark:text-sky-400 font-semibold mb-2">
@@ -42,7 +42,7 @@ export default function Experience({ lang }) {
                       {item.role}
                     </h3>
                     <p className="text-sm font-semibold text-zinc-600 dark:text-zinc-400 mt-0.5">
-                      {item.company} · <span className="text-zinc-500 font-normal">{item.location}</span>
+                      {item.company} · <span className="font-normal text-zinc-500 dark:text-zinc-400">{item.location}</span>
                     </p>
                   </div>
 
@@ -56,6 +56,7 @@ export default function Experience({ lang }) {
                   {item.summary}
                 </p>
 
+                {idx === 0 && (
                 <ul className="space-y-2 mb-4">
                   {item.achievements.map((ach, i) => (
                     <li
@@ -67,6 +68,7 @@ export default function Experience({ lang }) {
                     </li>
                   ))}
                 </ul>
+                )}
 
                 <div className="flex flex-wrap gap-1.5 pt-3 border-t border-zinc-100 dark:border-zinc-800/70">
                   {item.tags.map((tag) => (

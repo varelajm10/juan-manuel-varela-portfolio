@@ -31,6 +31,7 @@ export const content = {
       projects: 'Proyectos',
       skills: 'Habilidades',
       simulator: 'Simulador',
+      collaborate: 'Colaboración',
       methodology: 'Metodología',
       experience: 'Trayectoria',
       contact: 'Contacto',
@@ -50,22 +51,21 @@ export const content = {
       sendEmail: 'Enviar correo electrónico a Juan Manuel Varela',
     },
     seo: {
-      title: 'Juan Manuel Varela | Automatización, software e IA para empresas',
+      title: 'Juan Manuel Varela | Automatización de procesos, software e IA para empresas',
       description:
-        'Juan Manuel Varela, profesional independiente en Buenos Aires. Desarrollo automatizaciones, aplicaciones empresariales e inteligencia artificial para reducir trabajo manual y ordenar procesos.',
+        'Automatizo procesos administrativos, desarrollo aplicaciones a medida e integro inteligencia artificial en la operación. Menos trabajo manual y mejor control de la información.',
     },
     hero: {
       badge: 'Profesional independiente',
+      eyebrow: 'Juan Manuel Varela · Automatización, software e IA para empresas',
       heroCtaBanner:
         'Si tu equipo pierde horas en planillas, puedo armar la herramienta que las saque de la operación.',
-      headline: 'Transformo problemas operativos en soluciones digitales.',
+      headline: 'Transformo procesos manuales en soluciones digitales.',
       headlineSub: '',
       subheadline:
-        'Trabajé más de 10 años en créditos, cobranzas y procesos. Hoy desarrollo automatizaciones, herramientas de gestión y soluciones con inteligencia artificial para ese tipo de operación.',
+        'Combino más de 10 años de experiencia en procesos empresariales con desarrollo tecnológico para crear automatizaciones, aplicaciones y soluciones de inteligencia artificial que resuelven problemas reales de negocio.',
       storyP1:
         'Diez años en Saputo, DACAS y CNH, entre créditos, cobranzas y conciliaciones. Desde 2024 diseño e implemento sistemas de automatización, portales internos e IA en producción (CoopMora, SECSA e Intranet RRHH), combinando más de una década de criterio financiero y operativo con desarrollo de software. Programo en Python para devolverle al equipo las horas que se van en planillas.',
-      storyP2:
-        'El punto de quiebre fue el hartazgo de ver cómo los equipos queman 15 a 20 horas por semana cruzando planillas a mano, copiando datos entre sistemas y corriendo atrás de cierres interminables. Ahí decidí aprender a programar en serio: scripts en Python, consultas avanzadas en SQL y modelos en Power BI para resolver mis propios cuellos de botella operativos.',
       storyP3:
         'Hoy uno esos dos mundos. No soy un desarrollador teórico ni un analista que solo hace presentaciones en PowerPoint: construyo herramientas, pipelines y tableros que funcionan en producción, le quitan el trabajo repetitivo a la gente y le devuelven tiempo al negocio para tomar decisiones estratégicas.',
       ctaProjects: 'Ver proyectos',
@@ -74,38 +74,23 @@ export const content = {
         'Colaboro con empresas y equipos en proyectos de automatización, análisis de datos y desarrollo de soluciones digitales.',
       ctaCv: 'Descargar CV (PDF)',
       ctaWhatsapp: 'WhatsApp Directo',
-      metricsLabel: 'Resultados de mi trayectoria corporativa',
+      metricsLabel: 'Experiencia en empresas',
     },
     metrics: [
       {
-        value: '-30%',
-        label: 'Reducción de mora 30–60 días',
-        detail: 'En Saputo Inc., implementando matrices analíticas de comportamiento y segmentación de cartera.',
-      },
-      {
-        value: '5 ➔ 2 días',
-        label: 'Cierre y consolidación de reportes',
-        detail: 'Automatización de pipelines en SAP ERP y Power BI eliminando la carga manual de datos.',
-      },
-      {
-        value: '+15 h/sem',
-        label: 'Ahorro operativo por equipo',
-        detail: 'Desarrollo de Metanoia en DACAS LATAM para seguimiento diario de saldos y cobranzas.',
-      },
-      {
-        value: '+10 Años',
-        label: 'Experiencia real en operaciones',
-        detail: 'En empresas multinacionales B2B, sin intermediarios ni teoría abstracta.',
+        value: '+10 años',
+        label: 'En procesos empresariales',
+        detail: 'Desde 2014, en créditos, cobranzas y procesos de empresas de consumo masivo, maquinaria y operación regional.',
       },
     ],
     projects: {
-      tag: 'Casos Reales con Prueba de Negocio',
-      title: 'Proyectos destacados',
+      tag: 'Implementaciones, productos y prototipos',
+      title: 'Proyectos y soluciones desarrolladas',
       subtitle:
-        'Un producto propio y dos sistemas con pruebas concretas. El resto de los casos sigue disponible.',
+        'Conciliación bancaria, un agente de cobranzas y una plataforma de créditos. El resto de los casos sigue disponible.',
       problemLabel: 'El Problema:',
       solutionLabel: 'La Solución:',
-      impactLabel: 'Qué está probado:',
+      impactLabel: 'Qué se verificó:',
       roleLabel: 'Mi Rol:',
       stackLabel: 'Stack Tecnológico:',
       statusLabel: 'Estado del Proyecto:',
@@ -122,7 +107,7 @@ export const content = {
       flagshipBadge: 'Proyecto destacado',
       viewAllProjects: 'Ver todos los proyectos',
       showFeaturedOnly: 'Mostrar solo los destacados',
-      flagshipMetricsTitle: 'Métricas de Arquitectura & Negocio',
+      flagshipMetricsTitle: 'Qué muestra el prototipo',
       flagshipPipelineTitle: 'Pipeline Operativo Automatizado',
       engineeringLabel: 'Decisiones que el código fija',
       modalProblem: '1. Problema de Negocio',
@@ -130,7 +115,7 @@ export const content = {
       modalFeatures: 'Qué hace el sistema',
       modalStack: '3. Stack Tecnológico',
       modalRole: '4. Mi Rol',
-      modalImpact: '5. Impacto Medible',
+      modalImpact: 'Qué se verificó',
       modalStatus: 'Estado:',
       privateProject: 'Proyecto privado',
       codeAvailable: 'Código disponible',
@@ -195,12 +180,13 @@ export const content = {
             '16 casos de pytest fijan segmentos, prioridad y ese fallback. Corren en local; el repo no publica un pipeline de CI.',
           ],
           tags: ['Python', 'Streamlit', 'Claude API', 'Pytest', 'Scoring de Riesgo', 'Offline Fallback'],
+          statusLabel: 'Prototipo funcional',
           isPublic: true,
           isPrivate: false,
           state: siteConfig.projectStates.CODE,
           demoUrl: null,
           summaryCase:
-            'Priorización cuantitativa de cartera y redacción asistida con guardrails para contactar clientes por WhatsApp o correo según su nivel de criticidad.',
+            'Priorización cuantitativa de cartera y redacción asistida, con controles para que el aviso respete importes y fechas.',
         },
         {
           id: 'conciliacion-bancaria',
@@ -224,6 +210,7 @@ export const content = {
             '11 tests exigen más del 90% en el dataset de prueba (el README mide 97,2% del importe) y que cada factura se use una sola vez.',
           ],
           tags: ['Python', 'Pandas', 'RapidFuzz', 'openpyxl', 'Pytest'],
+          statusLabel: 'Proyecto técnico verificable',
           isPublic: true,
           isPrivate: false,
           state: siteConfig.projectStates.CODE,
@@ -248,18 +235,21 @@ export const content = {
           impactMetric:
             'Prototipos abiertos para revisar la estructura. La herramienta usada con datos de la operación sigue en un repositorio privado.',
           tags: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Firebase'],
+          statusLabel: 'Prototipo funcional',
           isPublic: true,
           isPrivate: false,
           state: siteConfig.projectStates.CODE,
           demoUrl: null,
           summaryCase:
-            'La versión interna no se publica. Estos dos repos muestran el prototipo de ERP y el panel con asistentes, sin datos de clientes.',
+            'Estos dos repositorios muestran el prototipo de ERP y el panel con asistentes. La herramienta usada con datos de la operación está en un repositorio privado.',
         },
         {
           id: 'cubo',
           image: '/projects/cubo.jpg',
           title: 'CUBO — Plataforma de créditos y cobranzas para empresas',
           category: 'Web App & API',
+          statusLabel: 'Producto propio',
+          cardProof: false,
           state: siteConfig.projectStates.PRIVATE_CASE,
           isPrivate: true,
           isPublic: false,
@@ -274,7 +264,7 @@ export const content = {
           demoUrl: null,
           githubUrl: null, // Repositorio privado (Cobranzas)
           summaryCase:
-            'Diseñada para reemplazar el cruce manual de planillas de cobranza por un sistema unificado con estados de cuenta en tiempo real y notificaciones automáticas.',
+            'Plataforma propia de créditos y cobranzas: seguimiento de compromisos, antigüedad de saldos, alertas de cobro y consultas por Telegram.',
         },
         {
           id: 'cubo-inspecta',
@@ -307,13 +297,14 @@ export const content = {
           demoUrl: null,
           githubUrl: null,
           summaryCase:
-            'Producto propio de la marca CUBO para auditorías e inspecciones. Sin clientes, métricas ni funciones publicadas hasta confirmar la implementación.',
+            'Producto propio de la marca CUBO para auditorías e inspecciones.',
         },
         {
           id: 'gladys',
           image: '/projects/gladys.jpg',
           title: 'G.L.A.D.Y.S. / CoopMora - Radar de Riesgo Crediticio & BCRA',
           category: 'Pipeline & Scraping',
+          statusLabel: 'Implementación empresarial',
           state: siteConfig.projectStates.PRIVATE_CASE,
           isPrivate: true,
           isPublic: false,
@@ -323,7 +314,7 @@ export const content = {
             'Pipeline en Python con web scraping y procesamiento de texto que consolida alertas tempranas de insolvencia y emite reportes diarios por correo y panel en Streamlit.',
           role: 'Desarrollo de scrapers, normalización de datos y panel analítico en Streamlit.',
           impactMetric:
-            'Pipeline diario automatizado que releva situación crediticia en el BCRA y alertas de concursos, procesando desvíos con LLMs para reducir el monitoreo diario a minutos.',
+            'Pipeline diario, en uso en el equipo de créditos, que releva la situación en el BCRA y las alertas de concursos y entrega un informe.',
           tags: ['Python', 'Web Scraping', 'Streamlit', 'Alertas Automáticas', 'Scoring'],
           demoUrl: null,
           githubUrl: null, // Repositorio privado (Monitormora)
@@ -339,6 +330,7 @@ export const content = {
           client: 'RB&LCA Ascensores y Servicios Verticales',
           title: 'AscenSort — Sistema de incidencias y auditorías con IA',
           category: 'Sistema de incidencias',
+          statusLabel: 'Desarrollo para cliente',
           state: siteConfig.projectStates.PRIVATE_CASE,
           isPrivate: true,
           isPublic: false,
@@ -374,6 +366,7 @@ export const content = {
           imageAlt: 'Portal Comunidad, intranet de autogestión',
           title: 'Portal Comunidad - Intranet & Autogestión de RRHH',
           category: 'Intranet · React',
+          statusLabel: 'Implementación empresarial',
           state: siteConfig.projectStates.PRIVATE_CASE,
           isPrivate: true,
           isPublic: false,
@@ -456,39 +449,39 @@ export const content = {
       tag: 'Estructura de Trabajo',
       title: 'Metodología de trabajo en 4 pasos',
       subtitle:
-        'El código y los reportes responden a una arquitectura de procesos bien pensada. Cómo transformo una operación manual en un circuito ordenado y escalable.',
+        'El mismo recorrido sirve para una automatización, un desarrollo de software o una aplicación de inteligencia artificial.',
       steps: [
         {
           number: '01',
-          title: 'Diagnóstico & Detección de Fricción',
+          title: 'Entendemos el problema',
           description:
-            'Relevamiento del circuito administrativo (Order-to-Cash, conciliaciones, facturación). Identificación de cuellos de botella, riesgos de error y horas invertidas.',
+            'Analizo cómo trabaja tu equipo, identifico las dificultades y detecto oportunidades de mejora.',
         },
         {
           number: '02',
-          title: 'Limpieza e Integración de Datos',
+          title: 'Definimos la solución',
           description:
-            'Conexión y saneamiento de fuentes dispersas (ERPs, extractos bancarios, bases SQL, hojas de cálculo) para asegurar trazabilidad y datos limpios.',
+            'Establecemos los objetivos, el alcance y la tecnología más adecuada para resolver el problema.',
         },
         {
           number: '03',
-          title: 'Automatización de Flujos',
+          title: 'Desarrollamos y validamos',
           description:
-            'Implementación de scripts y pipelines en Python / herramientas digitales que procesan, concilian y alertan sin intervención manual ni margen de error.',
+            'Construyo la solución, pruebo su funcionamiento y realizo los ajustes necesarios antes de implementarla.',
         },
         {
           number: '04',
-          title: 'Dashboards & Adopción en Equipo',
+          title: 'Implementamos y acompañamos',
           description:
-            'Tableros ejecutivos en Power BI para control en tiempo real, documentación clara y acompañamiento del equipo para garantizar una adopción fluida.',
+            'Pongo la herramienta en funcionamiento, documento su uso y acompaño su incorporación al trabajo diario.',
         },
       ],
     },
     experience: {
-      tag: 'Trayectoria Real',
-      title: 'Experiencia corporativa y logros concretos',
+      tag: 'Respaldo',
+      title: 'Experiencia que respalda el trabajo',
       subtitle:
-        'Más de una década de gestión en consumo masivo, maquinaria y distribución de tecnología. Ese criterio es el que uso cuando una empresa me pide automatizar un proceso.',
+        'Más de una década en créditos, cobranzas y procesos. Ese criterio es el que uso al diseñar una herramienta.',
       items: [
         {
           role: 'Consultor de Automatización, Procesos & Desarrollador de Soluciones',
@@ -514,7 +507,7 @@ export const content = {
             'Control operativo y crediticio sobre cartera regional de más de 100 cuentas en América Latina.',
           achievements: [
             'Centralicé métricas operativas y seguimiento de clientes usando SQL y Power BI, facilitando el control cruzado entre países.',
-            'Diseñé y desarrollé Metanoia, herramienta interna para gestión diaria de cobros y saldos que ahorró ~15 horas semanales de carga manual al equipo.',
+            'Diseñé y desarrollé la herramienta interna de gestión diaria de cobros y saldos de la operación regional.',
             'Implementé alertas tempranas para casos críticos de cartera, reduciendo tiempos muertos y coordinando ajustes directos con comercial.',
           ],
           tags: ['SQL', 'Power BI', 'Python', 'Order-to-Cash'],
@@ -527,8 +520,8 @@ export const content = {
           summary:
             'Administración de cuentas corrientes comerciales, riesgo crediticio y proyecciones de recaudación.',
           achievements: [
-            'Implementé un modelo de segmentación de cartera por matrices de comportamiento, bajando la mora de 30-60 días en un 30% y la deuda +60 en un 20%.',
-            'Automaticé reportes periódicos entre SAP ERP y Power BI (DAX), reduciendo el tiempo de cierre y consolidación de 5 a 2 días hábiles.',
+            'Implementé un modelo de segmentación de cartera por matrices de comportamiento para la mora de 30 a 60 días y la deuda de más de 60 días.',
+            'Automaticé reportes periódicos entre SAP ERP y Power BI (DAX) para el cierre y la consolidación.',
             'Construí modelos en SQL para proyección de flujo de fondos, permitiendo anticipar escenarios financieros para la gerencia.',
           ],
           tags: ['SAP ERP (FI/AR)', 'Power BI', 'DAX', 'SQL', 'Excel Avanzado'],
@@ -583,44 +576,93 @@ export const content = {
         ],
       },
     },
-    services: {
-      tag: 'Servicios',
-      title: 'Soluciones para empresas',
-      subtitle:
-        'Desarrollo herramientas que ayudan a reducir tareas manuales, ordenar información y mejorar el control de los procesos.',
-      cta: 'Consultar',
+    problems: {
+      title: 'El trabajo que hoy se hace a mano',
       items: [
         {
-          id: 'automatizacion',
-          title: 'Automatización de procesos',
-          problem: '¿Tu equipo pierde horas juntando Excel, armando reportes o conciliando datos a mano?',
-          solution: 'Desarrollo herramientas que hacen esas tareas de forma automática.',
-          benefit: 'Menos trabajo repetitivo en cierres, conciliaciones y reportes.',
-          tools: 'Python, Excel y SQL',
+          id: 'manual',
+          title: 'Horas en planillas, conciliaciones y reportes',
+          text: 'El cierre depende de copiar datos, cruzar archivos y armar el mismo informe otra vez.',
         },
         {
-          id: 'aplicaciones',
-          title: 'Herramientas de gestión',
-          problem: '¿La operación está repartida en planillas que no se hablan entre sí?',
-          solution: 'Armo aplicaciones y tableros internos según cómo trabaja la empresa.',
-          benefit: 'Un lugar para seguir saldos, incidencias o trámites, en lugar de perseguir archivos.',
-          tools: 'Aplicaciones web, tableros y portales internos',
+          id: 'scattered',
+          title: 'Información repartida en archivos que no se hablan',
+          text: 'Saldos, incidencias o trámites viven en planillas distintas y nadie ve el estado real.',
         },
         {
-          id: 'ia',
-          title: 'Inteligencia artificial aplicada',
-          problem: '¿Hay lecturas, clasificaciones o textos que consumen tiempo y conviene asistir?',
-          solution: 'Integro inteligencia artificial en procesos que ya existen, para analizar, clasificar o redactar.',
-          benefit: 'El equipo llega antes a un borrador o una clasificación, y una persona sigue revisando el resultado.',
-          tools: 'Agentes, documentos y reportes asistidos',
+          id: 'repeat',
+          title: 'Lecturas y clasificaciones que el equipo repite',
+          text: 'Alertas, textos y criterios se revisan a mano, con el mismo criterio, todos los días.',
         },
       ],
     },
+    services: {
+      tag: 'Servicios',
+      title: 'Soluciones para tu negocio',
+      subtitle:
+        'Tres formas de trabajar, según el problema. El alcance se define con el proceso real, no con un paquete cerrado.',
+      cta: 'Consultar por este servicio',
+      items: [
+        {
+          id: 'automatizacion',
+          kicker: 'Automatización de procesos',
+          title: 'Menos tareas manuales. Más tiempo para tu negocio.',
+          description:
+            'Automatizo procesos administrativos y operativos para reducir trabajo repetitivo, errores y tiempos de ejecución.',
+          examples: [
+            'Conciliaciones bancarias',
+            'Procesamiento de archivos Excel y CSV',
+            'Automatización de cobranzas',
+            'Integración y validación de datos',
+            'Generación automática de reportes',
+          ],
+          subject: 'Consulta por automatización de procesos',
+        },
+        {
+          id: 'aplicaciones',
+          kicker: 'Desarrollo de software empresarial',
+          title: 'Herramientas diseñadas para la forma en que trabaja tu empresa.',
+          description:
+            'Desarrollo aplicaciones web y sistemas internos para digitalizar y simplificar procesos de la operación.',
+          examples: [
+            'Aplicaciones de gestión',
+            'Portales internos',
+            'Sistemas de seguimiento',
+            'Dashboards',
+            'Herramientas operativas',
+            'Aplicaciones web personalizadas',
+          ],
+          subject: 'Consulta por desarrollo de software',
+        },
+        {
+          id: 'ia',
+          kicker: 'Inteligencia artificial aplicada',
+          title: 'Inteligencia artificial aplicada a problemas reales.',
+          description:
+            'Integro inteligencia artificial en procesos y aplicaciones para clasificar información, redactar borradores y asistir el trabajo diario. Una persona sigue revisando el resultado.',
+          examples: [
+            'Asistentes internos',
+            'Clasificación de alertas',
+            'Agentes de IA',
+            'Redacción asistida',
+            'Automatización de flujos de trabajo',
+          ],
+          subject: 'Consulta por inteligencia artificial',
+        },
+      ],
+    },
+    collaboration: {
+      title: '¿Necesitás sumar capacidad técnica a tu próximo proyecto?',
+      text: 'Colaboro con agencias, consultoras y equipos de tecnología que necesitan desarrollar automatizaciones, aplicaciones empresariales o soluciones con inteligencia artificial.',
+      text2:
+        'Puedo integrarme a proyectos existentes o participar en desarrollos específicos, aportando experiencia técnica y conocimiento de procesos de negocio.',
+      cta: 'Conversemos sobre una colaboración',
+      subject: 'Consulta por una colaboración',
+    },
     contact: {
       tag: 'Contacto Directo',
-      title: 'Hablemos',
-      subtitle:
-        '¿Tu empresa pierde tiempo en tareas manuales, trabaja con información dispersa o necesita mejorar sus procesos? Contame qué necesitás resolver. Podemos evaluar una solución de automatización, software o inteligencia artificial adaptada a tu operación.',
+      title: '¿Tenés un proceso que querés mejorar o una idea que necesitás desarrollar?',
+      subtitle: 'Contame qué necesitás y evaluemos cómo convertirlo en una solución concreta.',
       whatsappPrefill:
         'Hola Juan Manuel, vi tu portfolio y me gustaría conversar sobre una solución para mi empresa.',
       whatsappTitle: 'WhatsApp Directo',
@@ -658,6 +700,7 @@ export const content = {
       projects: 'Projects',
       skills: 'Skills',
       simulator: 'Simulator',
+      collaborate: 'Collaboration',
       methodology: 'Methodology',
       experience: 'Experience',
       contact: 'Contact',
@@ -677,62 +720,46 @@ export const content = {
       sendEmail: 'Send email to Juan Manuel Varela',
     },
     seo: {
-      title: 'Juan Manuel Varela | Automation, software and AI for companies',
+      title: 'Juan Manuel Varela | Process automation, business software and applied AI',
       description:
-        'Juan Manuel Varela, an independent professional in Buenos Aires. He builds automations, business applications, and AI tools that cut manual work and bring processes under control.',
+        'I automate administrative work, build custom business applications, and apply AI to day-to-day operations. Less manual work and clearer control of the information.',
     },
     hero: {
       badge: 'Independent professional',
+      eyebrow: 'Juan Manuel Varela · Process automation, business software and applied AI',
       heroCtaBanner:
         'If your team is losing hours to spreadsheets, I can build the tool that takes that work out of the operation.',
-      headline: 'I turn operational problems into digital tools.',
+      headline: 'I turn manual processes into digital tools.',
       headlineSub: '',
       subheadline:
-        'I spent 10+ years in credit, collections, and business processes. I now build automations, management tools, and AI solutions for that kind of operation.',
+        'I combine more than 10 years of experience in business processes with software development to build automations, applications, and AI solutions that solve real business problems.',
       storyP1:
         'Ten years at Saputo, DACAS, and CNH, across credit, collections, and bank reconciliations. Since 2024 I have designed and shipped automation systems, internal portals, and production AI (CoopMora, SECSA, and an HR intranet), combining more than a decade of financial and operational judgment with software development. I write Python so teams get back the hours they spend on spreadsheets.',
-      storyP2:
-        'The turning point was growing weary of watching teams burn 15 to 20 hours every week manually matching spreadsheets, copying records across fragmented ERPs, and scrambling through never-ending month-end closings. That led me to take programming seriously: writing robust Python scripts, advanced SQL queries, and Power BI models to solve my own team’s operational bottlenecks.',
       storyP3:
         'Today, I bridge those two worlds. I am neither an abstract developer nor an analyst confined to PowerPoint decks: I build tools, pipelines, and dashboards that run in production, strip away repetitive grunt work, and give businesses back the time they need to make strategic decisions.',
-      ctaProjects: 'View Projects',
-      ctaContact: "Let's Discuss Your Project",
+      ctaProjects: 'View projects',
+      ctaContact: "Let's talk about your project",
       availability:
         'I work with companies and teams on automation, data analysis, and digital tools, as an external professional.',
       ctaCv: 'Download Resume (PDF)',
       ctaWhatsapp: 'Direct WhatsApp',
-      metricsLabel: 'Results from my corporate experience',
+      metricsLabel: 'Experience in companies',
     },
     metrics: [
       {
-        value: '-30%',
-        label: '30–60 Days Overdue Reduction',
-        detail: 'At Saputo Inc., deploying behavioral segmentation and risk matrices.',
-      },
-      {
-        value: '5 ➔ 2 days',
-        label: 'Closing & Reporting Cycle',
-        detail: 'Automated SAP ERP + Power BI pipelines eliminating manual data dumps.',
-      },
-      {
-        value: '+15 h/wk',
-        label: 'Operational Time Saved / Team',
-        detail: 'Engineered Metanoia at DACAS LATAM for daily balance and collections tracking.',
-      },
-      {
-        value: '+10 Years',
-        label: 'Corporate Operations Experience',
-        detail: 'Hands-on track record in B2B multinationals, without intermediaries.',
+        value: '+10 years',
+        label: 'In business processes',
+        detail: 'Since 2014, in credit, collections, and processes at consumer-goods, machinery, and regional operations.',
       },
     ],
     projects: {
-      tag: 'Real-World Business Cases',
-      title: 'Featured projects',
+      tag: 'Implementations, products, and prototypes',
+      title: 'Projects and solutions developed',
       subtitle:
-        'One product of my own and two systems with concrete tests. The other cases stay available.',
+        'A bank reconciliation engine, a collections agent, and a credit platform. The other cases stay available.',
       problemLabel: 'The Problem:',
       solutionLabel: 'The Solution:',
-      impactLabel: 'What was tested:',
+      impactLabel: 'What was verified:',
       roleLabel: 'My Role:',
       stackLabel: 'Tech Stack:',
       statusLabel: 'Project Status:',
@@ -749,7 +776,7 @@ export const content = {
       flagshipBadge: 'Featured project',
       viewAllProjects: 'View all projects',
       showFeaturedOnly: 'Show featured projects only',
-      flagshipMetricsTitle: 'Architecture & Business Metrics',
+      flagshipMetricsTitle: 'What the prototype shows',
       flagshipPipelineTitle: 'Automated Operations Pipeline',
       engineeringLabel: 'What the code decides',
       modalProblem: '1. Business problem',
@@ -757,7 +784,7 @@ export const content = {
       modalFeatures: 'What the system does',
       modalStack: '3. Tech stack',
       modalRole: '4. My role',
-      modalImpact: '5. Measurable result',
+      modalImpact: 'What was verified',
       modalStatus: 'Status:',
       privateProject: 'Private project',
       codeAvailable: 'Code available',
@@ -814,7 +841,7 @@ export const content = {
             { step: '01', name: 'Overdue book', desc: 'Ingestion & normalization' },
             { step: '02', name: '0–100 Scoring', desc: 'Risk-weighted grading' },
             { step: '03', name: 'Guardrails', desc: 'Anti-hallucination check' },
-            { step: '04', name: 'WhatsApp/Email', desc: 'Production-ready dispatch' },
+            { step: '04', name: 'WhatsApp/Email', desc: 'Message ready to send' },
           ],
           engineering: [
             'agente/riesgo.py keeps the 0–100 score explainable: 40% days overdue, 25% balance, 20% history, 15% broken promises.',
@@ -822,12 +849,13 @@ export const content = {
             '16 pytest cases lock the segments, the sort order, and that fallback. They run locally; the repo does not publish a CI workflow.',
           ],
           tags: ['Python', 'Streamlit', 'Claude API', 'Pytest', 'Credit Risk', 'Offline Fallback'],
+          statusLabel: 'Working prototype',
           isPublic: true,
           isPrivate: false,
           state: siteConfig.projectStates.CODE,
           demoUrl: null,
           summaryCase:
-            'Quantitative portfolio prioritization and guardrail-validated drafting to contact customers via WhatsApp or email based on account criticality.',
+            'Quantitative portfolio prioritization and assisted drafting, with checks so the notice respects amounts and dates.',
         },
         {
           id: 'conciliacion-bancaria',
@@ -851,6 +879,7 @@ export const content = {
             '11 tests require over 90% on the sample book (the README measures 97.2% of amount) and that each invoice is used once.',
           ],
           tags: ['Python', 'Pandas', 'RapidFuzz', 'openpyxl', 'Pytest'],
+          statusLabel: 'Verifiable technical project',
           isPublic: true,
           isPrivate: false,
           state: siteConfig.projectStates.CODE,
@@ -875,18 +904,21 @@ export const content = {
           impactMetric:
             'Open prototypes for reviewing the structure. The tool that runs on live operational data stays in a private repository.',
           tags: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Firebase'],
+          statusLabel: 'Working prototype',
           isPublic: true,
           isPrivate: false,
           state: siteConfig.projectStates.CODE,
           demoUrl: null,
           summaryCase:
-            'The internal version is not published. These two repos show the ERP prototype and the assistant panel, without client data.',
+            'These two repositories show the ERP prototype and the assistant panel. The tool used with operational data is in a private repository.',
         },
         {
           id: 'cubo',
           image: '/projects/cubo.jpg',
           title: 'CUBO — Credit and collections platform for companies',
           category: 'Web App & API',
+          statusLabel: 'Own product',
+          cardProof: false,
           state: siteConfig.projectStates.PRIVATE_CASE,
           isPrivate: true,
           isPublic: false,
@@ -901,7 +933,7 @@ export const content = {
           demoUrl: null,
           githubUrl: null,
           summaryCase:
-            'Designed to replace manual spreadsheet reconciliation with a unified hub providing real-time statements and automated notifications.',
+            'Own credit and collections platform: commitment tracking, receivable aging, collection alerts, and Telegram queries.',
         },
         {
           id: 'cubo-inspecta',
@@ -934,13 +966,14 @@ export const content = {
           demoUrl: null,
           githubUrl: null,
           summaryCase:
-            'An independent CUBO product for audits and inspections. No clients, metrics, or feature list are published until the implementation is confirmed.',
+            'An independent CUBO product for audits and inspections.',
         },
         {
           id: 'gladys',
           image: '/projects/gladys.jpg',
           title: 'G.L.A.D.Y.S. / CoopMora - Credit Risk & BCRA Radar',
           category: 'Pipeline & Scraping',
+          statusLabel: 'Business implementation',
           state: siteConfig.projectStates.PRIVATE_CASE,
           isPrivate: true,
           isPublic: false,
@@ -950,7 +983,7 @@ export const content = {
             'Python pipeline with web scraping and automated text processing that aggregates early insolvency alerts and delivers daily email digests and Streamlit reports.',
           role: 'Web scraper development, data sanitation, and Streamlit analytics UI.',
           impactMetric:
-            'A daily pipeline that checks BCRA credit status and insolvency filings, then uses an LLM to flag exceptions and cut daily monitoring to minutes.',
+            'A daily pipeline, in use by the credit team, that checks BCRA status and insolvency filings and delivers a report.',
           tags: ['Python', 'Web Scraping', 'Streamlit', 'Automated Alerts', 'Scoring'],
           demoUrl: null,
           githubUrl: null,
@@ -966,6 +999,7 @@ export const content = {
           client: 'RB&LCA Ascensores y Servicios Verticales',
           title: 'AscenSort — Incident system and AI-assisted audits',
           category: 'Incident system',
+          statusLabel: 'Built for a client',
           state: siteConfig.projectStates.PRIVATE_CASE,
           isPrivate: true,
           isPublic: false,
@@ -1001,6 +1035,7 @@ export const content = {
           imageAlt: 'Community Portal, self-service intranet',
           title: 'Community Portal - HR Intranet & Self-Service',
           category: 'Intranet · React',
+          statusLabel: 'Business implementation',
           state: siteConfig.projectStates.PRIVATE_CASE,
           isPrivate: true,
           isPublic: false,
@@ -1083,39 +1118,39 @@ export const content = {
       tag: 'Working Framework',
       title: '4-Step Operational Framework',
       subtitle:
-        'Every script and dashboard responds to well-designed process architecture. How I turn manual operations into streamlined, scalable workflows.',
+        'The same path fits an automation, a software build, or an applied-AI solution.',
       steps: [
         {
           number: '01',
-          title: 'Diagnosis & Friction Mapping',
+          title: 'We understand the problem',
           description:
-            'Full review of administrative workflows (Order-to-Cash, reconciliations, billing). Pinpointing bottlenecks, risk vectors, and wasted hours.',
+            'I look at how your team works, identify the difficulties, and find opportunities to improve.',
         },
         {
           number: '02',
-          title: 'Data Cleaning & Integration',
+          title: 'We define the solution',
           description:
-            'Connecting and sanitizing fragmented data sources (ERPs, bank statements, SQL databases, spreadsheets) to ensure traceability.',
+            'We set the objectives, the scope, and the technology best suited to the problem.',
         },
         {
           number: '03',
-          title: 'Workflow Automation',
+          title: 'We build and validate',
           description:
-            'Deploying robust Python scripts and pipelines that process, reconcile, and notify without human error or intervention.',
+            'I build the solution, test how it works, and make the adjustments needed before it goes into use.',
         },
         {
           number: '04',
-          title: 'Dashboards & Team Adoption',
+          title: 'We implement and support adoption',
           description:
-            'Real-time Power BI control dashboards, clear documentation, and hands-on team enablement to guarantee frictionless adoption.',
+            'I put the tool into operation, document how to use it, and help the team bring it into daily work.',
         },
       ],
     },
     experience: {
-      tag: 'Proven Career',
-      title: 'Corporate Background & Measurable Results',
+      tag: 'Background',
+      title: 'Experience behind the work',
       subtitle:
-        'Over a decade in FMCG, heavy equipment, and technology distribution. That judgment is what I use when a company asks me to automate a process.',
+        'More than a decade in credit, collections, and business processes. That judgment is what I use when designing a tool.',
       items: [
         {
           role: 'Automation, Process & Solutions Consultant',
@@ -1141,7 +1176,7 @@ export const content = {
             'Operational and credit control across 100+ strategic corporate accounts in Latin America.',
           achievements: [
             'Standardized operational and collection metrics using SQL and Power BI, enabling cross-border auditing and early anomaly detection.',
-            'Engineered Metanoia, an internal daily collections tool that saved ~15 manual weekly hours across the team.',
+            'Designed and built the internal tool for daily collections and balance tracking in the regional operation.',
             'Implemented early-warning triggers for critical accounts, slashing idle delays and coordinating real-time commercial adjustments.',
           ],
           tags: ['SQL', 'Power BI', 'Python', 'Order-to-Cash'],
@@ -1154,8 +1189,8 @@ export const content = {
           summary:
             'Management of commercial receivables, credit exposure, and rolling cash flow projections.',
           achievements: [
-            'Designed a behavioral segmentation matrix, reducing 30-60 day overdue debt by 30% and +60 day debt by 20%.',
-            'Automated SAP ERP + Power BI (DAX) closing pipelines, reducing reporting cycle from 5 to 2 business days.',
+            'Designed a behavioral segmentation matrix for 30–60 day overdue balances and for debt older than 60 days.',
+            'Automated periodic reports between SAP ERP and Power BI (DAX) for closing and consolidation.',
             'Built predictive SQL models for cash inflow forecasting, empowering management with proactive liquidity scenarios.',
           ],
           tags: ['SAP ERP (FI/AR)', 'Power BI', 'DAX', 'SQL', 'Advanced Excel'],
@@ -1210,44 +1245,93 @@ export const content = {
         ],
       },
     },
-    services: {
-      tag: 'Services',
-      title: 'Solutions for companies',
-      subtitle:
-        'I build tools that help reduce manual work, organize information, and improve control over processes.',
-      cta: 'Ask about this',
+    problems: {
+      title: 'Work that is still done by hand',
       items: [
         {
-          id: 'automatizacion',
-          title: 'Process automation',
-          problem: 'Does your team lose hours merging Excel files, building reports, or reconciling data by hand?',
-          solution: 'I build tools that do those tasks automatically.',
-          benefit: 'Less repetitive work in closings, reconciliations, and reports.',
-          tools: 'Python, Excel, and SQL',
+          id: 'manual',
+          title: 'Hours spent on spreadsheets, reconciliations, and reports',
+          text: 'The close depends on copying data, matching files, and building the same report again.',
         },
         {
-          id: 'aplicaciones',
-          title: 'Management tools',
-          problem: 'Is the operation split across spreadsheets that do not talk to each other?',
-          solution: 'I build internal applications and dashboards around how the company actually works.',
-          benefit: 'One place to follow balances, incidents, or internal requests, instead of chasing files.',
-          tools: 'Web applications, dashboards, and internal portals',
+          id: 'scattered',
+          title: 'Information split across files that do not connect',
+          text: 'Balances, incidents, or internal requests live in separate spreadsheets, and nobody sees the real status.',
         },
         {
-          id: 'ia',
-          title: 'Applied artificial intelligence',
-          problem: 'Are reading, sorting, or writing tasks taking time that software could assist?',
-          solution: 'I add artificial intelligence to processes that already exist, to analyze, classify, or draft.',
-          benefit: 'The team reaches a draft or a classification sooner, and a person still reviews the result.',
-          tools: 'Agents, documents, and assisted reports',
+          id: 'repeat',
+          title: 'Reading and sorting the team repeats every day',
+          text: 'Alerts, drafts, and criteria are reviewed by hand, with the same judgment, every day.',
         },
       ],
     },
+    services: {
+      tag: 'Services',
+      title: 'Solutions for your business',
+      subtitle:
+        'Three ways of working, depending on the problem. Scope is defined by the real process, not by a fixed package.',
+      cta: 'Ask about this service',
+      items: [
+        {
+          id: 'automatizacion',
+          kicker: 'Process automation',
+          title: 'Less manual work. More time for the business.',
+          description:
+            'I automate administrative and operational processes to cut repetitive work, mistakes, and the time a task takes.',
+          examples: [
+            'Bank reconciliations',
+            'Excel and CSV file processing',
+            'Collections automation',
+            'Data integration and validation',
+            'Automatic report generation',
+          ],
+          subject: 'Inquiry: process automation',
+        },
+        {
+          id: 'aplicaciones',
+          kicker: 'Business software',
+          title: 'Tools shaped around how your company works.',
+          description:
+            'I build web applications and internal systems to digitize and simplify how the operation runs.',
+          examples: [
+            'Management applications',
+            'Internal portals',
+            'Tracking systems',
+            'Dashboards',
+            'Operational tools',
+            'Custom web applications',
+          ],
+          subject: 'Inquiry: business software',
+        },
+        {
+          id: 'ia',
+          kicker: 'Applied artificial intelligence',
+          title: 'Artificial intelligence applied to real problems.',
+          description:
+            'I add artificial intelligence to processes and applications to classify information, draft text, and assist daily work. A person still reviews the result.',
+          examples: [
+            'Internal assistants',
+            'Alert classification',
+            'AI agents',
+            'Assisted drafting',
+            'Workflow automation',
+          ],
+          subject: 'Inquiry: applied AI',
+        },
+      ],
+    },
+    collaboration: {
+      title: 'Need extra technical capacity on your next project?',
+      text: 'I work with agencies, consultancies, and technology teams that need automations, business applications, or applied artificial intelligence.',
+      text2:
+        'I can join an existing project or take on a defined piece of work, bringing technical experience and a working knowledge of business processes.',
+      cta: "Let's talk about a collaboration",
+      subject: 'Inquiry: a collaboration',
+    },
     contact: {
       tag: 'Direct Contact',
-      title: "Let's Connect",
-      subtitle:
-        'Is your company losing time on manual tasks, working with scattered information, or needing to improve its processes? Tell me what you need to solve. We can look at an automation, software, or AI solution adapted to your operation.',
+      title: 'Do you have a process to improve, or an idea you need to build?',
+      subtitle: 'Tell me what you need, and we can look at how to turn it into a concrete solution.',
       whatsappPrefill:
         'Hi Juan Manuel, I saw your portfolio and I would like to talk about a solution for my company.',
       whatsappTitle: 'Direct WhatsApp',

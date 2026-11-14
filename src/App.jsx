@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import ToolMarquee from './components/ToolMarquee';
+import Problems from './components/Problems';
 import Services from './components/Services';
 import Projects from './components/Projects';
-import Skills from './components/Skills';
+import Collaboration from './components/Collaboration';
+import WorkMethodology from './components/WorkMethodology';
+import ToolMarquee from './components/ToolMarquee';
 import Experience from './components/Experience';
+import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import { content } from './data/portfolioData';
@@ -47,6 +50,7 @@ export default function App() {
     document.querySelector('meta[name="description"]')?.setAttribute('content', seo.description);
     document.querySelector('meta[property="og:title"]')?.setAttribute('content', seo.title);
     document.querySelector('meta[property="og:description"]')?.setAttribute('content', seo.description);
+    document.querySelector('meta[property="og:locale"]')?.setAttribute('content', lang === 'en' ? 'en_US' : 'es_AR');
     document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', seo.title);
     document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', seo.description);
   }, [lang]);
@@ -90,10 +94,13 @@ export default function App() {
       {/* Flujo principal bilingüe con soporte completo de tema */}
       <main className="flex-grow flex flex-col">
         <Hero lang={lang} />
-        <Services lang={lang} />
+        <Problems lang={lang} />
+        <Services lang={lang} onSelectDemo={handleSelectDemo} />
         <Projects lang={lang} onSelectDemo={handleSelectDemo} />
+        <Collaboration lang={lang} onSelectDemo={handleSelectDemo} />
+        <WorkMethodology lang={lang} />
         <ToolMarquee lang={lang} />
-        <Skills lang={lang} />
+        <Testimonials lang={lang} />
         <Experience lang={lang} />
         <Contact
           lang={lang}

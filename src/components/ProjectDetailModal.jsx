@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { X, Layers, CheckCircle2, ArrowRight, ShieldCheck, ExternalLink, MessageCircle } from 'lucide-react';
 import { personalInfo, content } from '../data/portfolioData';
+import { track } from '../lib/track';
 
 export default function ProjectDetailModal({ isOpen, onClose, project, lang = 'es', onSelectDemo }) {
   const modalRef = useRef(null);
@@ -258,7 +259,7 @@ export default function ProjectDetailModal({ isOpen, onClose, project, lang = 'e
             </p>
           )}
 
-          {project.impactMetric && (
+          {project.impactMetric && project.cardProof !== false && (
             <div>
               <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-400 mb-1.5">
                 {t.modalImpact}
@@ -296,6 +297,7 @@ export default function ProjectDetailModal({ isOpen, onClose, project, lang = 'e
           <a
             href="#contacto"
             onClick={(e) => {
+              track('cta_click', { location: 'project_modal', project: project.id, target: 'contact' });
               onClose();
               if (onSelectDemo) {
                 e.preventDefault();
@@ -312,6 +314,7 @@ export default function ProjectDetailModal({ isOpen, onClose, project, lang = 'e
               href={`https://wa.me/${personalInfo.whatsappNumber}?text=${encodeURIComponent(project.whatsappText)}`}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => track('contact_whatsapp', { location: 'project_modal', project: project.id })}
               className="inline-flex items-center justify-center gap-1.5 text-xs font-semibold text-emerald-800 dark:text-emerald-300"
             >
               <MessageCircle className="w-3.5 h-3.5" />

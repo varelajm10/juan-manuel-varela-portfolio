@@ -11,7 +11,7 @@ import {
 import { content } from '../data/portfolioData';
 import ProjectDetailModal from './ProjectDetailModal';
 
-const FEATURED_PROJECT_IDS = ['cubo-inspecta', 'agente-cobranzas-ia', 'conciliacion-bancaria'];
+const FEATURED_PROJECT_IDS = ['conciliacion-bancaria', 'agente-cobranzas-ia', 'cubo'];
 
 export default function Projects({ lang, onSelectDemo }) {
   const [activeModalProject, setActiveModalProject] = useState(null);
@@ -58,9 +58,11 @@ export default function Projects({ lang, onSelectDemo }) {
             {project.image ? (
               <img
                 src={project.image}
-                alt={project.imageAlt || ''}
+                alt={project.imageAlt || project.title}
                 width="1200"
                 height="675"
+                loading="lazy"
+                decoding="async"
                 className={project.imageFit === 'contain' ? `h-full w-full object-contain bg-white ${project.imagePad === false ? '' : 'p-4'}` : 'h-full w-full object-cover'}
               />
             ) : null}
@@ -72,9 +74,9 @@ export default function Projects({ lang, onSelectDemo }) {
             </span>
 
             {project.statusLabel ? (
-              <span className="font-mono text-[11px] text-zinc-500">{project.statusLabel}</span>
+              <span className="font-mono text-[11px] text-zinc-500 dark:text-zinc-400">{project.statusLabel}</span>
             ) : isPrivate ? (
-              <span className="flex items-center gap-1 font-mono text-[11px] text-zinc-500">
+              <span className="flex items-center gap-1 font-mono text-[11px] text-zinc-500 dark:text-zinc-400">
                 <Lock className="h-3 w-3" /> {t.statusPrivate}
               </span>
             ) : (
@@ -99,13 +101,13 @@ export default function Projects({ lang, onSelectDemo }) {
               {project.client}
             </p>
           )}
-          {featured && project.problem && (
+          {project.problem && (
             <p className="mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
               <span className="font-semibold text-zinc-900 dark:text-zinc-100">{t.problemLabel} </span>
               {project.problem}
             </p>
           )}
-          {featured && project.summaryCase && (
+          {project.summaryCase && (
             <p className="mt-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
               <span className="font-semibold text-zinc-900 dark:text-zinc-100">{t.valueLabel} </span>
               {project.summaryCase}
@@ -184,6 +186,7 @@ export default function Projects({ lang, onSelectDemo }) {
               <a
                 href="#contacto"
                 onClick={(event) => {
+                  track('cta_click', { location: 'project', project: project.id, target: 'contact' });
                   if (onSelectDemo) {
                     event.preventDefault();
                     onSelectDemo(project.title, project.contactSubject);
@@ -214,7 +217,7 @@ export default function Projects({ lang, onSelectDemo }) {
   };
 
   return (
-    <section id="proyectos" className="border-t border-zinc-200 bg-zinc-50 py-24 dark:border-zinc-800 dark:bg-zinc-950">
+    <section id="proyectos" className="scroll-mt-24 border-t border-zinc-200 bg-zinc-50 py-24 dark:border-zinc-800 dark:bg-zinc-950">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 max-w-2xl">
           <div className="mb-2 inline-flex items-center gap-1.5 font-mono text-xs font-semibold uppercase tracking-wider text-sky-700 dark:text-sky-400">
