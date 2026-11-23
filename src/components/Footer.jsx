@@ -7,39 +7,38 @@ export default function Footer({ lang }) {
   const t = content[lang].footer;
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
   };
 
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 py-12">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pb-8 border-b border-zinc-100 dark:border-zinc-900">
+    <footer className="bg-paper">
+      <div className="mx-auto max-w-6xl border-gridline px-4 py-10 sm:px-6 lg:px-8 xl:border-x">
+        <div className="flex flex-col items-start justify-between gap-6 border-b border-gridline pb-7 sm:flex-row sm:items-center">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-zinc-900 text-white dark:bg-zinc-800 dark:border dark:border-zinc-700 flex items-center justify-center font-mono font-bold text-xs">
+            <div className="flex h-8 w-8 items-center justify-center bg-obsidian font-mono text-xs font-medium text-paper">
               JV
             </div>
             <div>
-              <div className="font-semibold text-sm text-zinc-900 dark:text-zinc-200">
-                {personalInfo.name}
-              </div>
-              <div className="text-xs font-mono text-zinc-500 dark:text-zinc-400">
+              <div className="text-sm font-semibold text-obsidian">{personalInfo.name}</div>
+              <div className="font-mono text-xs text-ink-muted">
                 {personalInfo.brand[lang]}
               </div>
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-2">
             {personalInfo.linkedin && (
               <a
                 href={personalInfo.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="p-2 rounded-lg text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
+                className="inline-flex min-h-[40px] min-w-[40px] items-center justify-center border border-gridline bg-white text-ink-body transition-colors hover:border-obsidian hover:text-obsidian"
               >
-                <Linkedin className="w-4 h-4" />
+                <Linkedin className="h-4 w-4" aria-hidden="true" />
               </a>
             )}
 
@@ -49,9 +48,9 @@ export default function Footer({ lang }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
-                className="p-2 rounded-lg text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
+                className="inline-flex min-h-[40px] min-w-[40px] items-center justify-center border border-gridline bg-white text-ink-body transition-colors hover:border-obsidian hover:text-obsidian"
               >
-                <Github className="w-4 h-4" />
+                <Github className="h-4 w-4" aria-hidden="true" />
               </a>
             )}
 
@@ -59,30 +58,29 @@ export default function Footer({ lang }) {
               href={`mailto:${personalInfo.email}`}
               aria-label={content[lang].ui.sendEmail}
               onClick={() => track('contact_email', { location: 'footer' })}
-              className="p-2 rounded-lg text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
+              className="inline-flex min-h-[40px] min-w-[40px] items-center justify-center border border-gridline bg-white text-ink-body transition-colors hover:border-obsidian hover:text-obsidian"
             >
-              <Mail className="w-4 h-4" />
+              <Mail className="h-4 w-4" aria-hidden="true" />
             </a>
 
             <button
               type="button"
               onClick={scrollToTop}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-zinc-200 dark:border-zinc-800 text-xs font-mono text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
+              className="inline-flex min-h-[40px] items-center gap-1.5 border border-gridline bg-white px-3 font-mono text-xs text-ink-body transition-colors hover:border-obsidian hover:text-obsidian"
             >
-              <ArrowUp className="w-3.5 h-3.5" />
+              <ArrowUp className="h-3.5 w-3.5" aria-hidden="true" />
               <span>{t.backToTop}</span>
             </button>
           </div>
         </div>
 
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-zinc-500 dark:text-zinc-400">
+        <div className="flex flex-col items-start justify-between gap-2 pt-6 font-mono text-xs text-ink-muted sm:flex-row sm:items-center">
           <div>
             © {currentYear} {personalInfo.name}. {t.location}
           </div>
-
           <div className="flex items-center gap-2">
             <span>{t.title}</span>
-            <span>·</span>
+            <span aria-hidden="true">·</span>
             <span>{t.vercel}</span>
           </div>
         </div>

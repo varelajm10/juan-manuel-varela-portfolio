@@ -1,124 +1,130 @@
 import React from 'react';
-import { Calendar, CheckCircle2, Briefcase } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 import { content } from '../data/portfolioData';
 
 export default function Experience({ lang }) {
   const t = content[lang].experience;
 
   return (
-    <>
-    <section id="trayectoria" className="scroll-mt-24 pt-24 pb-10 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl mb-14">
-          <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-sky-700 dark:text-sky-400 font-semibold mb-2">
-            <Briefcase className="w-3.5 h-3.5" />
-            <span>{t.tag}</span>
+    <section id="trayectoria" className="scroll-mt-20 border-b border-gridline bg-paper">
+      <div className="mx-auto max-w-6xl border-gridline xl:border-x">
+        <div className="grid grid-cols-1 lg:grid-cols-12">
+          {/* Columna Izquierda: Cabecera + Formación */}
+          <div className="border-b border-gridline px-4 py-10 sm:px-6 lg:col-span-4 lg:border-b-0 lg:border-r lg:p-8">
+            <div className="lg:sticky lg:top-24">
+              <p className="mb-2 font-mono text-xs font-medium uppercase tracking-[0.12em] text-petrol">
+                {t.tag}
+              </p>
+              <h2 className="font-display text-[2.2rem] font-normal leading-[1.04] tracking-[-0.02em] text-obsidian sm:text-[2.55rem]">
+                {t.title}
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-ink-body">
+                {t.subtitle}
+              </p>
+
+              {t.education && (
+                <div id="formacion" className="mt-8 border-t border-gridline pt-6">
+                  <h3 className="mb-4 font-mono text-xs font-semibold uppercase tracking-[0.12em] text-ink-muted">
+                    {t.education.title}
+                  </h3>
+                  <ul className="space-y-3">
+                    {t.education.items.map((item) => (
+                      <li
+                        key={item.name}
+                        className="border-b border-gridline/70 pb-3 last:border-b-0 last:pb-0"
+                      >
+                        <p className="text-xs font-semibold text-obsidian sm:text-sm">
+                          {item.name}
+                        </p>
+                        {item.place && (
+                          <p className="mt-0.5 font-mono text-xs text-petrol">
+                            {item.place}
+                          </p>
+                        )}
+                        {item.detail && (
+                          <p className="mt-0.5 text-xs leading-relaxed text-ink-body">
+                            {item.detail}
+                          </p>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-            {t.title}
-          </h2>
-          <p className="mt-2 text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
-            {t.subtitle}
-          </p>
-        </div>
 
-        {/* Timeline */}
-        <div className="relative pl-6 sm:pl-8 border-l border-zinc-300 dark:border-zinc-800 space-y-10">
-          {t.items.map((item, idx) => (
-            <div key={item.company} className="relative">
-              {/* Nodo */}
-              <div
-                className={`absolute -left-[31px] sm:-left-[39px] top-2 w-3.5 h-3.5 rounded-full border-2 ${
-                  idx === 0
-                    ? 'bg-sky-600 dark:bg-sky-400 border-white dark:border-zinc-950 ring-4 ring-sky-500/15'
-                    : 'bg-zinc-400 dark:bg-zinc-800 border-white dark:border-zinc-950'
-                }`}
-              />
+          {/* Columna Derecha: Ledger Cronológico de Roles */}
+          <div className="divide-y divide-gridline bg-white lg:col-span-8">
+            {t.items.map((item, idx) => {
+              const isCurrent = idx === 0;
+              return (
+                <article
+                  key={`${item.company}-${item.period}`}
+                  className={`p-6 sm:p-8 ${isCurrent ? 'bg-petrol-tint/35' : 'bg-white'}`}
+                >
+                  <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-start">
+                    <div>
+                      <h3 className="text-base font-semibold leading-snug text-obsidian sm:text-lg">
+                        {item.role}
+                      </h3>
+                      <p className="mt-0.5 text-xs font-medium text-ink-body sm:text-sm">
+                        <span className="font-semibold text-obsidian">{item.company}</span>
+                        {' · '}
+                        <span className="text-ink-muted">{item.location}</span>
+                      </p>
+                    </div>
 
-              <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40 p-6 sm:p-7 shadow-xs">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
-                  <div>
-                    <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100">
-                      {item.role}
-                    </h3>
-                    <p className="text-sm font-semibold text-zinc-600 dark:text-zinc-400 mt-0.5">
-                      {item.company} · <span className="font-normal text-zinc-500 dark:text-zinc-400">{item.location}</span>
-                    </p>
+                    <span
+                      className={`inline-flex shrink-0 self-start border px-2.5 py-1 font-mono text-xs ${
+                        isCurrent
+                          ? 'border-petrol-border bg-petrol-tint font-semibold text-petrol'
+                          : 'border-gridline bg-paper text-ink-muted'
+                      }`}
+                    >
+                      {item.period}
+                    </span>
                   </div>
 
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-zinc-100 dark:bg-zinc-800/80 text-xs font-mono text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700/60 self-start sm:self-auto">
-                    <Calendar className="w-3 h-3 text-zinc-400" />
-                    <span>{item.period}</span>
-                  </span>
-                </div>
+                  <p className="mt-3 text-sm leading-relaxed text-ink-body">
+                    {item.summary}
+                  </p>
 
-                <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed my-3">
-                  {item.summary}
-                </p>
+                  {isCurrent && item.achievements?.length > 0 && (
+                    <ul className="mt-4 space-y-2 border-t border-gridline/80 pt-4">
+                      {item.achievements.map((ach, i) => (
+                        <li
+                          key={i}
+                          className="flex items-start gap-2.5 text-xs leading-relaxed text-obsidian sm:text-sm"
+                        >
+                          <CheckCircle2
+                            className="mt-0.5 h-4 w-4 shrink-0 text-petrol"
+                            aria-hidden="true"
+                          />
+                          <span>{ach}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
 
-                {idx === 0 && (
-                <ul className="space-y-2 mb-4">
-                  {item.achievements.map((ach, i) => (
-                    <li
-                      key={i}
-                      className="flex items-start gap-2 text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed"
-                    >
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-1" />
-                      <span>{ach}</span>
-                    </li>
-                  ))}
-                </ul>
-                )}
-
-                <div className="flex flex-wrap gap-1.5 pt-3 border-t border-zinc-100 dark:border-zinc-800/70">
-                  {item.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2 py-0.5 rounded text-[11px] font-mono bg-zinc-100 dark:bg-zinc-800/60 text-zinc-600 dark:text-zinc-400"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
+                  {item.tags?.length > 0 && (
+                    <div className="mt-4 flex flex-wrap gap-1.5 pt-3">
+                      {item.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="border border-gridline bg-paper px-2 py-0.5 font-mono text-xs text-ink-body"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </article>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
-    <section id="formacion" className="pb-24 bg-zinc-50 dark:bg-zinc-950">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {t.education && (
-          <div>
-            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-              {t.education.title}
-            </h2>
-            <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {t.education.items.map((item) => (
-                <li
-                  key={item.name}
-                  className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40 px-5 py-4"
-                >
-                  <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-                    {item.name}
-                  </p>
-                  {item.place && (
-                    <p className="mt-1 text-xs font-mono text-sky-800 dark:text-sky-300">
-                      {item.place}
-                    </p>
-                  )}
-                  {item.detail && (
-                    <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                      {item.detail}
-                    </p>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </div>
-    </section>
-    </>
   );
 }

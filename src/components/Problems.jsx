@@ -3,21 +3,33 @@ import { content } from '../data/portfolioData';
 
 export default function Problems({ lang }) {
   const t = content[lang].problems;
+  const kicker = lang === 'en' ? 'Operational diagnosis' : 'Diagnóstico operativo';
 
   return (
-    <section id="problemas" className="scroll-mt-24 border-t border-zinc-200 bg-white py-16 dark:border-zinc-800 dark:bg-zinc-950 sm:py-20">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <h2 className="max-w-2xl text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-3xl">
-          {t.title}
-        </h2>
-        <ol className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
+    <section id="problemas" className="scroll-mt-20 border-b border-gridline bg-paper">
+      <div className="mx-auto max-w-6xl border-gridline xl:border-x">
+        <div className="border-b border-gridline px-4 py-11 sm:px-6 lg:px-8">
+          <p className="mb-2 font-mono text-xs font-medium uppercase tracking-[0.12em] text-ink-muted">
+            {kicker}
+          </p>
+          <h2 className="max-w-2xl font-display text-[2.15rem] font-normal leading-[1.04] tracking-[-0.02em] text-obsidian sm:text-[2.65rem]">
+            {t.title}
+          </h2>
+        </div>
+
+        <ol className="divide-y divide-gridline">
           {t.items.map((item, index) => (
-            <li key={item.id} className="border-t border-zinc-200 pt-4 dark:border-zinc-800">
-              <p className="font-mono text-xs text-zinc-500 dark:text-zinc-400">0{index + 1}</p>
-              <h3 className="mt-2 text-base font-semibold leading-snug text-zinc-900 dark:text-zinc-100">
+            <li
+              key={item.id}
+              className="grid grid-cols-1 gap-3 px-4 py-7 transition-colors hover:bg-white sm:px-6 md:grid-cols-12 md:items-baseline md:gap-6 lg:px-8"
+            >
+              <span className="font-display text-3xl leading-none text-petrol md:col-span-2">
+                0{index + 1}
+              </span>
+              <h3 className="text-base font-semibold leading-snug text-obsidian md:col-span-5">
                 {item.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+              <p className="text-sm leading-relaxed text-ink-body md:col-span-5">
                 {item.text}
               </p>
             </li>
