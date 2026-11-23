@@ -10,14 +10,7 @@ import {
 import { personalInfo, content } from '../data/portfolioData';
 import { track } from '../lib/track';
 import ProjectVisual from './ProjectVisual';
-
-const STATUS_BADGE_MAP = {
-  'portal-rrhh': 'bg-petrol-tint text-petrol border-petrol-border',
-  gladys: 'bg-petrol-tint text-petrol border-petrol-border',
-  ascensort: 'bg-petrol-tint text-petrol border-petrol-border',
-  cubo: 'bg-brass-tint text-brass border-brass-border',
-  'cubo-inspecta': 'bg-brass-tint text-brass border-brass-border',
-};
+import { PROJECT_COMMERCIAL_META, getStatusBadgeClasses } from './Projects';
 
 export default function ProjectDetailModal({
   isOpen,
@@ -78,9 +71,16 @@ export default function ProjectDetailModal({
   if (!isOpen || !project) return null;
 
   const t = content[lang].projects;
-  const badgeClasses =
-    STATUS_BADGE_MAP[project.id] || 'bg-sage-tint text-sage border-sage-border';
+  const meta = PROJECT_COMMERCIAL_META[project.id] || {
+    group: 'open',
+    symbol: '○',
+    audience: { es: '', en: '' },
+    benefit: { es: '', en: '' },
+  };
+  const badgeClasses = getStatusBadgeClasses(meta.group);
   const repoUrl = project.repoUrl || project.githubUrl;
+  const audienceText = meta.audience?.[lang] || '';
+  const benefitText = meta.benefit?.[lang] || '';
 
   return (
     <div
@@ -100,13 +100,16 @@ export default function ProjectDetailModal({
           <div className="min-w-0">
             <div className="mb-2 flex flex-wrap items-center gap-2">
               <span
-                className={`inline-flex items-center border px-2.5 py-0.5 font-mono text-xs font-semibold ${badgeClasses}`}
+                className={`inline-flex items-center gap-1.5 border px-2.5 py-0.5 font-mono text-xs font-semibold ${badgeClasses}`}
               >
-                {project.statusLabel
-                  ? project.statusLabel
-                  : project.isPrivate
-                    ? t.privateProject
-                    : t.codeAvailable}
+                <span aria-hidden="true">{meta.symbol}</span>
+                <span>
+                  {project.statusLabel
+                    ? project.statusLabel
+                    : project.isPrivate
+                      ? t.privateProject
+                      : t.codeAvailable}
+                </span>
               </span>
               <span className="font-mono text-xs text-ink-muted">{project.category}</span>
             </div>
@@ -116,8 +119,13 @@ export default function ProjectDetailModal({
             >
               {project.title}
             </h2>
-            {project.client && (
-              <p className="mt-1 font-mono text-xs text-ink-muted">{project.client}</p>
+            {(project.client || audienceText) && (
+              <p className="mt-1 font-mono text-xs text-ink-muted">
+                {project.client ? `${project.client} · ` : ''}
+                {audienceText
+                  ? `${lang === 'en' ? 'Useful for:' : 'Útil para:'} ${audienceText}`
+                  : ''}
+              </p>
             )}
           </div>
 
@@ -141,6 +149,14 @@ export default function ProjectDetailModal({
         >
           <ProjectVisual project={project} lang={lang} compact />
 
+          {/* Beneficio comercial concreto */}
+          {benefitText && (
+            <div className="flex items-start gap-2.5 border border-petrol-border bg-petrol-tint p-4 text-obsidian">
+              <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-petrol" aria-hidden="true" />
+              <span className="text-xs font-medium leading-relaxed sm:text-sm">{benefitText}</span>
+            </div>
+          )}
+
           {/* 1. Problema */}
           <div>
             <h3 className="mb-1.5 font-mono text-xs font-semibold uppercase tracking-[0.11em] text-ink-muted">
@@ -161,7 +177,7 @@ export default function ProjectDetailModal({
             </p>
           </div>
 
-          {/* Qué hace el sistema (features) */}
+          {/* Qué hace el sistema */}
           {project.features?.length > 0 && (
             <div>
               <h3 className="mb-2 font-mono text-xs font-semibold uppercase tracking-[0.11em] text-ink-muted">
@@ -272,17 +288,14 @@ export default function ProjectDetailModal({
             </div>
           )}
 
-          {/* Verificado */}
+          {/* Evidencia verificada */}
           {project.impactMetric && project.cardProof !== false && (
             <div>
               <h3 className="mb-1.5 font-mono text-xs font-semibold uppercase tracking-[0.11em] text-petrol">
                 {t.modalImpact}
               </h3>
-              <div className="flex items-start gap-2.5 border border-petrol-border bg-petrol-tint p-4 text-obsidian">
-                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-petrol" aria-hidden="true" />
-                <span className="text-xs font-medium leading-relaxed sm:text-sm">
-                  {project.impactMetric}
-                </span>
+              <div className="border border-gridline bg-white p-4 text-xs leading-relaxed text-obsidian sm:text-sm">
+                {project.impactMetric}
               </div>
             </div>
           )}
@@ -294,7 +307,7 @@ export default function ProjectDetailModal({
             </p>
           )}
 
-          {/* Enlaces a repositorios si existen */}
+          {/* Repositorios públicos */}
           {repoUrl && (
             <div className="flex flex-wrap gap-2 pt-1">
               <a
