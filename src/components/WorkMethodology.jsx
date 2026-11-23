@@ -1,58 +1,48 @@
 import React from 'react';
-import { Search, Layers, Zap, CheckCircle2 } from 'lucide-react';
 import { content } from '../data/portfolioData';
-
-const iconMap = [Search, Layers, Zap, CheckCircle2];
 
 export default function WorkMethodology({ lang }) {
   const t = content[lang].methodology;
 
   return (
-    <section id="metodologia" className="scroll-mt-24 py-24 border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl mb-14">
-          <div className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-sky-700 dark:text-sky-400 font-semibold mb-2">
-            <Layers className="w-3.5 h-3.5" />
-            <span>{t.tag}</span>
+    <section id="metodologia" className="scroll-mt-20 border-b border-gridline bg-paper">
+      <div className="mx-auto max-w-6xl border-gridline xl:border-x">
+        <div className="grid grid-cols-1 gap-5 border-b border-gridline px-4 py-12 sm:px-6 lg:grid-cols-12 lg:items-end lg:px-8">
+          <div className="lg:col-span-7">
+            <p className="mb-2 font-mono text-xs font-medium uppercase tracking-[0.12em] text-petrol">
+              {t.tag}
+            </p>
+            <h2 className="font-display text-[2.25rem] font-normal leading-[1.04] tracking-[-0.02em] text-obsidian sm:text-[2.7rem]">
+              {t.title}
+            </h2>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-            {t.title}
-          </h2>
-          <p className="mt-2 text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
+          <p className="text-sm leading-relaxed text-ink-body sm:text-base lg:col-span-5">
             {t.subtitle}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {t.steps.map((step, idx) => {
-            const Icon = iconMap[idx] || Search;
-            return (
-              <div
-                key={step.number}
-                className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/40 p-6 flex flex-col justify-between hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors shadow-xs"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-5">
-                    <span className="text-2xl font-bold font-mono text-zinc-500 dark:text-zinc-500">
-                      {step.number}
-                    </span>
-                    <div className="w-9 h-9 rounded-xl bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 flex items-center justify-center text-zinc-700 dark:text-zinc-300 shadow-xs">
-                      <Icon className="w-4 h-4 text-sky-700 dark:text-sky-400" />
-                    </div>
-                  </div>
-
-                  <h3 className="text-sm sm:text-base font-bold text-zinc-900 dark:text-zinc-100 mb-2.5">
-                    {step.title}
-                  </h3>
-
-                  <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                    {step.description}
-                  </p>
-                </div>
+        <ol className="grid grid-cols-1 divide-y divide-gridline md:grid-cols-2 md:divide-y-0 lg:grid-cols-4 lg:divide-x">
+          {t.steps.map((step, idx) => (
+            <li
+              key={step.number}
+              className={`bg-white/75 p-6 transition-colors hover:bg-white sm:p-7 ${
+                idx >= 2 ? 'md:border-t md:border-gridline lg:border-t-0' : ''
+              } ${idx % 2 === 1 ? 'md:border-l md:border-gridline lg:border-l-0' : ''}`}
+            >
+              <div className="mb-4 flex items-center justify-between">
+                <span className="font-display text-3xl leading-none text-petrol">
+                  {step.number}
+                </span>
               </div>
-            );
-          })}
-        </div>
+              <h3 className="text-sm font-semibold text-obsidian sm:text-base">
+                {step.title}
+              </h3>
+              <p className="mt-2 text-xs leading-relaxed text-ink-body sm:text-sm">
+                {step.description}
+              </p>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   );

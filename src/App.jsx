@@ -19,26 +19,11 @@ export default function App() {
     const saved = localStorage.getItem('lang');
     return saved === 'en' || saved === 'es' ? saved : 'es';
   });
-  const [theme, setTheme] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('theme');
-      if (saved) return saved;
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
-    return 'light';
-  });
 
-  // Manejo de clase 'dark' en el elemento raíz <html> y persistencia
+  // Garantiza identidad editorial clara única (limpia cualquier clase dark heredada)
   useEffect(() => {
-    const root = document.documentElement;
-    if (theme === 'dark') {
-      root.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      root.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [theme]);
+    document.documentElement.classList.remove('dark');
+  }, []);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -54,10 +39,6 @@ export default function App() {
     document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', seo.title);
     document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', seo.description);
   }, [lang]);
-
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
-  };
 
   const [contactSubject, setContactSubject] = useState('');
 
@@ -82,17 +63,17 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#fafafa] dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 flex flex-col font-sans antialiased transition-colors duration-300">
-      {/* Header con switch de idioma (ES/EN) y switch de tema (Dark/Light) */}
-      <Navbar
-        lang={lang}
-        setLang={setLang}
-        theme={theme}
-        toggleTheme={toggleTheme}
-      />
+    <div className="min-h-screen bg-paper text-obsidian flex flex-col font-sans antialiased">
+      <a
+        href="#contenido-principal"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:bg-petrol focus:px-4 focus:py-2.5 focus:text-xs focus:font-semibold focus:text-paper"
+      >
+        {lang === 'en' ? 'Skip to main content' : 'Saltar al contenido principal'}
+      </a>
 
-      {/* Flujo principal bilingüe con soporte completo de tema */}
-      <main className="flex-grow flex flex-col">
+      <Navbar lang={lang} setLang={setLang} />
+
+      <main id="contenido-principal" className="flex-grow flex flex-col">
         <Hero lang={lang} />
         <Problems lang={lang} />
         <Services lang={lang} onSelectDemo={handleSelectDemo} />
@@ -109,7 +90,6 @@ export default function App() {
         />
       </main>
 
-      {/* Pie de página */}
       <Footer lang={lang} />
     </div>
   );
