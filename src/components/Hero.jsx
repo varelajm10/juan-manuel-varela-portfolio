@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { ArrowRight, Mail, MessageCircle } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { ArrowRight, Mail, MessageCircle, Play } from 'lucide-react';
 import { personalInfo, content } from '../data/portfolioData';
 import { track } from '../lib/track';
+import InstitutionalVideoModal from './InstitutionalVideoModal';
 
 const HERO_BLUEPRINTS = {
   es: {
@@ -264,8 +265,27 @@ export default function Hero({ lang }) {
   const t = content[lang].hero;
   const bpData = HERO_BLUEPRINTS[lang] || HERO_BLUEPRINTS.es;
   const [activeTabId, setActiveTabId] = useState('conciliacion');
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const videoTriggerRef = useRef(null);
 
   const activeTab = bpData.tabs.find((item) => item.id === activeTabId) || bpData.tabs[0];
+
+  const videoButtonLabel =
+    lang === 'en'
+      ? 'Watch JMV overview (Spanish, < 1 min)'
+      : 'Conocé JMV en menos de un minuto';
+
+  const handleOpenVideo = () => {
+    track('video_modal_open', { location: 'hero', lang });
+    setIsVideoOpen(true);
+  };
+
+  const handleCloseVideo = () => {
+    setIsVideoOpen(false);
+    setTimeout(() => {
+      videoTriggerRef.current?.focus();
+    }, 30);
+  };
 
   const whatsappUrl = `https://wa.me/${personalInfo.whatsappNumber}?text=${encodeURIComponent(
     content[lang].contact.whatsappPrefill
@@ -319,26 +339,44 @@ export default function Hero({ lang }) {
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-2.5 lg:col-span-5 lg:justify-end">
-              <a
-                href="#contacto"
-                onClick={() => track('cta_click', { location: 'hero', target: 'contact' })}
-                className="group inline-flex min-h-[44px] items-center justify-center gap-2 bg-petrol px-5 py-3 text-xs font-semibold tracking-wide text-paper transition-colors hover:bg-petrol-dark"
-              >
-                <span>{t.ctaContact}</span>
-                <ArrowRight
-                  className="h-3.5 w-3.5 transition-transform motion-safe:group-hover:translate-x-0.5"
-                  aria-hidden="true"
-                />
-              </a>
+            <div className="flex flex-col gap-3 lg:col-span-5 lg:items-end">
+              <div className="flex flex-wrap gap-2.5 lg:justify-end">
+                <a
+                  href="#contacto"
+                  onClick={() => track('cta_click', { location: 'hero', target: 'contact' })}
+                  className="group inline-flex min-h-[44px] items-center justify-center gap-2 bg-petrol px-5 py-3 text-xs font-semibold tracking-wide text-paper transition-colors hover:bg-petrol-dark"
+                >
+                  <span>{t.ctaContact}</span>
+                  <ArrowRight
+                    className="h-3.5 w-3.5 transition-transform motion-safe:group-hover:translate-x-0.5"
+                    aria-hidden="true"
+                  />
+                </a>
 
-              <a
-                href="#proyectos"
-                onClick={() => track('cta_click', { location: 'hero', target: 'projects' })}
-                className="inline-flex min-h-[44px] items-center justify-center border border-obsidian/25 bg-white px-5 py-3 text-xs font-semibold tracking-wide text-obsidian transition-colors hover:bg-stone"
+                <a
+                  href="#proyectos"
+                  onClick={() => track('cta_click', { location: 'hero', target: 'projects' })}
+                  className="inline-flex min-h-[44px] items-center justify-center border border-obsidian/25 bg-white px-5 py-3 text-xs font-semibold tracking-wide text-obsidian transition-colors hover:bg-stone"
+                >
+                  <span>{t.ctaProjects}</span>
+                </a>
+              </div>
+
+              <button
+                ref={videoTriggerRef}
+                type="button"
+                onClick={handleOpenVideo}
+                aria-haspopup="dialog"
+                aria-expanded={isVideoOpen}
+                className="group inline-flex min-h-[40px] w-fit items-center gap-2 text-xs font-medium text-petrol transition-colors hover:text-obsidian"
               >
-                <span>{t.ctaProjects}</span>
-              </a>
+                <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center border border-petrol-border bg-petrol-tint text-petrol transition-colors group-hover:border-petrol group-hover:bg-petrol group-hover:text-paper">
+                  <Play className="h-3 w-3 fill-current" aria-hidden="true" />
+                </span>
+                <span className="underline decoration-petrol/35 underline-offset-4 group-hover:decoration-obsidian">
+                  {videoButtonLabel}
+                </span>
+              </button>
             </div>
           </div>
         </div>
@@ -440,6 +478,12 @@ export default function Hero({ lang }) {
           </div>
         </div>
       </div>
+
+      <InstitutionalVideoModal
+        isOpen={isVideoOpen}
+        onClose={handleCloseVideo}
+        lang={lang}
+      />
     </section>
   );
 }
