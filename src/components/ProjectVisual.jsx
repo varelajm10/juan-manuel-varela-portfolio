@@ -3,291 +3,362 @@ import React from 'react';
 export default function ProjectVisual({ project, lang = 'es', compact = false }) {
   const isEn = lang === 'en';
 
-  // Activos reales auténticos: captura real y logos verificados
-  if (project.id === 'portal-rrhh') {
-    return (
-      <div className="project-media overflow-hidden border border-gridline bg-stone p-2">
-        <img
-          src={project.image}
-          alt={project.imageAlt || project.title}
-          width="1024"
-          height="454"
-          loading="lazy"
-          decoding="async"
-          className={`w-full bg-white object-contain ${compact ? 'h-40 sm:h-44' : 'h-48 sm:h-52'}`}
-        />
-      </div>
-    );
-  }
-
-  if (project.id === 'ascensort' || project.id === 'cubo-inspecta') {
-    return (
-      <div className="project-media flex h-36 items-center justify-center border border-gridline bg-white p-6 sm:h-40">
-        <img
-          src={project.image}
-          alt={project.imageAlt || project.title}
-          width="800"
-          height="360"
-          loading="lazy"
-          decoding="async"
-          className={
-            project.logoSize === 'lg'
-              ? 'max-h-24 w-auto max-w-full object-contain'
-              : 'max-h-16 w-auto max-w-full object-contain'
-          }
-        />
-      </div>
-    );
-  }
-
-  // Esquemas SVG editoriales claros a medida para los 5 sistemas técnicos
+  // 01. Motor de Conciliación Bancaria — Consola / Salida Excel con semáforo
   if (project.id === 'conciliacion-bancaria') {
+    const rows = isEn
+      ? [
+          { label: '01 · Exact invoice #', status: 'Automatic', cls: 'bg-sage-tint text-sage' },
+          { label: '02 · Tax ID match', status: 'Automatic', cls: 'bg-sage-tint text-sage' },
+          { label: '03 · Fuzzy name (RapidFuzz)', status: 'Safe match', cls: 'bg-petrol-tint text-petrol' },
+          { label: '04 · Grouped payments', status: 'Allocated', cls: 'bg-petrol-tint text-petrol' },
+          { label: '05 · FIFO partials / ambiguous', status: 'For review', cls: 'bg-brass-tint text-brass', highlight: true },
+        ]
+      : [
+          { label: '01 · Nº de factura exacto', status: 'Automático', cls: 'bg-sage-tint text-sage' },
+          { label: '02 · Coincidencia por CUIT', status: 'Automático', cls: 'bg-sage-tint text-sage' },
+          { label: '03 · Nombre difuso (RapidFuzz)', status: 'Umbral seguro', cls: 'bg-petrol-tint text-petrol' },
+          { label: '04 · Pagos agrupados', status: 'Imputado', cls: 'bg-petrol-tint text-petrol' },
+          { label: '05 · Parciales FIFO / ambiguos', status: 'A revisar', cls: 'bg-brass-tint text-brass', highlight: true },
+        ];
+
     return (
       <div
-        className={`project-media blueprint-grid flex flex-col justify-between p-5 sm:p-6 ${
+        className={`project-media blueprint-grid flex flex-col justify-between p-4 sm:p-5 ${
           compact ? 'border border-gridline' : 'h-full'
         }`}
       >
-        <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-xs">
-          <span className="font-medium text-ink-muted">
-            {isEn ? 'DETERMINISTIC 5-RULE CASCADE' : 'CASCADA DETERMINÍSTICA · 5 REGLAS'}
-          </span>
-          <span className="font-semibold text-petrol">
-            {isEn ? '97.2% matched' : '97,2 % conciliado'}
-          </span>
+        <div className="overflow-hidden border border-[#CFD7D2] bg-white shadow-[0_12px_28px_-22px_rgba(14,23,27,0.3)]">
+          <div className="flex items-center justify-between gap-2 bg-obsidian px-3.5 py-2 font-mono text-xs text-paper">
+            <span className="truncate">
+              {isEn ? 'conciliador/core.py · Excel output' : 'conciliador/core.py · Salida Excel'}
+            </span>
+            <span className="shrink-0 text-verdigris">
+              {isEn ? '97.2% matched' : '97,2 % conciliado'}
+            </span>
+          </div>
+
+          <div className="grid grid-cols-3 divide-x divide-gridline border-b border-gridline bg-paper py-2.5 text-center">
+            <div className="px-2">
+              <div className="font-display text-2xl leading-none text-petrol">
+                {isEn ? '97.2%' : '97,2 %'}
+              </div>
+              <div className="mt-0.5 font-mono text-[11px] text-ink-muted">
+                {isEn ? 'Sample run' : 'Extracto prueba'}
+              </div>
+            </div>
+            <div className="px-2">
+              <div className="font-display text-2xl leading-none text-obsidian">
+                {isEn ? '5 rules' : '5 reglas'}
+              </div>
+              <div className="mt-0.5 font-mono text-[11px] text-ink-muted">
+                {isEn ? 'Cascade' : 'En cascada'}
+              </div>
+            </div>
+            <div className="px-2">
+              <div className="font-display text-2xl leading-none text-sage">
+                {isEn ? '11 tests' : '11 tests'}
+              </div>
+              <div className="mt-0.5 font-mono text-[11px] text-ink-muted">Pytest</div>
+            </div>
+          </div>
+
+          <ul className="divide-y divide-gridline font-mono text-xs">
+            {rows.map((row) => (
+              <li
+                key={row.label}
+                className={`flex items-center justify-between gap-2 px-3.5 py-2 ${
+                  row.highlight ? 'bg-brass-tint/45' : 'bg-white'
+                }`}
+              >
+                <span className="truncate text-obsidian">{row.label}</span>
+                <span className={`shrink-0 px-2 py-0.5 text-[11px] font-semibold ${row.cls}`}>
+                  {row.status}
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <svg
-          viewBox="0 0 380 152"
-          className="my-5 h-auto w-full"
-          role="img"
-          aria-label={isEn ? '5-rule bank reconciliation cascade diagram' : 'Diagrama de cascada de 5 reglas de conciliación'}
-        >
-          <rect x="0" y="6" width="218" height="22" fill="#0E171B" />
-          <text x="10" y="20" fontFamily="JetBrains Mono, monospace" fontSize="9" fill="#F5F5F0">
-            {isEn ? '01 · EXACT INVOICE #' : '01 · Nº FACTURA EXACTO'}
-          </text>
-          <rect x="0" y="34" width="196" height="22" fill="#0F4C54" />
-          <text x="10" y="48" fontFamily="JetBrains Mono, monospace" fontSize="9" fill="#F5F5F0">
-            {isEn ? '02 · TAX ID MATCH' : '02 · COINCIDENCIA CUIT'}
-          </text>
-          <rect x="0" y="62" width="174" height="22" fill="#296B68" />
-          <text x="10" y="76" fontFamily="JetBrains Mono, monospace" fontSize="9" fill="#F5F5F0">
-            {isEn ? '03 · FUZZY RAPIDFUZZ' : '03 · MATCHING RAPIDFUZZ'}
-          </text>
-          <rect x="0" y="90" width="152" height="22" fill="#3F6656" />
-          <text x="10" y="104" fontFamily="JetBrains Mono, monospace" fontSize="9" fill="#F5F5F0">
-            {isEn ? '04 · GROUPED PAYMENTS' : '04 · PAGOS AGRUPADOS'}
-          </text>
-          <rect x="0" y="118" width="130" height="22" fill="#FFFFFF" stroke="#0E171B" strokeWidth="0.8" />
-          <text x="10" y="132" fontFamily="JetBrains Mono, monospace" fontSize="9" fill="#0E171B">
-            {isEn ? '05 · PARTIAL FIFO' : '05 · PARCIAL FIFO'}
-          </text>
-
-          <rect x="238" y="6" width="142" height="134" fill="#FFFFFF" stroke="#0E171B" strokeWidth="0.9" />
-          <text x="250" y="27" fontFamily="JetBrains Mono, monospace" fontSize="8.5" fill="#526067">
-            {isEn ? 'SAMPLE DATASET' : 'EXTRACTO DE PRUEBA'}
-          </text>
-          <text x="250" y="70" fontFamily="Instrument Serif, Georgia, serif" fontSize="36" fill="#0F4C54">
-            {isEn ? '97.2%' : '97,2%'}
-          </text>
-          <text x="250" y="88" fontFamily="Plus Jakarta Sans, sans-serif" fontSize="9.5" fill="#435057">
-            {isEn ? 'of credit amount' : 'importe de créditos'}
-          </text>
-          <line x1="250" y1="102" x2="368" y2="102" stroke="#DCE2DE" />
-          <text x="250" y="121" fontFamily="JetBrains Mono, monospace" fontSize="8.5" fill="#3F6656">
-            {isEn ? '11 PYTEST · EXCEL' : '11 PYTEST · EXCEL'}
-          </text>
-        </svg>
-
-        <p className="font-mono text-xs text-ink-muted">
-          Python · Pandas · RapidFuzz · openpyxl · Pytest
+        <p className="mt-2.5 font-mono text-[11px] leading-snug text-ink-muted">
+          {isEn
+            ? 'Conceptual view based on the matching engine and multi-sheet Excel export.'
+            : 'Vista conceptual basada en el motor determinístico y su exportación Excel con semáforo.'}
         </p>
       </div>
     );
   }
 
-  if (project.id === 'agente-cobranzas-ia') {
-    return (
-      <div className="project-media blueprint-grid border border-gridline p-4">
-        <svg
-          viewBox="0 0 360 112"
-          className="h-auto w-full"
-          role="img"
-          aria-label={isEn ? '0-100 risk scoring and guardrails schematic' : 'Esquema de scoring 0-100 y guardrails'}
-        >
-          <rect x="4" y="6" width="150" height="100" fill="#FFFFFF" stroke="#0E171B" strokeWidth="0.8" />
-          <text x="16" y="24" fontFamily="JetBrains Mono, monospace" fontSize="8.5" fill="#526067">
-            SCORING 0–100
-          </text>
-          <path d="M 32 78 A 42 42 0 0 1 124 78" fill="none" stroke="#DCE2DE" strokeWidth="8" strokeLinecap="round" />
-          <path d="M 32 78 A 42 42 0 0 1 106 44" fill="none" stroke="#0F4C54" strokeWidth="8" strokeLinecap="round" />
-          <text x="64" y="76" fontFamily="Instrument Serif, Georgia, serif" fontSize="22" fill="#0E171B">
-            74
-          </text>
-          <text x="16" y="96" fontFamily="JetBrains Mono, monospace" fontSize="8" fill="#3F6656">
-            {isEn ? '4 factors · 16 tests' : '4 variables · 16 tests'}
-          </text>
+  // 02. Portal Comunidad — Captura real enmarcada en ventana editorial
+  if (project.id === 'portal-rrhh') {
+    const modules = isEn
+      ? ['Leave', 'Advances', 'ART ID', 'IT Desk']
+      : ['Vacaciones', 'Adelantos', 'Credencial ART', 'Soporte IT'];
 
-          <rect x="166" y="6" width="190" height="100" fill="#FFFFFF" stroke="#0E171B" strokeWidth="0.8" />
-          <text x="178" y="24" fontFamily="JetBrains Mono, monospace" fontSize="8.5" fill="#526067">
-            {isEn ? 'STRATEGIES + GUARDRAILS' : 'ESTRATEGIAS + GUARDRAILS'}
-          </text>
-          <rect x="178" y="34" width="166" height="16" fill="#EAF3EE" />
-          <text x="184" y="45" fontFamily="JetBrains Mono, monospace" fontSize="8.2" fill="#3F6656">
-            {isEn ? '1. Preventive · 2. Friendly' : '1. Preventivo · 2. Amigable'}
-          </text>
-          <rect x="178" y="55" width="166" height="16" fill="#E6F0EE" />
-          <text x="184" y="66" fontFamily="JetBrains Mono, monospace" fontSize="8.2" fill="#0F4C54">
-            {isEn ? '3. Firm · 4. Pre-legal' : '3. Firme · 4. Pre-judicial'}
-          </text>
-          <rect x="178" y="76" width="166" height="20" fill="#0E171B" />
-          <text x="184" y="89" fontFamily="JetBrains Mono, monospace" fontSize="8.2" fill="#A7E3CE">
-            {isEn ? '✓ 100% Offline Fallback' : '✓ Fallback 100% offline'}
-          </text>
-        </svg>
+    return (
+      <div className="project-media border border-gridline bg-stone p-3">
+        <div className="overflow-hidden border border-[#CFD7D2] bg-white shadow-[0_12px_28px_-22px_rgba(14,23,27,0.28)]">
+          <div className="flex items-center justify-between border-b border-gridline bg-paper px-3 py-1.5 font-mono text-xs text-ink-muted">
+            <span className="inline-flex items-center gap-1.5">
+              <span className="h-2 w-2 rounded-full bg-petrol" aria-hidden="true" />
+              <span>{isEn ? 'HR Intranet · Real screenshot' : 'Intranet RRHH · Captura real'}</span>
+            </span>
+            <span>React</span>
+          </div>
+          <img
+            src={project.image}
+            alt={project.imageAlt || project.title}
+            width="1024"
+            height="454"
+            loading="lazy"
+            decoding="async"
+            className={`w-full bg-white object-contain ${compact ? 'h-40 sm:h-44' : 'h-48 sm:h-52'}`}
+          />
+          <div className="grid grid-cols-2 divide-x divide-y divide-gridline border-t border-gridline bg-paper text-center font-mono text-[11px] text-ink-body sm:grid-cols-4 sm:divide-y-0">
+            {modules.map((mod) => (
+              <span key={mod} className="px-2 py-1.5">
+                {mod}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
     );
   }
 
-  if (project.id === 'cubo') {
-    return (
-      <div className="project-media blueprint-grid border border-gridline p-4">
-        <svg
-          viewBox="0 0 360 112"
-          className="h-auto w-full"
-          role="img"
-          aria-label={isEn ? 'Order-to-Cash aging buckets and Telegram alerts' : 'Esquema de antigüedad de deuda Order-to-Cash y alertas Telegram'}
-        >
-          <rect x="4" y="6" width="196" height="100" fill="#FFFFFF" stroke="#0E171B" strokeWidth="0.8" />
-          <text x="16" y="24" fontFamily="JetBrains Mono, monospace" fontSize="8.5" fill="#526067">
-            {isEn ? 'RECEIVABLES AGING' : 'ANTIGÜEDAD DE DEUDA'}
-          </text>
-          <rect x="20" y="68" width="28" height="22" fill="#DCE2DE" />
-          <rect x="60" y="54" width="28" height="36" fill="#7B9584" />
-          <rect x="100" y="42" width="28" height="48" fill="#296B68" />
-          <rect x="140" y="30" width="28" height="60" fill="#0F4C54" />
-          <text x="27" y="100" fontFamily="JetBrains Mono, monospace" fontSize="8" fill="#526067">30</text>
-          <text x="67" y="100" fontFamily="JetBrains Mono, monospace" fontSize="8" fill="#526067">60</text>
-          <text x="107" y="100" fontFamily="JetBrains Mono, monospace" fontSize="8" fill="#526067">90</text>
-          <text x="144" y="100" fontFamily="JetBrains Mono, monospace" fontSize="8" fill="#0F4C54">90+</text>
-
-          <rect x="212" y="6" width="144" height="100" fill="#FFFFFF" stroke="#8C4B28" strokeWidth="0.9" />
-          <text x="224" y="24" fontFamily="JetBrains Mono, monospace" fontSize="8.5" fill="#8C4B28">
-            ORDER-TO-CASH
-          </text>
-          <text x="224" y="46" fontFamily="Plus Jakarta Sans, sans-serif" fontSize="10.5" fontWeight="600" fill="#0E171B">
-            FastAPI + MongoDB
-          </text>
-          <text x="224" y="64" fontFamily="Plus Jakarta Sans, sans-serif" fontSize="9" fill="#435057">
-            {isEn ? '· Multi-company' : '· Multiempresa'}
-          </text>
-          <text x="224" y="79" fontFamily="Plus Jakarta Sans, sans-serif" fontSize="9" fill="#435057">
-            {isEn ? '· Collection alerts' : '· Alertas de cobro'}
-          </text>
-          <text x="224" y="94" fontFamily="Plus Jakarta Sans, sans-serif" fontSize="9" fill="#435057">
-            {isEn ? '· Telegram queries' : '· Consultas Telegram'}
-          </text>
-        </svg>
-      </div>
-    );
-  }
-
+  // 03. G.L.A.D.Y.S. / CoopMora — Informe diario de alertas crediticias
   if (project.id === 'gladys') {
     return (
-      <div className="project-media blueprint-grid border border-gridline p-4">
-        <svg
-          viewBox="0 0 360 112"
-          className="h-auto w-full"
-          role="img"
-          aria-label={isEn ? 'Daily BCRA and insolvency radar pipeline' : 'Pipeline diario de alertas BCRA y concursos'}
-        >
-          <rect x="4" y="6" width="114" height="100" fill="#FFFFFF" stroke="#0E171B" strokeWidth="0.8" />
-          <text x="14" y="24" fontFamily="JetBrains Mono, monospace" fontSize="8.5" fill="#526067">
-            {isEn ? 'PUBLIC SOURCES' : 'FUENTES DIARIAS'}
-          </text>
-          <circle cx="60" cy="64" r="24" fill="none" stroke="#0F4C54" strokeWidth="1.1" />
-          <circle cx="60" cy="64" r="13" fill="none" stroke="#7B9584" strokeWidth="1" strokeDasharray="3 2" />
-          <circle cx="72" cy="54" r="3" fill="#0F4C54" />
-          <circle cx="48" cy="70" r="3" fill="#8C4B28" />
-          <text x="14" y="98" fontFamily="JetBrains Mono, monospace" fontSize="7.8" fill="#0F4C54">
-            BCRA · BOLETINES
-          </text>
-
-          <line x1="118" y1="56" x2="142" y2="56" stroke="#0F4C54" strokeWidth="1.3" />
-          <polygon points="142,52 148,56 142,60" fill="#0F4C54" />
-
-          <rect x="148" y="6" width="208" height="100" fill="#FFFFFF" stroke="#0F4C54" strokeWidth="0.9" />
-          <text x="160" y="24" fontFamily="JetBrains Mono, monospace" fontSize="8.5" fill="#0F4C54">
-            {isEn ? 'DAILY CREDIT REPORT' : 'INFORME DIARIO CRÉDITOS'}
-          </text>
-          <rect x="160" y="34" width="184" height="18" fill="#E6F0EE" />
-          <text x="168" y="46" fontFamily="JetBrains Mono, monospace" fontSize="8.2" fill="#0F4C54">
-            {isEn ? '● BCRA rating changes' : '● Cambios situación BCRA'}
-          </text>
-          <rect x="160" y="57" width="184" height="18" fill="#F7EFEA" />
-          <text x="168" y="69" fontFamily="JetBrains Mono, monospace" fontSize="8.2" fill="#8C4B28">
-            {isEn ? '● Bankruptcy / insolvency' : '● Alertas de concursos'}
-          </text>
-          <rect x="160" y="80" width="184" height="18" fill="#F5F5F0" />
-          <text x="168" y="92" fontFamily="JetBrains Mono, monospace" fontSize="8.2" fill="#435057">
-            {isEn ? '→ Email + Streamlit panel' : '→ Correo + panel Streamlit'}
-          </text>
-        </svg>
+      <div className="project-media blueprint-grid border border-gridline p-3.5">
+        <div className="overflow-hidden border border-[#CFD7D2] bg-white shadow-[0_12px_28px_-22px_rgba(14,23,27,0.28)]">
+          <div className="flex items-center justify-between gap-2 bg-petrol px-3 py-2 font-mono text-xs text-white">
+            <span>{isEn ? 'DAILY DIGEST · CREDIT TEAM' : 'INFORME DIARIO · CRÉDITOS'}</span>
+            <span className="text-verdigris">{isEn ? 'BCRA + Filings' : 'BCRA + Concursos'}</span>
+          </div>
+          <div className="space-y-2 p-3 text-xs">
+            <div className="flex items-center justify-between gap-2 border border-petrol-border bg-petrol-tint px-2.5 py-2">
+              <span className="font-semibold text-obsidian">
+                {isEn ? 'BCRA credit status changes' : 'Situación crediticia BCRA'}
+              </span>
+              <span className="shrink-0 font-mono text-[11px] text-petrol">
+                {isEn ? 'Daily scan' : 'Relevamiento diario'}
+              </span>
+            </div>
+            <div className="flex items-center justify-between gap-2 border border-brass-border bg-brass-tint px-2.5 py-2">
+              <span className="font-semibold text-obsidian">
+                {isEn ? 'Official gazettes & insolvency' : 'Boletines y concursos'}
+              </span>
+              <span className="shrink-0 font-mono text-[11px] text-brass">
+                {isEn ? 'Early alert' : 'Alerta temprana'}
+              </span>
+            </div>
+            <div className="flex items-center justify-between border-t border-gridline pt-2 font-mono text-[11px] text-ink-muted">
+              <span>{isEn ? 'Output: Email + Streamlit' : 'Salida: Correo + Streamlit'}</span>
+              <span className="font-semibold text-petrol">
+                {isEn ? 'In daily use' : 'En uso diario'}
+              </span>
+            </div>
+          </div>
+        </div>
+        <p className="mt-2 font-mono text-[11px] leading-snug text-ink-muted">
+          {isEn
+            ? 'Conceptual view of the daily risk pipeline built for CoopMora.'
+            : 'Vista conceptual del flujo diario implementado para CoopMora.'}
+        </p>
       </div>
     );
   }
 
-  // Metanoia (prototipo ERP + panel con IA)
-  return (
-    <div
-      className={`project-media blueprint-grid flex flex-col justify-between p-5 sm:p-6 ${
-        compact ? 'border border-gridline' : 'h-full'
-      }`}
-    >
-      <div className="flex items-center justify-between font-mono text-xs text-ink-muted">
-        <span>{isEn ? 'TWO PUBLIC REPOSITORIES' : 'DOS REPOSITORIOS PÚBLICOS'}</span>
-        <span className="font-semibold text-sage">Next.js · TypeScript</span>
-      </div>
-      <svg
-        viewBox="0 0 380 112"
-        className="my-4 h-auto w-full"
-        role="img"
-        aria-label={isEn ? 'Metanoia modular ERP and AI assistant panel architecture' : 'Arquitectura de Metanoia ERP modular y panel con IA'}
-      >
-        <rect x="4" y="8" width="174" height="96" fill="#FFFFFF" stroke="#0E171B" strokeWidth="0.9" />
-        <rect x="4" y="8" width="174" height="22" fill="#0E171B" />
-        <text x="14" y="23" fontFamily="JetBrains Mono, monospace" fontSize="8.5" fill="#A7E3CE">
-          Metanoia.v1.0.1
-        </text>
-        <text x="14" y="48" fontFamily="Plus Jakarta Sans, sans-serif" fontSize="10.5" fontWeight="600" fill="#0E171B">
-          {isEn ? 'Multi-tenant ERP' : 'ERP modular multi-tenant'}
-        </text>
-        <text x="14" y="67" fontFamily="JetBrains Mono, monospace" fontSize="8.5" fill="#435057">
-          Prisma · PostgreSQL
-        </text>
-        <text x="14" y="85" fontFamily="Plus Jakarta Sans, sans-serif" fontSize="8.8" fill="#526067">
-          {isEn ? 'Open structure prototype' : 'Estructura abierta'}
-        </text>
+  // 04. AscenSort (RB&LCA) — Logo real del cliente + consola operativa
+  if (project.id === 'ascensort') {
+    const blocks = isEn
+      ? [
+          { title: 'Incidents', desc: 'Logging & tracking', accent: false },
+          { title: 'History', desc: 'By vertical unit', accent: false },
+          { title: 'Charts & reports', desc: 'Operational control', accent: false },
+          { title: 'AI Audit Agent', desc: 'Assists review', accent: true },
+        ]
+      : [
+          { title: 'Incidencias', desc: 'Registro y estado', accent: false },
+          { title: 'Historial', desc: 'Por equipo vertical', accent: false },
+          { title: 'Gráficos y reportes', desc: 'Control operativo', accent: false },
+          { title: 'Agente IA', desc: 'Asiste auditorías', accent: true },
+        ];
 
-        <rect x="202" y="8" width="174" height="96" fill="#FFFFFF" stroke="#0F4C54" strokeWidth="0.9" />
-        <rect x="202" y="8" width="174" height="22" fill="#0F4C54" />
-        <text x="212" y="23" fontFamily="JetBrains Mono, monospace" fontSize="8.5" fill="#FFFFFF">
-          metanoia-app
-        </text>
-        <text x="212" y="48" fontFamily="Plus Jakarta Sans, sans-serif" fontSize="10.5" fontWeight="600" fill="#0E171B">
-          {isEn ? 'AI Assistant Panel' : 'Panel con asistentes IA'}
-        </text>
-        <text x="212" y="67" fontFamily="JetBrains Mono, monospace" fontSize="8.5" fill="#435057">
-          Firebase · Genkit / Gemini
-        </text>
-        <text x="212" y="85" fontFamily="Plus Jakarta Sans, sans-serif" fontSize="8.8" fill="#526067">
-          {isEn ? 'Live ops repo stays private' : 'Operación real en privado'}
-        </text>
-      </svg>
-      <p className="font-mono text-xs text-ink-muted">
-        Next.js · TypeScript · Prisma · PostgreSQL · Firebase
-      </p>
+    return (
+      <div className="project-media blueprint-grid border border-gridline p-3.5">
+        <div className="overflow-hidden border border-[#CFD7D2] bg-white shadow-[0_12px_28px_-22px_rgba(14,23,27,0.28)]">
+          <div className="flex items-center justify-between gap-3 border-b border-gridline bg-white px-4 py-3">
+            <img
+              src={project.image}
+              alt={project.imageAlt || project.title}
+              width="800"
+              height="320"
+              loading="lazy"
+              decoding="async"
+              className="h-10 w-auto max-w-[190px] object-contain"
+            />
+            <span className="shrink-0 bg-petrol-tint px-2 py-0.5 font-mono text-[11px] font-semibold text-petrol">
+              {isEn ? 'Client build' : 'Cliente real'}
+            </span>
+          </div>
+          <div className="grid grid-cols-2 gap-px bg-gridline text-xs">
+            {blocks.map((block) => (
+              <div
+                key={block.title}
+                className={block.accent ? 'bg-petrol-tint p-2.5' : 'bg-paper p-2.5'}
+              >
+                <div className={`font-semibold ${block.accent ? 'text-petrol' : 'text-obsidian'}`}>
+                  {block.title}
+                </div>
+                <div className="text-[11px] text-ink-muted">{block.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <p className="mt-2 font-mono text-[11px] leading-snug text-ink-muted">
+          {isEn
+            ? 'Client identity + verified system modules (operational logs stay private).'
+            : 'Logo del cliente + módulos reales del sistema (registros de equipos privados).'}
+        </p>
+      </div>
+    );
+  }
+
+  // 05. Agente de IA de Cobranzas — Scoring ponderado + Guardrails determinísticos
+  if (project.id === 'agente-cobranzas-ia') {
+    const weights = isEn
+      ? [
+          ['Days overdue', '40 %'],
+          ['Balance', '25 %'],
+          ['History', '20 %'],
+          ['Promises', '15 %'],
+        ]
+      : [
+          ['Atraso', '40 %'],
+          ['Saldo', '25 %'],
+          ['Historial', '20 %'],
+          ['Promesas', '15 %'],
+        ];
+
+    const checks = isEn
+      ? ['✓ Amounts verified', '✓ Non-threatening tone', '✓ Strict JSON check', '✓ 100% offline mode']
+      : ['✓ Respeta importes', '✓ Sin tono amenazante', '✓ Valida JSON', '✓ Modo 100 % offline'];
+
+    return (
+      <div className="project-media blueprint-grid border border-gridline p-3.5">
+        <div className="overflow-hidden border border-[#CFD7D2] bg-white shadow-[0_12px_28px_-22px_rgba(14,23,27,0.28)]">
+          <div className="flex items-center justify-between gap-2 bg-obsidian px-3 py-2 font-mono text-xs text-paper">
+            <span>Scoring 0–100 + Guardrails</span>
+            <span className="text-verdigris">16 tests pytest</span>
+          </div>
+          <div className="grid grid-cols-1 divide-y divide-gridline text-xs sm:grid-cols-2 sm:divide-x sm:divide-y-0">
+            <div className="space-y-1.5 p-3">
+              <div className="font-mono text-[11px] uppercase text-ink-muted">
+                {isEn ? 'Weighted matrix' : 'Matriz ponderada'}
+              </div>
+              {weights.map(([name, pct]) => (
+                <div key={name} className="flex items-center justify-between">
+                  <span className="text-ink-body">{name}</span>
+                  <strong className="font-mono text-petrol">{pct}</strong>
+                </div>
+              ))}
+            </div>
+            <div className="space-y-1.5 bg-paper p-3 font-mono text-[11px]">
+              <div className="uppercase text-ink-muted">
+                {isEn ? 'AI guardrails' : 'Controles IA'}
+              </div>
+              {checks.map((item, idx) => (
+                <div
+                  key={item}
+                  className={idx === checks.length - 1 ? 'font-semibold text-petrol' : 'text-sage'}
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <p className="mt-2 font-mono text-[11px] leading-snug text-ink-muted">
+          {isEn
+            ? 'Conceptual view faithful to agente/riesgo.py and agente/redactor.py.'
+            : 'Vista conceptual fiel a agente/riesgo.py y agente/redactor.py.'}
+        </p>
+      </div>
+    );
+  }
+
+  // 06. CUBO — Aging Order-to-Cash + Telegram
+  if (project.id === 'cubo') {
+    return (
+      <div className="project-media blueprint-grid border border-gridline p-3">
+        <div className="flex items-end justify-between gap-3 border border-[#CFD7D2] bg-white p-3">
+          <div className="flex-1">
+            <div className="mb-2 font-mono text-[11px] text-ink-muted">
+              {isEn ? 'ORDER-TO-CASH AGING' : 'ANTIGÜEDAD DE DEUDA'}
+            </div>
+            <div className="flex h-14 items-end gap-1.5" aria-hidden="true">
+              <div className="h-5 flex-1 bg-gridline" />
+              <div className="h-8 flex-1 bg-[#7B9584]" />
+              <div className="h-11 flex-1 bg-[#296B68]" />
+              <div className="h-14 flex-1 bg-petrol" />
+            </div>
+            <div className="mt-1 flex justify-between font-mono text-[10px] text-ink-muted">
+              <span>30</span>
+              <span>60</span>
+              <span>90</span>
+              <span className="font-semibold text-petrol">90+</span>
+            </div>
+          </div>
+          <div className="w-32 border border-gridline bg-paper p-2 font-mono text-[11px]">
+            <div className="font-semibold text-brass">Telegram</div>
+            <div className="mt-1 leading-snug text-ink-body">
+              {isEn ? 'Alerts & balance queries' : 'Alertas y consulta de saldos'}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // 07. CUBO INSPECTA — Identidad de producto propio
+  if (project.id === 'cubo-inspecta') {
+    return (
+      <div className="project-media flex h-[132px] flex-col items-center justify-center border border-gridline bg-white p-3">
+        <img
+          src={project.image}
+          alt={project.imageAlt || project.title}
+          width="300"
+          height="156"
+          loading="lazy"
+          decoding="async"
+          className="max-h-16 w-auto max-w-full object-contain"
+        />
+        <p className="mt-2 font-mono text-[11px] text-ink-muted">
+          {isEn
+            ? 'Field checks · Findings · Reports'
+            : 'Relevamiento · Observaciones · Informes'}
+        </p>
+      </div>
+    );
+  }
+
+  // 08. Metanoia — Dos repositorios abiertos
+  return (
+    <div className="project-media blueprint-grid border border-gridline p-3">
+      <div className="grid grid-cols-1 gap-2 font-mono text-[11px] sm:grid-cols-2">
+        <div className="border border-obsidian/25 bg-white p-2.5">
+          <div className="font-semibold text-obsidian">Metanoia.v1.0.1</div>
+          <div className="mt-1 leading-snug text-ink-muted">
+            {isEn ? 'Multi-tenant ERP · Prisma + Postgres' : 'ERP multi-tenant · Prisma + Postgres'}
+          </div>
+        </div>
+        <div className="border border-petrol-border bg-white p-2.5">
+          <div className="font-semibold text-petrol">metanoia-app</div>
+          <div className="mt-1 leading-snug text-ink-muted">
+            {isEn ? 'AI panel · Firebase + Gemini' : 'Panel IA · Firebase + Gemini'}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
